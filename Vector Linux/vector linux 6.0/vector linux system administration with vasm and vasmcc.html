@@ -1,0 +1,2010 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vector linux system administration with vasm and vasmcc</title>
+  </head>
+  <body>
+    <table align="center" bgcolor="#FFFFFF" border="1" cellpadding="0"
+      cellspacing="8">
+      <tbody>
+        <tr>
+          <td>
+            <table align="center" border="0" cellpadding="2"
+              cellspacing="0" width="100%">
+              <tbody>
+                <tr>
+                  <td class="HeaderBack"><img
+                      src="http://vectorlinux.osuosl.org/docs/vl60/images/newfront.jpg"
+                      height="80" width="600"></td>
+                </tr>
+                <tr>
+                  <td class="MenuTypeNewThin">
+                    <div class="MenuTypeLink" align="center"><strong><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/index.html">Overview</a>
+                        &nbsp;|&nbsp; <a
+                          href="http://vectorlinux.osuosl.org/docs/vl60/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://forum.vectorlinux.com">VectorLinux
+                          Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://vectorlinux.osuosl.org/docs/">Online
+                          Documentation</a></strong></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" border="0" cellpadding="0"
+              cellspacing="0" width="95%">
+              <tbody>
+                <tr>
+                  <td height="80">
+                    <div align="center">
+                      <h1><font face="Arial, sans-serif"><font
+                            color="#006699"><b><u>System Administration
+                                with VASM and
+                                VasmCC</u></b></font></font></h1>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h1 align="left">&nbsp; CONTENTS</h1>
+                    <pre class="standardtype"><a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#introduction">1. Introduction</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#uservsroot">2. User features vs Root features</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#useingui">3. Use in X-Windows (GUI)</a> 
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#vasmcc">3a. VasmCC (GUI wrapper)</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#useintext">4. Use in Text Mode</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#switchlevel">5. Switching to Text Mode</a> 
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#descriptions">6. Detailed descriptions</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#autosetup">6.1. AUTOSETUP</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#user">6.2. USER</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#useradd">6.2.1. ADD</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#userdel">6.2.2. DEL</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#paswd">6.2.3. PASSWD</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#passroot">6.2.4. PASSROOT</a>
+</pre>
+                    <pre class="standardtype">    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#xwindow">6.3. XWINDOW</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#xconf">6.3.1. XCONF</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#xdmset">6.3.2. XDMSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#xwmset">6.3.3. XWMSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#bootset1">6.3.4. BOOTSET</a>
+</pre>
+                    <pre class="standardtype">    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#service">6.4. SERVICE</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#bootset2">6.4.1. BOOTSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#initset">6.4.2. INITSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#hwset1">6.4.3. HWSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#srvset">6.4.4. SRVSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#cupsweb">6.4.5. CUPSWEB</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#sambaweb">6.4.6. SAMBAWEB</a>
+</pre>
+                    <pre class="standardtype">    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#network">6.5. NETWORK</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#netconf">6.5.1. NETCONF</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#name">6.5.2. NAME</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#inet">6.5.3. INET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#wireless">6.5.4. WIRELESS</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#modem">6.5.5. MODEM</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#firewall">6.5.6. FIREWALL</a>
+</pre>
+                    <pre class="standardtype">    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#hardware">6.6. HARDWARE</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#hwconf">6.6.1. HWCONF</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#hwset2">6.6.2. HWSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#alsaconf">6.6.3. ALSACONF</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#cdset">6.6.4. CDSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#mouseset">6.6.5. MOUSESET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#keymapset">6.6.6. KEYMAPSET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#dateset">6.6.7. DATESET</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#zoneset">6.6.8. ZONESET</a>
+</pre>
+                    <pre class="standardtype">    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#filesystem">6.7. FILESYSTEM</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#fdisk">6.7.1. FDISK</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#format">6.7.2. FORMAT</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#mount">6.7.3. MOUNT</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#lilo">6.7.4. LILO</a>
+           <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#backupsys">6.7.5. BACKUPSYS</a>
+</pre>
+                    <hr>
+                    <h1><u><a name="introduction" id="introduction"></a>1.
+                        Introduction</u></h1>
+                    <p class="standardtype">"VASM" is short for "Vector
+                      Administrative
+                      and Services Menu" and is Vector Linux's main
+                      system configuration
+                      tool. Recently, VL has added VASMCC to version
+                      6.0. VASMCC provides
+                      a very newbie-friendly GUI iconic interface to the
+                      VASM menu
+                      system, making it easier for the new user to find
+                      his/her way
+                      around VL system administration commands. It is
+                      recommended that
+                      newbies and users new to VL use VasmCC for their
+                      system
+                      administration work.</p>
+                    <p class="standardtype">VASM is the same in both CLI
+                      (text) and GUI
+                      mode. The script automatically identifies the mode
+                      you are
+                      currently in and uses the appropriate interface.</p>
+                    <p class="standardtype" align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm_gui.png"
+                        height="329" width="503"><br>
+                      <strong>VASM running in Graphical Mode.</strong></p>
+                    <p class="standardtype">&nbsp;</p>
+                    <p class="standardtype"><strong>Some special notes:</strong><br>
+                      1.For most functions VASM needs you to be logged
+                      in as root, the
+                      administration account on your VectorLinux system.<br>
+                      2.Some functions accessible through the VASM
+                      require the system to
+                      be running in Text Mode and not GUI Mode. Such
+                      functions are
+                      clearly marked and cannot function in GUI mode.
+                      (See Section 5
+                      below).</p>
+                    <p class="standardtype" align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm_tui.png"
+                        height="480" width="640"><br>
+                      <strong>VASM running in Text Mode.</strong></p>
+                    <p class="standardtype" align="center">&nbsp;</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="uservsroot" id="uservsroot"></a>2.
+                        User features
+                        vs. Root features</u></h1>
+                    <p class="standardtype">You can use VASM as a normal
+                      user or as
+                      privileged root user (System Administrator). The
+                      difference is that
+                      running it as a normal user gives you access to
+                      only those
+                      functions that affect that particular user,
+                      whereas in root mode
+                      you can access the full range of options that
+                      affect the entire
+                      system and/or all of the users.</p>
+                    <p class="standardtype">If you launch VASM as a
+                      normal user, you
+                      may access the root mode by selecting the "SUPER"
+                      entry in the
+                      menu. You will then be required to enter the
+                      root&acute;s password
+                      to be granted permission. This is, of course, a
+                      security
+                      measure.</p>
+                    <p class="standardtype"><b>Note:</b> The tools
+                      available to normal
+                      users are a subset of those available to root
+                      user. This document
+                      explains the complete functionality of VASM.</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="useingui" id="useingui"></a>3. Use
+                        in X-Windows
+                        (GUI)</u></h1>
+                    <p class="standardtype">If you have started your
+                      window manager of
+                      choice, double-click on the VASM icon or from the
+                      main menu select
+                      "System", then select "Vector Administrative and
+                      Services Menu or
+                      VASM" and VASM will then be loaded onto your
+                      screen.</p>
+                    <p class="standardtype">Depending on your VL
+                      version, you may have
+                      an icon on your desktop labeled "<i>Vector
+                        Administrative and
+                        Services Menu</i>", click it and you will
+                      presented with
+                      VASM&acute;s interface.</p>
+                    <p class="standardtype">If you are running the
+                      system as a regular
+                      user you will see an entry named "SUPER" to access
+                      to the root
+                      level, select it and you will be prompted to enter
+                      the root&acute;s
+                      password.</p>
+                    <p class="standardtype">Please, be aware that some
+                      functions in
+                      VASM require the system to be running in Text Mode
+                      and not GUI Mode
+                      (see chapter 5).</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h2><u><a name="vasmcc" id="vasmcc"></a>3a. VasmCC
+                        (GUI
+                        wrapper)</u></h2>
+                    <p class="standardtype">The volunteer developers at
+                      VectorLinux
+                      have created a very user friendly GUI system
+                      interface to VASM
+                      called VasmCC or the "Vector Administration and
+                      System Menu Control
+                      Centre". Most users will now probably prefer to
+                      use this system
+                      front end to VASM. It provides a well structured
+                      iconic interface
+                      which makes finding the right system
+                      administration tool easy.</p>
+                    <p class="standardtype">The screenshots below show
+                      the various
+                      screens of VasmCC and the utilities available
+                      within each screen.
+                      Clicking the various utilities raises the
+                      appropriate VASM menu
+                      interface - all of which are described in detail
+                      later in this
+                      document:</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <table frame="void" bgcolor="white" border="0"
+                      cellpadding="10" cellspacing="0">
+                      <tbody>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc1.jpg"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc1.jpg"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc2.jpg"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc2.jpg"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc3.jpg"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc3.jpg"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center">Utilities</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">Filesystem</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">XWindow</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <table frame="void" bgcolor="white" border="0"
+                      cellpadding="10" cellspacing="0">
+                      <tbody>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc4.jpg"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc4.jpg"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc5.jpg"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc5.jpg"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc6.jpg"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc6.jpg"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc7.jpg"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasmcc7.jpg"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center">Network</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">Hardware</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">Service</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">User</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <h1><u><a name="useintext" id="useintext"></a>4. Use
+                        in Text
+                        Mode</u></h1>
+                    <p class="standardtype">To launch it, type in
+                      console mode "vasm"
+                      (lowercase) without quotes and hit enter. This
+                      will start an
+                      ncurses based menu. Use the cursor [up] [down]
+                      keys to navigate the
+                      menu. Press the [enter] key to make a selection.
+                      If you wish to
+                      exit use the [left] [right] arrows to select
+                      CANCEL.</p>
+                    <p class="standardtype">If you are running the
+                      system as a regular
+                      user you will see an entry named "SUPER" to access
+                      to the root
+                      level. Select it and you will be prompted to enter
+                      the root&acute;s
+                      password.</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="switchlevel" id="switchlevel"></a>5.
+                        Switching to
+                        Text Mode</u></h1>
+                    <p class="standardtype">For some of the
+                      administrative tasks
+                      available in VASM, like configuring the X Server,
+                      hardware
+                      autodetection, etc., it is safer, or even strictly
+                      required, that
+                      the system is running in text mode (Run Level
+                      2).&nbsp; When this
+                      situation appears, VASM will let you know and you
+                      will not be able
+                      to perform such tasks from your window manager.</p>
+                    <p class="standardtype">If you are running in GUI
+                      mode, log out of
+                      it, then:</p>
+                    <ul>
+                      <li class="standardtype">If you are taken to the
+                        text mode console,
+                        you can call vasm from there.<br>
+                        (This is the case when your system is configured
+                        to boot
+                        automatically into Text Mode (also known as TUI
+                        Mode).<br>
+                      </li>
+                      <li class="standardtype">If you are presented with
+                        a GUI login,
+                        this means that the system is configured to
+                        autostart in GUI mode
+                        (runlevel 4 or 5).<br>
+                        In this case you need to switch into TUI mode
+                        (runlevel 2/3).<br>
+                        Please press Ctrl + Alt + F1, login as root, and
+                        type "init 2", the
+                        system will shutdown the X server.<br>
+                        You may then launch vasm and configure the
+                        system.<br>
+                        Once you have finished, switch back to GUI mode
+                        again by typing
+                        "init 4".</li>
+                    </ul>
+                    <p align="center"><span class="standardtype"></span><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="descriptions" id="descriptions"></a>6.
+                        Detailed
+                        descriptions</u></h1>
+                    <p class="standardtype">This section explains, in
+                      order, each of
+                      the configuration utilities available to the root
+                      user in VASM.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="autosetup" id="autosetup"></a>6.1.
+                        AUTOSETUP</u></h2>
+                    <p class="standardtype">Autosetup goes through the
+                      same
+                      autodetection and autoconfiguration process that
+                      was performed at
+                      installation time. Doing this means resetting your
+                      system to almost
+                      fresh install status. Therefore some of the
+                      configurations
+                      post-install that you may have done to the system
+                      could be re-set
+                      to some default value.</p>
+                    <p class="standardtype">If you need to reconfigure
+                      something on
+                      your system it is advisable to use the specific
+                      VASM entry for that
+                      task.</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h2><u><a name="user" id="user"></a>6.2. USER</u></h2>
+                    <p class="standardtype">With this section of VASM
+                      you can manage
+                      users. You have to be logged in as administrator
+                      of the system, so
+                      login as 'root' via console or SUPER option in
+                      VASM.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vuser</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm_users.png"
+                        height="344" width="496"><br>
+                      <span class="standardtype"><strong>User
+                          administration menu in
+                          Graphical Mode.</strong></span></p>
+                    <h2><u><a name="useradd" id="useradd"></a>6.2.1. ADD</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Add a new
+                      user to the
+                      system.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vuseradd</p>
+                    <p class="standardtype">First you will be asked to
+                      enter a login
+                      for this new user.<br>
+                      Just enter the name you want (lower case) and
+                      press the 'enter' key
+                      or click on the 'Ok' button.</p>
+                    <p class="standardtype">The next dialog will ask you
+                      to enter the
+                      real name of the person corresponding with the
+                      login name you
+                      entered in the previous dialog.<br>
+                      Enter the name and press 'enter' or click on the
+                      'Next' button.<br>
+                      If you want to change the login name at this stage
+                      you can click on
+                      the 'Previous' button.</p>
+                    <p class="standardtype">The following dialog will
+                      ask you to enter
+                      an id for this user. Choose a unique id for the
+                      user you want to
+                      add or just accept the default by pressing enter
+                      for the next
+                      dialog.</p>
+                    <p class="standardtype">You will get a list of
+                      groups the user can
+                      be a member of. Select the groups the new user
+                      must have access to.
+                      Mostly you can accept the defaults. Deselect the
+                      groups to limit
+                      the access rights.</p>
+                    <p class="standardtype">In a fresh vl6.x install the
+                      following
+                      groups are available:<br>
+                      - cdrom: user can access CD/CDW/DVD<br>
+                      - floppy: user can access floppy disks<br>
+                      - lp: user can access printers<br>
+                      - audio: user can access audio devices<br>
+                      - video: user can access video devices<br>
+                      - games: user can play restricted games<br>
+                      - adm: administrators<br>
+                      - sys: system administrators<br>
+                      - wheel: elite users</p>
+                    <p class="standardtype">Click on 'Ok' if you're
+                      finished setting
+                      the groups.</p>
+                    <p class="standardtype">Now you will get a view of
+                      the login name,
+                      real name, user id etc.<br>
+                      You will be asked if you want to create this user
+                      on your system.
+                      Press 'enter' to accept the input you gave.</p>
+                    <p class="standardtype">The last step is to enter a
+                      password for
+                      the new user.<br>
+                      Enter a password for the new user (it is more
+                      secure to choose a
+                      combination of at least 6 characters, numbers and
+                      special
+                      characters, e.g. c@vi@47 ). Press 'enter' or click
+                      on 'Ok' to
+                      accept the password.</p>
+                    <p class="standardtype">In the dialog that follows,
+                      you will be
+                      asked to re-enter the password you gave. Press
+                      'enter' or click on
+                      'Ok' after you entered the password again.</p>
+                    <p class="standardtype">The last dialog confirms the
+                      creation of
+                      this new user on the system.<br>
+                      After clicking on 'Ok' you will return to the USER
+                      ADMINISTRATION
+                      menu.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="userdel" id="userdel"></a>6.2.2. DEL</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> delete a
+                      user from the
+                      system.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vuserdel</p>
+                    <p class="standardtype">After you choose this option
+                      you will get a
+                      list of the users on the system.<br>
+                      Select the user you want to delete (double click
+                      on the user or
+                      select with the arrows up/down and press 'enter').<br>
+                      A dialog pops which displays the user information
+                      and asks if you
+                      want to delete that user. Press 'enter' or click
+                      on 'Yes' to
+                      confirm.<br>
+                      You will return to the list of users that can be
+                      deleted. Click on
+                      'Cancel' to return to the USER ADMINISTRATION
+                      menu.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="paswd" id="paswd"></a>6.2.3. PASSWD</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> change the
+                      password of an
+                      user.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vpasswd</p>
+                    <p class="standardtype">With this option you can
+                      change the
+                      password of a user. Select the user from the list
+                      (double click on
+                      the user or select with the arrows up/down and
+                      press 'enter').
+                      Enter the new password for this user and press
+                      'enter' or click on
+                      the 'Ok' button. In the dialog that follows,
+                      re-enter the password
+                      you gave in the previous dialog and press 'enter'
+                      or click on 'Ok'.
+                      If the password matches you will see a
+                      confirmation of the
+                      change.</p>
+                    <p class="standardtype">You will return to the USER
+                      ADMINISTRATION
+                      menu.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="passroot" id="passroot"></a>6.2.4.&nbsp;
+                        PASSROOT</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Change the
+                      password of
+                      'root', the administrator account of your Vector
+                      Linux system.</p>
+                    <p class="standardtype">Enter a new password for
+                      'root' in the
+                      first dialog and re-enter the password in the
+                      second dialog. See
+                      6.2.3 PASSWD.</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h2><u><a name="xwindow" id="xwindow"></a>6.3.
+                        XWINDOW</u></h2>
+                    <p class="standardtype">This section deals with the
+                      configuration
+                      of the X window system. You will need to be
+                      running the system in
+                      console mode (see Section 5).</p>
+                    <p align="center"><img
+                        src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm4.jpg"><br>
+                      <span class="standardtype"><strong>GUI
+                          administration menu in
+                          Graphical Mode.</strong></span></p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="xconf" id="xconf"></a>6.3.1. XCONF</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Configure
+                      the
+                      system&acute;s X server for compatibility with
+                      your video card,
+                      monitor and mouse hardware.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vxconf</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      you enter the
+                      Xconf section you can choose between three
+                      options:</p>
+                    <ul>
+                      <li><span class="standardtype"><u><strong>Auto</strong></u><br>
+                          This will detect and configure your video card
+                          and monitor, ask a
+                          few questions about your desired resolution
+                          and mouse
+                          characteristics, and will create a NEW
+                          configuration file. Any
+                          previous manual adjustments you may had done
+                          to that file will be
+                          overwritten.<br>
+                        </span></li>
+                      <li><span class="standardtype"><u><strong>Current</strong></u><br>
+                          This will perform the detection and ask you
+                          some details about your
+                          preferred resolution, colour depth, and mouse
+                          configuration.
+                          However, it will commit those to the
+                          configuration file
+                          (<i>/etc/X11/xorg.conf</i>) without deleting
+                          the file and will thus
+                          keep <strong>some</strong> additional
+                          configuration lines you might
+                          have edited.<br>
+                          For instance, as it does not ask for your
+                          keyboard layout, there
+                          won't be any changes to your keyboard
+                          configuration, but since it
+                          asks you to choose between the detected
+                          available screen
+                          resolutions, those will be written to the
+                          file, overlapping any
+                          previously configured value.<br>
+                        </span></li>
+                      <li class="standardtype"><strong><u>Basic<br>
+                          </u></strong> This
+                        option will mostly behave in the same way but
+                        configures the system
+                        to use the VESA driver. This driver is as a
+                        'safe mode' video
+                        driver (although a very good one, capable of
+                        over 800x600 and 16
+                        bits) and is most useful for cards that do not
+                        have native linux
+                        drivers or which refuse to be properly detected.
+                        This option should
+                        at least allow you to get a basic graphical
+                        environment up and
+                        running.</li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="xdmset" id="xdmset"></a>6.3.2.
+                        XDMSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> allows you
+                      to choose the
+                      <b>X Display Manager</b>, that is, the utility in
+                      which you log in
+                      when the system boots automatically to GUI mode.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vxdmset</p>
+                    <p class="standardtype"><b>Walk Through:</b> Select
+                      the one you
+                      prefer, and press "Ok". You will be asked if you
+                      want to test it at
+                      that moment, something that requires the X server
+                      to be restarted,
+                      so you will have to close any running
+                      applications.</p>
+                    <p class="standardtype">If you choose not to test
+                      it, you will be
+                      taken back to the previous menu.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="xwmset" id="xwmset"></a>6.3.3.
+                        XWMSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Sets up
+                      which <b>Window
+                        Manager</b> is launched from the console when
+                      you type "startx" and
+                      your system is configured to boot in text mode.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vxwmset</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      you choose this
+                      option, you will be given a list of available
+                      window managers to
+                      start when you use startx. Make a selection or
+                      cancel.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="bootset1" id="bootset1"></a>6.3.4.
+                        BOOTSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> configure
+                      you system to
+                      boot directly into GUI Mode or Text mode (these
+                      are technically
+                      known as "runlevels").</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vbootset</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      you select this
+                      option, you will be given the choice between "text
+                      mode desktop",
+                      "text mode server", "GUI mode desktop" or "GUI
+                      mode server". The
+                      difference between desktop and server choices is
+                      in the services
+                      they start, i.e. ssh, apache, and the like.
+                      Independently of this
+                      menu, you can further configure which services are
+                      started or not
+                      selecting "Service" then "Srvset" in VASM&acute;s
+                      main menu.</p>
+                    <p class="standardtype"><b>Warning:</b> Ensure
+                      X-windows works
+                      before setting the system to start in graphics
+                      mode (try "startx"
+                      before defaulting to graphics mode).</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="service" id="service"></a>6.4.
+                        SERVICE</u></h1>
+                    <p class="standardtype">Allows you to configure
+                      services started at
+                      boot time.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vsrvmenu</p>
+                    <p align="center"><img
+                        src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm5.jpg"><br>
+                      <span class="standardtype"><strong>SERVICES menu
+                          in Graphical
+                          Mode.</strong></span></p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="bootset2" id="bootset2"></a>6.4.1.
+                        BOOTSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> configure
+                      your system to
+                      boot directly into GUI Mode or Text mode (these
+                      are technically
+                      known as "runlevels")</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vbootset</p>
+                    <p class="standardtype"><b>Note:</b> This option is
+                      also present in
+                      the XWINDOW Menu.</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      you select this
+                      option, you will be given the choice between "text
+                      mode desktop",
+                      "text mode server", "GUI mode desktop" or "GUI
+                      mode server". The
+                      difference between desktop and server choices is
+                      in the services
+                      they start, i.e. ssh, apache, and the like.
+                      Independently of this
+                      menu, you can further configure <b>which</b>
+                      services are started
+                      or not selecting "Service" then "Srvset" in
+                      VASM&acute;s main
+                      menu.</p>
+                    <p class="standardtype"><b>Warning:</b> Ensure
+                      X-windows works
+                      before setting the system to start in graphics
+                      mode (try "startx"
+                      before defaulting to graphics mode).</p>
+                    <p class="standardtype">&nbsp;</p>
+                    <h2><u><a name="initset" id="initset"></a>6.4.2.
+                        INITSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Allows you
+                      to choose the
+                      services <b>initialization method</b> to use when
+                      you switch
+                      runlevels with the "init &lt;run_level&gt;"
+                      command.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vinitset</p>
+                    <p class="standardtype"><b>Walk Through:</b> the
+                      initialization
+                      system starts or stops services when you switch
+                      run levels using
+                      the "init &lt;run_level&gt;" command. The standard
+                      initialization
+                      system is called SysV-Init.</p>
+                    <p class="standardtype">When switching run levels,
+                      it kills all
+                      services of the previous level then starts all
+                      services of the new
+                      level. Vector Linux offers a <b>faster</b> init
+                      system: It does not
+                      kill the services only to start them again in the
+                      next runlevel. So
+                      here you can choose what method you prefer.</p>
+                    <h2><u><a name="hwset1" id="hwset1"></a>6.4.3. HWSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> This menu
+                      allows you to
+                      enable or disable the initialization of hardware
+                      components of your
+                      system.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vhwset</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      selecting this
+                      entry a list will appear, showing the hardware you
+                      can initialize
+                      at boot time. This means that if you plan to use a
+                      parallel port
+                      printer you need to set "parallel" to be
+                      initialized at boot time,
+                      but if you don&acute;t plan to, you can disable it
+                      and free some
+                      system resources. The available options are:</p>
+                    <ul>
+                      <li class="standardtype"><u><b>PNP</b></u><br>
+                        ISA Plug and Play. This should be enabled for a
+                        modern PC<br>
+                      </li>
+                      <li class="standardtype"><u><b>Hotplug</b></u><br>
+                        USB/PCI hotplug devices (pendrive, digital
+                        camera, etc)<br>
+                      </li>
+                      <li class="standardtype"><u><b>PCMCIA</b></u><br>
+                        PCMCIA cards, common on laptops (network, modem,
+                        etc.)<br>
+                      </li>
+                      <li class="standardtype"><u><b>APM</b></u><br>
+                        Advanced Power Management, useful for Laptops.<br>
+                      </li>
+                      <li class="standardtype"><u><b>Serial</b></u><br>
+                        Serial port and modem<br>
+                      </li>
+                      <li class="standardtype"><u><b>Parallel</b></u><br>
+                        Parallel port and printer<br>
+                      </li>
+                      <li class="standardtype"><u><b>Wireless</b></u><br>
+                        Networking using radio or infrared<br>
+                      </li>
+                      <li class="standardtype"><u><b>ALSA</b></u><br>
+                        Advanced Linux Sound System<br>
+                      </li>
+                      <li class="standardtype"><u><b>udev</b></u><br>
+                        Dynamic /dev naming for hotplug on kernel 2.6<br>
+                      </li>
+                      <li class="standardtype"><u><b>tmpfs</b></u><br>
+                        On memory /tmp. Recommended if RAM&gt;=196MB +
+                        SWAP&gt;=256MB</li>
+                    </ul>
+                    <p class="standardtype" align="center">
+                      <strong><em>Screenshot:</em></strong></p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vhwset.png"
+                        height="480" width="640"><br>
+                      <span class="standardtype"><em><strong>Selecting
+                            system components
+                            to be initialised at boot time.</strong></em></span></p>
+                    <h2><u><a name="srvset" id="srvset"></a>6.4.4.
+                        SRVSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Here you can
+                      configure what
+                      services, such as ssh server, http server, etc.,
+                      are started in
+                      different runlevels.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vsrvset</p>
+                    <p class="standardtype"><b>Walk Through:</b> You are
+                      presented with
+                      a list of the runlevels. Select the one you wish
+                      to configure and
+                      press Enter. Then you will see the available
+                      services and which
+                      ones are set to be started when the system enters
+                      that specific
+                      runlevel. Toggle the ones you want to enable or
+                      disable and press
+                      "Ok".</p>
+                    <p class="standardtype">You can modify services for
+                      other runlevels
+                      or exit the menu.</p>
+                    <p class="standardtype" align="center">
+                      <strong><em>Screenshot:</em></strong></p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vsrvset02.png"
+                        height="480" width="640"><br>
+                      <span class="standardtype"><strong><em>Selecting
+                            services to start
+                            at runlevel 5.</em></strong></span></p>
+                    <p align="center">&nbsp;</p>
+                    <h2><u><a name="cupsweb" id="cupsweb"></a>6.4.5.
+                        CUPSWEB</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Allows you
+                      to add and
+                      configure local and networked printers. It
+                      requires the CUPS
+                      package to have been installed and the CUPS daemon
+                      to have been
+                      started on your system. If you need to install it,
+                      please refer to
+                      the <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html">VectorLinux
+                        Printing
+                        Guide</a>, where you will find more detailed
+                      instructions.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vcupsweb</p>
+                    <p class="standardtype"><b>Walk Through:</b> This
+                      option launches
+                      the web browser and attempts to connect to the
+                      local port for CUPS.
+                      There, you will have the choice to add, remove,
+                      and configure local
+                      and networked printers, print jobs, etc. If you
+                      use this option
+                      from console mode, the launched browser will be
+                      lynx. While lynx is
+                      very capable for the task, you might find it more
+                      comfortable to
+                      use this option in GUI mode, where Firefox will be
+                      used.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="sambaweb" id="sambaweb"></a>6.4.6.
+                        SAMBAWEB</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Allows you
+                      to configure
+                      file and printer sharing through the network with
+                      other systems.
+                      Specifically for sharing between Windows and Linux
+                      machines.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vsambaweb</p>
+                    <p class="standardtype"><b>Walk Through:</b> This
+                      option launches a
+                      web browser and connects to "SWAT", an application
+                      that provides a
+                      relatively easy way to configure file and printer
+                      sharing. If SWAT
+                      is not running you will asked whether you want to
+                      start it or not.
+                      You need to accept in order to access its
+                      web-based configuration
+                      interface.</p>
+                    <p class="standardtype">You <i>can</i> use this in
+                      text mode, but
+                      the text browser will probably make the task
+                      harder than it needs
+                      to be, so you are encouraged to do this in GUI
+                      mode, where a more
+                      capable browser will be started.</p>
+                    <p class="standardtype"><b>Note:</b> Dillo, a very
+                      light graphical
+                      web browser doesn&acute;t support some required
+                      features, so you
+                      can&acute;t access SWAT with it.</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="network" id="network"></a>6.5.
+                        NETWORK</u></h1>
+                    <p class="standardtype">Setup network configuration.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vnetmenu</p>
+                    <p align="center"><img
+                        src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm6.jpg"><br>
+                      <span class="standardtype"><strong>NETWORK menu in
+                          Graphical
+                          Mode.</strong></span></p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="netconf" id="netconf"></a>6.5.1.
+                        NETCONF</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Walks you
+                      through setting
+                      up a basic network connection. This program is
+                      only needed if you
+                      are connected to a LAN or a cable modem network.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vnetconf</p>
+                    <p class="standardtype"><b>Walk Through:</b></p>
+                    <p class="standardtype">When you select this option
+                      the program
+                      will prompt for information required to set up the
+                      network
+                      connection.</p>
+                    <p class="standardtype">1.&nbsp;&nbsp; Input
+                      computer name and
+                      domain name in the form of
+                      "computername.domainname". If you are
+                      not connected to a domain, that is, you are a lone
+                      computer
+                      workstation connected only to the Internet it is
+                      best to type in a
+                      computername only.</p>
+                    <p class="standardtype">2.&nbsp;&nbsp; IP address.
+                      You have three
+                      choices: Static, DHCP and Loopback. If you have a
+                      DHCP server
+                      (perhaps a router) select DHCP from the list (this
+                      is the case for
+                      most users connected to the Internet via an ADSL
+                      or cable modem).
+                      If you have no lan card choose loopback. If you
+                      wish to set a
+                      static address choose Static. If you choose Static
+                      you will then be
+                      prompted for the IP address for the machine and
+                      then the netmask of
+                      the network. Next you will be prompted for the IP
+                      address of the
+                      gateway to the Internet. Finally, you will be
+                      asked for the IP
+                      address of the name server.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="name" id="name"></a>6.5.2. NAME</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Set hostname
+                      and DNS
+                      server</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vnameset</p>
+                    <p class="standardtype"><b>Walk Through:</b></p>
+                    <p class="standardtype">When you select this option
+                      the program
+                      will prompt for information required to set up the
+                      network
+                      connection.</p>
+                    <p class="standardtype">1.&nbsp;&nbsp; Input
+                      computer name and
+                      domain name in the form of
+                      "computername.domainname". If you are on
+                      a personal workstation not connected to other
+                      computers you do not
+                      require a domainname.</p>
+                    <p class="standardtype">2.&nbsp;&nbsp; Input IP
+                      address of the the
+                      domain name server.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="inet" id="inet"></a>6.5.3. INET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Setup one or
+                      more network
+                      interfaces that will be automatically started at
+                      system
+                      initialization. Each inet script may have a
+                      different network
+                      device and TCP/IP setting.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vinet</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      you select this
+                      option you will be provided a menu of options.</p>
+                    <ul>
+                      <li><span class="standardtype"><u><strong>Add</strong></u><br>
+                          This option is used to set up a network
+                          interface.<br>
+                          <br>
+                          1. When started the user will be given a list
+                          of configuration
+                          files that can be used for your connection.
+                          Once this has been
+                          chosen you are prompted for the settings for
+                          the connection.<br>
+                          <br>
+                          2. Now choose the network interface that you
+                          want to configure.
+                          Generally, you should chose a primary device
+                          (like eth0) from the
+                          list below. Use the alternate device (like
+                          eth1) for multiple IP
+                          configurations, mostly useful for a server or
+                          a laptop. Do not use
+                          the same device for more then one connection.<br>
+                          <br>
+                          3. Next you will be asked how the device get
+                          its IP address. Your
+                          choices are DHCP, Static or Probe.<br>
+                          <br>
+                          DHCP is the automatic method. Use it if you
+                          are connected to a
+                          dynamic network like cable modem, DSL or your
+                          administrator tells
+                          you to do so. Most home computers attached to
+                          the Internet with a
+                          small home network using a router and/or an
+                          ADSL, ISDN or Cable
+                          modem will use DHCP.<br>
+                          <br>
+                          Select STATIC only if you definetaly have a
+                          permanent IP address
+                          for this machine.<br>
+                          <br>
+                          PROBE is a STATIC method with network testing,
+                          useful for a
+                          laptop.<br>
+                          <br>
+                          If you choose DHCP, the setup is complete. If
+                          you choose one of the
+                          others you must assign the address. If you are
+                          connected to an
+                          official network (campus, office, etc), you
+                          must get the IP address
+                          from the system administrator. However, if you
+                          are on your own
+                          network, you may assign an arbitrary IP
+                          address from the standard
+                          internal IP range:<br>
+                          <br>
+                          192.168.0.1 - 192.168.255.254<br>
+                          172.16.0.1 - 172.31.255.254<br>
+                          10.0.0.1 10.255.255.254<br>
+                          <br>
+                          Next you will be asked for the network mask.
+                          They are of the form
+                          255.255.255.0. This will be provided by your
+                          system administrator.
+                          If you are on your own network the above
+                          should be sufficient.<br>
+                          <br>
+                          Finally you will need to supply the IP address
+                          of the gateway. A
+                          gateway is the computer that forwards network
+                          traffic to the bigger
+                          network (most likely the Internet). You need
+                          the IP address of the
+                          gateway. If you choose Probe the system will
+                          use this to verify to
+                          which network you are attached. Leave it empty
+                          if this inet does
+                          not have a gateway.</span></li>
+                      <li><span class="standardtype"><u><strong>Delete</strong></u><br>
+                          Use this option to delete an unused inet
+                          configuration.</span></li>
+                      <li><span class="standardtype"><u><strong>Set</strong></u><br>
+                          This option is used to set up a network
+                          interface. When started the
+                          user will be given a list of configuration
+                          files that can be
+                          changed. You are prompted for the settings for
+                          the connection.
+                          Follow steps 2 to 6 in the add option.</span></li>
+                      <li><span class="standardtype"><u><strong>Start</strong></u><br>
+                          This option is used to start manually start a
+                          connection.<br>
+                        </span></li>
+                      <li><span class="standardtype"><u><strong>Stop</strong></u><br>
+                          This option is used to start manually stop a
+                          connection.</span></li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="wireless" id="wireless"></a>6.5.4.
+                        WIRELESS</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Manage
+                      wireless
+                      configuration files - change interface, add,
+                      delete and change
+                      connections. These configuration files are stored
+                      in
+                      /etc/wireless/.</p>
+                    <p class="standardtype">The second group of options
+                      start, stop and
+                      give the status of a connection. This is done via
+                      /etc/rc.d/rc.modules.</p>
+                    <p class="standardtype">Use Network:INET option to
+                      set up the
+                      ethernet interface.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vinetset</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      you select this
+                      option you will be provided a menu of options.</p>
+                    <ul>
+                      <li><span class="standardtype"><u><strong>Interface</strong></u><br>
+                          This option is used to change interface
+                          settings. You can identify
+                          which network interface is wireless. If you
+                          use ndiswrapper the
+                          interface is wlan0. If you use wpa_supplicant
+                          you will need to
+                          identify which driver to use. (known to work
+                          for ndiswrapper with
+                          Broadcom driver (bcmwl5).</span></li>
+                      <li><span class="standardtype">&nbsp;<u><strong>Add</strong></u><br>
+                          Use this option to add and define a new
+                          connection.<br>
+                          When you select this option you will be asked
+                          for the ESSID of the
+                          connection. Connections are identified by
+                          their ESSIDs (Extended
+                          Service Set Identification). All of the
+                          wireless devices on a WLAN
+                          must employ the same ESSID in order to
+                          communicate with each other.
+                          This will be the identifier for the associated
+                          configuration file
+                          (<i>/etc/wireless/&lt;ESSID
+                            Name&gt;.essid.conf</i>).<br>
+                          Next you will be asked for a short description
+                          for the
+                          connection.<br>
+                          Next you be asked to choose the type of
+                          encryption. They include
+                          plaintext (no encryption), WEP and WPA
+                          (personal). If you choose
+                          WEP or WPA you will be asked for the
+                          encryption key to use. If you
+                          choose WPA supplicant a second configuration
+                          file is created
+                          (<i>/etc/wireless/&lt;ESSID Name&gt;.wpa.conf</i>).
+                          You can modify
+                          this file if you have specific requirements.
+                          Detailed documentation
+                          is available at <a
+                            href="http://hostap.epitest.fi/wpa_supplicant/">http://hostap.epitest.fi/wpa_supplicant/</a>
+                          .<br>
+                          Next you will be given a list of parameters
+                          that you may wish to
+                          set (including the description and encryption)
+                          specific to your own
+                          requirements.</span></li>
+                      <li><span class="standardtype"><u><strong>Del</strong></u><br>
+                          Choose the connection definition that you wish
+                          to delete. Select
+                          the connection that you wish to delete. A
+                          backup copy is created
+                          (<i>/etc/wireless/&lt;ESSID Name&gt;.essid.bkp
+                            and
+                            /etc/wireless/&lt;ESSID Name&gt;.wpa.bkp</i>).</span></li>
+                      <li><span class="standardtype"><u><strong>Change</strong></u><br>
+                          Use this option to change the parameter for
+                          the connection. Select
+                          the connection that you wish to change. A
+                          backup copy is created
+                          (<i>/etc/wireless/&lt;ESSID Name&gt;.essid.bkp
+                            and
+                            /etc/wireless/&lt;ESSID Name&gt;.wpa.bkp</i>).</span></li>
+                      <li><span class="standardtype"><u><strong>Connect</strong></u><br>
+                          Select this option to connect an available
+                          ESSID. You will be given
+                          a list of visible ESSIDs. If none are visible
+                          the list will include
+                          the defined connections in case they do not
+                          broadcast their
+                          ESSID.</span></li>
+                      <li><span class="standardtype"><u><strong>Stop</strong></u><br>
+                          Use this option to stop the wireless
+                          connection.</span></li>
+                      <li><span class="standardtype"><u><strong>Status</strong></u><br>
+                          Select this option to get a detailed status of
+                          the wireless
+                          connection.</span></li>
+                    </ul>
+                    <p class="standardtype"><b>Notes:</b></p>
+                    <p class="standardtype">Assumes that the wireless
+                      interface has
+                      been installed and working.<br>
+                      Configuration data is stored in <i>/etc/wireless</i>.
+                      This
+                      directory is only available to root since it may
+                      contain
+                      passwords.<br>
+                      In order to automate startup use HARDWARE:HWSET or
+                      by making
+                      <i>/etc/rc.d/rc.wireless</i> executable.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="modem" id="modem"></a>6.5.5. MODEM</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Utility for
+                      configuring a
+                      dial-up connection to an ISP. You need to know a
+                      number of things
+                      about your ISP (phone number, authentication
+                      method, etc.) and your
+                      modem (device, baud rate, init string, etc.)</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vmodemset</p>
+                    <p class="standardtype"><b>Walk Through:</b> If you
+                      select this
+                      menu item, you will be given a list of serial
+                      ports. Select the
+                      port where your modem is attached. The ports
+                      included are those
+                      used by a Linmodem, but this script does not
+                      install or setup these
+                      modems. If you know what COM device it was under
+                      Windows, you can
+                      select the listed equivalent. Otherwise, you can
+                      try the autodetect
+                      or you might have to do some experimenting. The
+                      best course is to
+                      start at ttyS0 and work your way down the list.</p>
+                    <p class="standardtype">Next you will be asked for
+                      the user name
+                      and password for your ISP's connection for PPP
+                      dialers such as
+                      X-ISP. You can skip this if you are using GkDial
+                      or KPPP, which you
+                      will have to configure yourself.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="firewall" id="firewall"></a>6.5.6.
+                        FIREWALL</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Sets up
+                      basic network
+                      protection and Internet sharing.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vfirewall</p>
+                    <p class="standardtype"><b>Walk Through:</b> This
+                      option calls a
+                      submenu of options to setup a basic
+                      firewall/gateway. The options
+                      are:</p>
+                    <ul>
+                      <li><span class="standardtype"><u><b>New</b></u><br>
+                          This option creates a script <i>/etc/rc.d/rc.firewall</i>
+                          and makes
+                          it executable so it will start every time the
+                          system is
+                          started.</span><br>
+                      </li>
+                      <li><span class="standardtype"><u><b>Open</b></u><br>
+                          Allows the user to open some common ports on
+                          the system for others
+                          to access. The user can also modify the
+                          rc.firewall
+                          script.<br>
+                        </span></li>
+                      <li><span class="standardtype"><u><b>Gateway</b></u><br>
+                          This script sets up a simple gateway, using ip
+                          masquerading (NAT),
+                          with a firewall using iptables. The user is
+                          asked to identify the
+                          interface that is connected to the local area
+                          network for sharing.
+                          This interface will need to be set up using
+                          the INET option of the
+                          NETWORK submenu</span></li>
+                      <li><span class="standardtype"><u><b>Start</b></u><br>
+                          Starts the firewall.<br>
+                        </span></li>
+                      <li class="standardtype"><u><b>Stop</b></u><br>
+                        Stops the firewall.<br>
+                      </li>
+                      <li class="standardtype"><u><b>Enable</b></u><br>
+                        Enables the firewall to be started each time the
+                        system
+                        starts.<br>
+                      </li>
+                      <li class="standardtype"><u><b>Disable</b></u><br>
+                        Disables the automatic starting of the firewall.</li>
+                    </ul>
+                    <p class="standardtype"><strong>Important notes:</strong>
+                      This
+                      firewall script is able to handle simple filtering
+                      (open/close the
+                      host port) and simple masquerading (become an
+                      Internet
+                      gateway).</p>
+                    <p class="standardtype">However, this script is
+                      relatively basic,
+                      so it is recommended that you use more advanced
+                      firewall tools
+                      (like guarddog/guidedog, included in SOHO) to
+                      create more advanced
+                      rules.<br>
+                      For these "advanced" rules to take effect, you
+                      should use VASM to
+                      <strong>set the firewall active</strong> but <strong>not</strong>
+                      to configure it, since you will do that through
+                      guarddog/guidedog.</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="hardware" id="hardware"></a>6.6.
+                        HARDWARE</u></h1>
+                    <p class="standardtype">Setup keyboard, mouse,
+                      CD-ROM drives,
+                      sound, etc.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vhwmenu</p>
+                    <p align="center"><img
+                        src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm7.jpg"><br>
+                      <span class="standardtype"><strong>HARDWARE menu
+                          in Graphical
+                          Mode.</strong></span></p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="hwconf" id="hwconf"></a>6.6.1.
+                        HWCONF</u></h2>
+                    <h3 class="standardtype"><b>Purpose:</b> Autodetect
+                      hardware
+                      devices on your system.</h3>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vhwconf</p>
+                    <p class="standardtype"><b>Note:</b> The
+                      autodetection routine will
+                      start as soon as you select this option. Be sure
+                      that you want
+                      re-detect your hardware before selecting this.</p>
+                    <p class="standardtype"><b>Walk Through:</b> Must be
+                      run from
+                      console mode. If used under X you will receive the
+                      message telling
+                      you so.</p>
+                    <p class="standardtype">When you select this option
+                      the system will
+                      immediately start to probe the system's
+                      components. You will see
+                      windows showing detected devices as they are found
+                      and configured.
+                      Since this is an AUTO-Probe you don't have the
+                      means to configure
+                      the detected devices - the system will do that for
+                      you. This mostly
+                      deals with the detection of the hardware itself
+                      and not so much
+                      with the fine-tuning. For example, it will detect
+                      and activate your
+                      ethernet cards, but if you want to enter you
+                      network configuration
+                      you have to resort to the "Network Menu".</p>
+                    <p align="center"><strong><em>Screenshot:</em></strong></p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vhwconf.png"
+                        height="480" width="640"></p>
+                    <p align="center">&nbsp;</p>
+                    <h2><u><a name="hwset2" id="hwset2"></a>6.6.2. HWSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> This menu
+                      allows you to
+                      enable or disable the initialization of hardware
+                      components in your
+                      system.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vhwset</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      selecting this
+                      entry, a list will appear, showing the hardware
+                      you can initialize
+                      at boot time. This means that if you plan to use a
+                      Parallel port
+                      printer you need to set "parallel" to be
+                      initialized at boot time,
+                      but if you don&acute;t plan to, you can disable it
+                      and free some
+                      system resources.The available options are:</p>
+                    <ul>
+                      <li class="standardtype"><u><b>PNP</b></u><br>
+                        ISA Plug and Play. This should be enabled for a
+                        modern PC.<br>
+                      </li>
+                      <li class="standardtype"><u><b>Hotplug</b></u><br>
+                        USB/PCI hotplug devices (pendrive, digital
+                        camera, etc).<br>
+                      </li>
+                      <li class="standardtype"><u><b>PCMCIA</b></u><br>
+                        PCMCIA cards, common on laptops (network, modem,
+                        etc.).<br>
+                      </li>
+                      <li class="standardtype"><u><b>APM</b></u><br>
+                        Advanced Power Management, useful for Laptops.<br>
+                      </li>
+                      <li class="standardtype"><u><b>Serial</b></u><br>
+                        Serial port and modem.<br>
+                      </li>
+                      <li class="standardtype"><u><b>Parallel</b></u><br>
+                        Parallel port and printer.<br>
+                      </li>
+                      <li class="standardtype"><u><b>Wireless</b></u><br>
+                        Networking using radio or infrared.<br>
+                      </li>
+                      <li class="standardtype"><u><b>ALSA</b></u><br>
+                        Advanced Linux Sound System.<br>
+                      </li>
+                      <li class="standardtype"><u><b>udev</b></u><br>
+                        Dynamic /dev naming for hotplug on kernel 2.6.<br>
+                      </li>
+                      <li class="standardtype"><u><b>tmpfs</b></u><br>
+                        On memory /tmp. Recommended if RAM&gt;=196MB +
+                        SWAP&gt;=256MB.</li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="alsaconf" id="alsaconf"></a>6.6.3.
+                        ALSACONF</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Setup ALSA
+                      (Advanced Linux
+                      Sound Architecture).</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/valsaconf</p>
+                    <p class="standardtype"><b>Walk Through:</b> Must be
+                      run from
+                      console mode. If used under X you will receive the
+                      message telling
+                      you so.</p>
+                    <p class="standardtype">When you run ALSACONF, a
+                      dialog appears
+                      asking you to close any open application related
+                      to sound. When you
+                      press "OK" the system will try to autodetect any
+                      present sound
+                      device and you will see a progress bar indicating
+                      the status of the
+                      detection.</p>
+                    <p class="standardtype">You will then be presented
+                      with the
+                      detected cards and asked to select the one to use
+                      or if you want to
+                      probe the system for older, non-PnP, ISA cards.</p>
+                    <p class="standardtype">If ALSA detected any onboard
+                      or PCI sound
+                      device and you chose that one then when you press
+                      "OK" the driver
+                      will be loaded and the device will be configured
+                      for activation at
+                      boot time. Press "Ok"</p>
+                    <p class="standardtype">&nbsp;To accept the
+                      confirmation dialog and
+                      you will be taken back to the "Hardware Menu".</p>
+                    <p class="standardtype">If you choose to probe the
+                      system for
+                      legacy sound cards you will receive a warning
+                      stating that the
+                      system may become unstable; press "Yes" to
+                      proceed.</p>
+                    <p class="standardtype">A dialog appears with a list
+                      of the
+                      available modules (drivers) to probe. While the
+                      list may seem a bit
+                      short, it actually covers a much wider range of
+                      sound cards which
+                      work with similar drivers.</p>
+                    <p class="standardtype">Uncheck any particular
+                      module you don't
+                      want to be probed and press "Ok". You will be
+                      asked if the system
+                      should probe for possible IRQ and DMA
+                      combinations. Since doing so
+                      takes more time, you could skip it for now to see
+                      if the card is
+                      detected, and if it is not, then re-run alsaconf
+                      enabling this
+                      option instead. You will finally see the results
+                      of the probing and
+                      a request to choose the card to be used by the
+                      system.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="cdset" id="cdset"></a>6.6.4. CDSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Allows you
+                      to configure the
+                      location of your CD-ROM and CD-Writer drives.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vcdset</p>
+                    <p class="standardtype"><b>Walk Through:</b>&nbsp;
+                      When a CD-Rom is
+                      detected, you will be prompted to accept the
+                      creation of a&nbsp;
+                      symbolic link (/mnt/cdrom) pointing to it.</p>
+                    <p class="standardtype">When a CD-Writer is
+                      detected, either after,
+                      before or instead of a reader unit, you will be
+                      asked if you want
+                      to allow access to it by ordinary users, if you
+                      select "Yes", they
+                      will be able to use programs like XCDRoast,
+                      otherwise, only root
+                      will have access to it.</p>
+                    <p class="standardtype">Using CDSET results in some
+                      changes to the
+                      LILO bootloader, so you will need to reboot the
+                      system for the
+                      changes to take effect.</p>
+                    <p>&nbsp;</p>
+                    <h2><a name="mouseset" id="mouseset"></a><u>6.6.5
+                        MOUSESET</u></h2>
+                    <p class="standardtype"><strong>Purpose:</strong>
+                      Configure your
+                      pointing devices type and protocol.</p>
+                    <p class="standardtype"><strong>Command line:</strong>
+                      /sbin/vmouseset</p>
+                    <p class="standardtype"><strong>Walk Through:</strong>
+                      When you
+                      select this entry you are presented with a list of
+                      possible
+                      pointing devices, from standard mice to graphic
+                      tablets, plus an
+                      autodetection option.</p>
+                    <p class="standardtype">After selecting your device
+                      type, you are
+                      asked some more details like how many buttons does
+                      it have and, for
+                      serial devices, what port it is attached to. After
+                      entering this
+                      information you are taken back to the Hardware
+                      Menu.</p>
+                    <p class="standardtype">The mouse configuration
+                      takes effect after
+                      you start or re-restart the X Server, thus, to
+                      avoid finding
+                      yourself with a non-working mouse if you select an
+                      incorrect
+                      configuration, it is highly recommended that you <strong>switch
+                        to
+                        text mode</strong> to use this feature (see
+                      chapter 5).</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="keymapset" id="keymapset"></a>6.6.6.
+                        KEYMAPSET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Change the
+                      map layout used
+                      by your keyboard.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vkmapset</p>
+                    <p class="standardtype"><b>Walk Through:</b> Select
+                      the one that
+                      matches it and press "OK" test the selection by
+                      typing characters
+                      such as @ &amp; #, erase them, and type 1 (by
+                      itself) to accept the
+                      layout. Type 2 (by itself), or "Cancel", to go
+                      back to the maps
+                      selection and choose a different one.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="dateset" id="dateset"></a>6.6.7.
+                        DATESET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Set date and
+                      time of the
+                      system.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vdateset</p>
+                    <p class="standardtype"><b>Walk Through:</b> The use
+                      of this option
+                      is rather self-explanatory. Select the date by
+                      clicking it, select
+                      a different month or year using the arrows next to
+                      them, and then
+                      press "Ok". Do the same for the time, and then
+                      press "Next" to
+                      commit the changes to the system.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="zoneset" id="zoneset"></a>6.6.8.
+                        ZONESET</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Changes
+                      settings to reflect
+                      if your clock is set to local or universal time
+                      zone.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vzoneset</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      you choose this
+                      option you will be asked if the clock in your
+                      machine is set to
+                      local or UTC time. Choose no if local and yes if
+                      UTC. Most likely
+                      it is set to local time. You will then be given a
+                      list of
+                      timezones, select the best match and press "Next"
+                      to activate the
+                      change.</p>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h1><u><a name="filesystem" id="filesystem"></a>6.7.
+                        FILESYSTEM</u></h1>
+                    <p class="standardtype">Perform disk partitioning
+                      and formatting,
+                      setup drives and partitions to be mounted, LiLo
+                      bootloader and
+                      system configuration backups.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vfsmenu</p>
+                    <p align="center"><img
+                        src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_vasm/vasm8.jpg"><br>
+                      <span class="standardtype"><strong>FILESYSTEM menu
+                          in Graphical
+                          Mode.</strong></span></p>
+                    <h2><u><a name="fdisk" id="fdisk"></a>6.7.1. FDISK</u></h2>
+                    <p class="standardtype"><strong>Purpose:</strong>
+                      This option
+                      launches <em>cfdisk</em>, a text mode application
+                      capable of
+                      editing your hard disk partitions.</p>
+                    <p class="standardtype"><strong>Command line:</strong>
+                      /sbin/vfdisk</p>
+                    <p class="standardtype">The use of this program is
+                      beyond the scope
+                      of this guide, but we advise you to use it with
+                      care, and to
+                      remember that you must select the "Write" option
+                      for any changes to
+                      be committed to the partition map before you exit
+                      the
+                      application.</p>
+                    <p class="standardtype">&nbsp;</p>
+                    <h2><a name="format" id="format"></a><u>6.7.2 FORMAT</u></h2>
+                    <p class="standardtype"><strong>Purpose:</strong>
+                      Formats
+                      partitions, clearing all the data in them, while
+                      creating a new
+                      filesystem.</p>
+                    <p class="standardtype"><strong>Command line:</strong>
+                      /sbin/vformat</p>
+                    <p class="standardtype"><strong>Walk Through:</strong>
+                      By launching
+                      this option, you are presented with a list of the
+                      partitions on
+                      your system that can be formatted. Only <strong>unmounted</strong>
+                      partitions can be formatted, so make sure the one
+                      you intend to
+                      format meets this condition or it will not be
+                      presented in the
+                      list.</p>
+                    <p class="standardtype">To format a partition select
+                      it from the
+                      list and press OK, then follow the instructions.</p>
+                    <p class="standardtype"><strong>Notes:</strong> Be
+                      careful when you
+                      select the partition to format, once it is done,
+                      all of the
+                      information contained in it will be erased.</p>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="mount" id="mount"></a>6.7.3. MOUNT</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Setup
+                      additional partitions
+                      to be mounted at boot time.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vmount</p>
+                    <p class="standardtype"><b>Walk Through:</b> This
+                      tool is an easy
+                      method to configure additional local disks or
+                      partitions to be
+                      mounted in your system. Select the option and you
+                      can ADD or REMOVE
+                      mount points.</p>
+                    <ul>
+                      <li class="standardtype"><u><b>Add</b></u><br>
+                        If you select "Add" you will be presented with a
+                        list of the local
+                        filesystems which are available and which are
+                        not already present
+                        in <i>/etc/fstab</i> (the file where mount
+                        point configurations are
+                        stored).<br>
+                        Select the one you want to configure and you
+                        will be asked where
+                        you want it to be mounted. Then you will see the
+                        default options it
+                        will be mounted with. If you know what you are
+                        doing, you can
+                        modify these options, otherwise accept the
+                        defaults and press
+                        "Ok".<br>
+                        <br>
+                        The filesystem will not be automatically
+                        mounted, you will have to
+                        mount it manually by either command line,
+                        Kwikdisk, or utilities
+                        such as gkrellm.<br>
+                        <br>
+                        If you mount it by command line, and assuming
+                        you created a mount
+                        point in /mnt/win, you could use this command
+                        (as root):<br>
+                        <i>mount /mnt/win</i><br>
+                        You could also use:<br>
+                        <i>mount -a</i><br>
+                        this will mount <i>all</i> of the mount points
+                        available in the
+                        configuration file, /etc/fstab.<br>
+                        <br>
+                        <b>Note:</b> Keep in mind that the default
+                        settings make the
+                        filesystem mountable ONLY by the root user and
+                        not by ordinary
+                        users. If you want to make it mountable by users
+                        you could append
+                        "users," to the default options that are
+                        presented during the
+                        process.<br>
+                        <br>
+                      </li>
+                      <li class="standardtype"><u><b>Del</b></u><br>
+                        If you select "Del" you will be deleting a
+                        "mount point". This
+                        tells the system not to access some particular
+                        filesystem (disk,
+                        partition, etc,). You are not actually deleting
+                        any contents of
+                        that filesystem.<br>
+                        <br>
+                        So, if you choose to Delete a mount point, you
+                        will see a list of
+                        the devices configured to be mountable (not
+                        necessarily
+                        auto-mounted). Simply select those you want to
+                        remove and press
+                        "Ok". Their entries will be removed from the
+                        configuration files
+                        and nothing will be modified in the filesystem
+                        itself.<br>
+                        <br>
+                        <b>Notes:</b> It is highly recommended that you
+                        unmount the
+                        filesystem BEFORE you delete it's mount point.
+                        If you do not
+                        unmount the filesystem beforehand it will not be
+                        unmounted
+                        automatically so you will have to do it either
+                        by command line,
+                        Kwikdisk, gkrellm or by rebooting the system.</li>
+                    </ul>
+                    <p class="standardtype">&nbsp;</p>
+                    <h2><u><a name="lilo" id="lilo"></a>6.7.4. LILO</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> This option
+                      helps you build
+                      the <i>/etc/lilo.conf</i> configuration file so
+                      that you can
+                      install LILO to your system. The Linux Loader, or
+                      LILO, is a
+                      popular booter in use on many Linux systems. It is
+                      quite
+                      configurable and can easily be used to boot other
+                      operating systems
+                      such as Windows.</p>
+                    <p class="standardtype"><b>Command Line:</b>
+                      /sbin/vliloconfig</p>
+                    <p class="standardtype"><b>Walk Through:</b> When
+                      selecting this
+                      option, you will be given the choice to use simple
+                      or expert
+                      mode.</p>
+                    <p class="standardtype">If this is your first time
+                      setting up LILO,
+                      you should pick the "simple" option. If you are
+                      familiar with LILO
+                      and Linux, the "expert mode" may provide you
+                      additional levels of
+                      control, which could lead to faster configuration.</p>
+                    <ul>
+                      <li><span class="standardtype"><u><strong>Simple
+                              Setup</strong></u></span> <b
+                          class="standardtype"><br>
+                        </b>
+                        <p class="standardtype">If kernel frame buffer
+                          support is compiled
+                          into your kernel, <b>liloconfig</b> will ask
+                          which video resolution
+                          you would like to use. This is the resolution
+                          that is also used by
+                          the XFree86 frame buffer server. If you do not
+                          want the console to
+                          run in a special video mode, selecting normal
+                          will keep the
+                          standard 80x25 text mode in use.</p>
+                      </li>
+                    </ul>
+                    <blockquote>
+                      <p class="standardtype">The next part of the LILO
+                        configuration is
+                        selecting where you want it installed. This is
+                        probably the most
+                        important step. The list below explains the
+                        installation
+                        places:</p>
+                      <p class="standardtype">- Root<br>
+                        This option installs LILO to the beginning of
+                        your Linux root
+                        partition. This is the safest option if you have
+                        other operating
+                        systems on your computer. It ensures that any
+                        other bootloaders are
+                        not overwritten. The disadvantage is that LILO
+                        will only load from
+                        here if your Linux drive is the first drive on
+                        your system.</p>
+                      <p class="standardtype">- Floppy<br>
+                        This method is even safer than the previous one.
+                        It creates a boot
+                        floppy that you can use to boot your Linux
+                        system. This keeps the
+                        bootloader off the hard disk entirely, so you
+                        only boot this floppy
+                        when you want to use VectorLinux. However, this
+                        boot method is the
+                        slowest.</p>
+                      <p class="standardtype">- MBR<br>
+                        You will want to use this method if VectorLinux
+                        is the only
+                        operating system on your computer, or if you
+                        will be using LILO to
+                        choose between multiple operating systems on
+                        your computer. This is
+                        the most common method.</p>
+                      <p class="standardtype"><b>Warning:</b> This
+                        option will overwrite
+                        any other bootloader you have in the MBR.</p>
+                      <p class="standardtype">After selecting the
+                        installation location,
+                        <b>liloconfig</b> will write the configuration
+                        file and install
+                        LILO.</p>
+                    </blockquote>
+                    <ul>
+                      <li><span class="standardtype"><u><strong>Expert</strong></u></span><br>
+                        <span class="standardtype">If you select the
+                          "expert" mode you will
+                          receive a special menu. This menu allows you
+                          to tweak the
+                          <i>/etc/lilo.conf</i> file, add other
+                          operating systems to your
+                          boot menu, and set LILO to pass special kernel
+                          parameters at boot
+                          time.</span></li>
+                    </ul>
+                    <p>&nbsp;</p>
+                    <h2><u><a name="backupsys" id="backupsys"></a>6.7.5.
+                        BACKUPSYS</u></h2>
+                    <p class="standardtype"><b>Purpose:</b> Allows you
+                      to backup
+                      important system files.</p>
+                    <p class="standardtype"><b>Command line:</b>
+                      /sbin/vbackupsys</p>
+                    <p class="standardtype"><b>Walk Through:</b> This
+                      utility allows
+                      you to keep multiple backups (up to 9). It is also
+                      designed to
+                      backup system configuration files, which most of
+                      the time are small
+                      text files. There are three available options:<br>
+                      <br>
+                    </p>
+                    <ul>
+                      <li class="standardtype"><u><b>Cron</b></u><br>
+                        Schedule regular backups. Selecting this option
+                        means that the cron
+                        daemon will be configured to start at boot time
+                        and perform the
+                        backup on a daily basis.<br>
+                        <br>
+                      </li>
+                      <li class="standardtype"><u><b>Backup</b></u><br>
+                        Perform a one time backup. You can choose to
+                        perform an update of
+                        an existing backup, where only the files that
+                        were changed are
+                        added to the compressed archive (something known
+                        as an incremental
+                        backup). Or you can perform a full backup where
+                        all of the
+                        designated files are stored in a new, additional
+                        compressed
+                        archive.<br>
+                        <br>
+                        After you select and accept the backup method,
+                        the process will
+                        begin and, when done, you will be presented with
+                        a report of the
+                        results.<br>
+                        <br>
+                      </li>
+                      <li class="standardtype"><u><b>Restore</b></u><br>
+                        Restore files from backup archives. After
+                        selecting this option you
+                        will be presented with a list of the available
+                        backup archives.
+                        Select the one you wish to restore based on its
+                        date.<br>
+                        <br>
+                        Once you selected the archive, a dialog window
+                        will appear, where
+                        you can individually select which files to
+                        restore.<br>
+                        <br>
+                        <b>Warning:</b> when you restore a file, it will
+                        overwrite the one
+                        currently in use. If you want to keep both files
+                        you will have to
+                        manually copy the current file to a safe place
+                        and only then
+                        restore the old one from the archive.<br>
+                        <br>
+                      </li>
+                    </ul>
+                    <p align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>vl - accediendo a discos y particiones</title>
+  </head>
+  <body>
+    <div align="center"> <big><big><big>Vector Linux<br>
+            Accediendo a discos y particiones</big></big></big><br>
+    </div>
+    <br>
+    <u>Contenidos</u><br>
+    <br>
+    1.- Montando dispositivos<br>
+    2.- Montando dispositivos con VASM<br>
+    3.- El archivo fstab<br>
+    4.- Comandos para montar y desmontar<br>
+    <hr size="2" width="100%"><br>
+    1.- <u>Montando Dispositivos</u><br>
+    <br>
+    En Linux, todas las unidades, particiones y dispositivos en su
+    computadora son tratados como archivos. Varias particiones de un
+    disco duro, CD-ROMS y diskettes son todos colocados en el mismo
+    árbol del sistema de archivos. Ordenados para estar disponibles al
+    acceso de los contenidos de estos dispositivos, sean externos o
+    internos, estos deberán ser montados.<br>
+    La instalación por defecto de Vector Linux 6.0 habilita el sistema
+    de automontaje HAL. Este detecta nuevos dispositivos al ser
+    conectados, como dispositivos USB, floppys, CD-DVD, etc. Este los
+    automonta y lanza la aplicación adecuada.<br>
+    Esto funciona identicamente ya sea en KDE como en XFCE; en otros
+    manejadores de ventanas provistos con Vector Linux 6.0, necesitará
+    abrir el administrador de archivos PCManFM y verificar en su panel
+    derecho por su dispositivo y hacer doble click sobre el dispositivo
+    para acceder a él.<br>
+    VL-Hot es similar a HAL, pero usa el sistema U-DEV y este usa muchos
+    menos recursos, por lo cual es más apropiado para usar en
+    computadoras con recursos muy bajos y especialmente con la edición
+    Vector Linux Light Edition. En la actualidad, aunque, VL-Hot solo
+    funciona con JWM y IceWN debe tener la compañia del administrador de
+    archivos PCManFM el cual debe estar instalado.<br>
+    Con cualquiera de los dos, ya sea HAL o VL-Hot funciona
+    correctamente el montaje del dispositivo externo, como cualqueir
+    dispositivo USB, diskette, o un disco compacto o DVD, estos se
+    montarán y se disparará la aplicación adecuada o se mostrará un
+    ícono en el escritorio para poder acceder al dispositivo.<br>
+    En cambio si usted utiliza otro manejador de ventanas de los
+    listados o mencionados mas arriba, si quiere agregar una nueva
+    unidad o quiere que un dispositivo se monte automáticamente siempre
+    que usted inicie su ordenador, entonces deberá familiarizarse con
+    los comandos de montaje y desmontaje y también aprender acerca del
+    archivo de configuración /etc/fstab el resto de este documento&nbsp;
+    explica estos conceptos y los novatos probablemente no necesitean
+    preocuparse por todos estos conceptos.<br>
+    <br>
+    La manera más fácil de montar un dispositivo, ya sea un segundo
+    disco duro u otra partición, es agregando una entrada permanente en
+    /etc/fstab, de esta manera el dispositivo será montado cada vez que
+    el ordenador se enciende.<br>
+    <br>
+    <b><u> NOTA</u></b>: Si no está usando HAL o VL-Hot, no podrá saber
+    que nombres han sido asignados a sus dispositivos USB, entonces lo
+    insertará y procederá de la siguiente manera para determinar el
+    nombre del dispositivo; deberá abrir una terminal inmediatamente
+    luego de haber conectado el dispositivo y tipeará lo siguiente:<br>
+    <br>
+    # tail -f /var/log/messages<br>
+    <br>
+    cuando lea la salida por pantalla de lo devuelto por el comando, en
+    la segunda o tercera linea del archivo debe decir el nombre dado a
+    su dispositivo.<br>
+    <hr size="2" width="100%"><br>
+    2.- <u>Montando dispositivos con VASM</u><br>
+    <br>
+    VASM provee un método fácil para configurar discos locales y
+    particiones para ser montadas en su sistema. Solo lance VASM,
+    seleccione FILESYSTEM luego MOUNT y allí podrá agregar o remover
+    puntos de montaje.<br>
+    <br>
+    - <b>Agregando puntos de montaje</b><br>
+    Si ha seleccionado ADD se le presentará una lista de los sistemas de
+    archivos disponibles y los cuales aún no están dentro del archivo
+    /etc/fstab (el archivo donde se encuentran los puntos de montaje
+    guardados). Seleccione cual es que usted quiere configurar y se le
+    preguntará donde quiere que sea montado, luego se le mostrará las
+    opciones por defecto con las cuales será montado; si sabe lo que
+    hace, puede modificar estas opciones, de lo contrario acepte las
+    opciones por defecto y presiones OK.<br>
+    <br>
+    El sistema de archivos no será montado automáticamente, usted deberá
+    montarlo manualmente para cualquiera de la mayoria de la línea de
+    comandos, Kwikdisk o utilidades como gkrellm.<br>
+    Si lo monta por línea de comandos y asumiento que ya ha creado un
+    punto de montaje en /mnt/win, usted podría usar este comando
+    (siempre como ususario root)<br>
+    <br>
+    # mount /mnt/win<br>
+    <br>
+    también podría usar<br>
+    <br>
+    # mount -a<br>
+    <br>
+    Este último comando montará todos los puntos de montaje disponibles
+    en el archivo de configuración /etc/fstab.<br>
+    <br>
+    <b><u>NOTA</u></b>: Tenga en cuenta que la configuración por defecto
+    hace que el sistema de archivos solo sea montado por el usuario root
+    y no por los usuarios comunes; si usted quiere que otros usuarios
+    puedan montar o desmontar dispositivos, debería agregar USERS a las
+    opciones por defecto que son presentadas durante el proceso
+    descripto anteriormente.<br>
+    <br>
+    - <b>Borrando puntos de montaje</b><br>
+    Cuando borra un punto de montaje todo lo que tiene que hacer es
+    decirle al sistema que no debe acceder a algunos sistemas de
+    archivos en particular (discos duros, particiones, etc) y no tendrá
+    que borrar ningún contenido dentro de esos sistemas de archivos.<br>
+    Por lo tanto si decide borrar un punto de montaje, verá una lista de
+    los dispositivos configurados para ser montados (no ncesesariamente
+    para automontaje), simplemente seleccione cual quiere remover y
+    presione OK, estas entradas serán removidas de los archivos de
+    configuración y nada será modificado del sistema de archivos
+    propiamente dicho.<br>
+    <br>
+    <b><u>NOTA</u></b>: Es altamente recomendable que se desmonten los
+    sistemas de archivos antes de eliminar los puntos de montaje, si no
+    realiza este procedimiento antes, no serán desmontados
+    automáticamente, por lo que tendrá que hacerlo por lineas de
+    comandos o reiniciar el sistema completamente.<br>
+    <hr size="2" width="100%"><br>
+    3).- <u>El archivo fstab</u><br>
+    <br>
+    Desde la salida de Vector Linux 5, usar VASM es todo lo que
+    necesitará saber para montar particiones y discos rigidos. Si está
+    buscando saber un poco más sobre como montar diferentes
+    dispositivos, aquí hay un poco de información adicional.<br>
+    Daremos un vistazo de ejemplo al archivo /etc/fstab<br>
+    <br>
+    &lt;device&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp; &lt;mount
+    point&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &lt;type&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &lt;options&gt;<br>
+    <br>
+    /dev/hda3&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    /&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; ext3&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; defaults&nbsp;&nbsp;&nbsp;
+    1&nbsp;&nbsp;&nbsp; 1<br>
+    /dev/hda2&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; swap&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; swap&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+    defaults&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0<br>
+    <br>
+    /dev/hda1&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; /mnt/windows&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; vfat&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; defaults,
+    noauto&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0<br>
+    /dev/hda4&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    /mnt/personal&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp; vfat&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; defaults, noauto,
+    umask&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;
+    0&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0<br>
+    <br>
+    none&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; /dev/pts&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    devpts&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    gid=5, mode=620&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0<br>
+    none&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; /proc&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; defaults&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0<br>
+    <br>
+    /dev/fd0&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+    /mnt/floppy&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; msdos&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; defaults&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0<br>
+    /dev/cdrom&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp; /mnt/cdrom&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    iso9660&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+    ro&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0<br>
+    <br>
+    La primera columna se refiere al montaje de los dispositivos, el
+    dispositivo en este caso, presenta 4 particiones en un disco duro
+    tipo IDE, dos sistemas de archivos especiales, que no necesariamente
+    necesitan ser un dispositivo. Un diskette y una unidad CDROM.<br>
+    La segunda columna será donde se montarán los dispositivos dentro
+    del árbol de directorios, para esto es necesario un nombre de
+    directorio, excepto en el caso de la partición SWAP. La tercera
+    columna es el tipo de sistema de archivos del dispositivo en
+    cuestión, para los sistemas Microsoft Windows 9x el sistema de
+    archivos será VFAT, para Linux normalmente los sistemas de archivos
+    serán EXT2 (Second Extended Filesystem) las unidades de CDROM usaran
+    ISO9660 y otros dispositivos basados en Microsoft Windows pueden
+    usar MSDOS como así tambien VFAT. El sistema de archivos NTFS
+    soporta lectura y escritura.<br>
+    La sección UMASK ofrece permisos de acceso a los dispositivos con
+    sistema de archivos FAT. Este es un tópico muy complejo, que va más
+    allá del alcance de esta guía, pero tenga en cuenta que el triple
+    cero, otorga acceso irrestricto, acerca de como regular el acceso
+    que pueden tener los usuarios a los dispositivos.<br>
+    <br>
+  </body>
+</html>

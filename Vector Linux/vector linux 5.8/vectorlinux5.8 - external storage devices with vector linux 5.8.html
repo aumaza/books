@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vectorlinux5.8 - external storage devices with vector linux
+      5.8</title>
+  </head>
+  <body>
+    <table align="center" border="0" cellpadding="3" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td width="20%"><img
+              src="http://vectorlinux.osuosl.org/docs/vl58/images/vl2k5.gif"
+              height="136" width="120"></td>
+          <td width="40%">
+            <div align="center">
+              <p><span class="VectorLinux"><font face="Arial, Helvetica,
+                    sans-serif" size="+3"><u><strong>Vector Linux
+                        5.8</strong></u></font></span></p>
+              <h3 class="InfoCenter"><font face="Arial" size="+1"><b>Documentation</b></font></h3>
+            </div>
+          </td>
+          <td width="20%">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="4" cellspacing="2"
+      width="95%">
+      <tbody>
+        <tr>
+          <td class="MenuTypeNew">
+            <div align="center"><font face="Arial"><strong><span
+                    class="MenuTypeLink"><a name="index"></a><a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/index.html">Overview</a>
+                    &nbsp;|&nbsp; <a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/forum/">VectorLinux
+                      Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/Docs/">Online
+                      Documentation</a></span></strong></font></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="0" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td height="80">
+            <div align="center">
+              <h2><font face="Arial, sans-serif"><font color="#006699"><b><u>External
+                        Storage Devices with VectorLinux
+                        5.8</u></b></font></font></h2>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3><font face="Arial, sans-serif"><b>CONTENTS</b></font></h3>
+            <p class="standardtype"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#introduction">1.
+                Introduction</a><br>
+              <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#floppy">2.
+                Floppy Drive</a><br>
+              <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#cdrom">3.
+                CDROM</a><br>
+              <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#cdwriter">4.
+                CDWRITER</a><br>
+              <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#usbstorage">5.
+                USB Storage</a><br>
+              <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#howtheywork">6.
+                How They Work</a><br>
+              <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#credits">7.
+                Credits</a></p>
+            <p class="tightenable">&nbsp;</p>
+            <hr>
+            <h2><u><a name="introduction"></a>1. Introduction</u></h2>
+            <p class="standardtype">In the recent past many new Linux
+              users, especially those that
+              come from Windows, were immediately struck by the somewhat
+              inconvenient floppy or cdrom drive access. Well, that used
+              to be the case
+              in older versions of Linux, but not anymore. This manual
+              will quickly point out the
+              features of how to access your external storage devices.
+              If none of
+              this makes sense to you please read Section 6 below to
+              understand
+              the underlying mechanisms, and hopefully that might give
+              you the
+              background understanding you require.</p>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#index">Top</a></p>
+            <hr>
+            <h2><u><a name="floppy"></a>2. Floppy Drives</u></h2>
+            <p class="standardtype">We assume that you are working with
+              either the xfce or KDE desktop environment. The
+              most important thing is that you should see desktop icons,
+              and one
+              of them is "Floppy". To work with a floppy, simply:</p>
+            <ol>
+              <li class="standardtype">Insert your floppy diskette in
+                the floppy
+                drive</li>
+              <li class="standardtype">Click the "floppy" icon (in xfce
+                you must double click). A file manager
+                will be launched for you. It will be Thunar with xfce or
+                konqueror on KDE.</li>
+              <li class="standardtype">The floppy is usually mounted on
+                /mnt/floppy. You may now use the file manager to
+                read/write the data
+                from or to the floppy.</li>
+              <li class="standardtype">After you are finished, you MUST
+                close the
+                file manager.</li>
+              <li class="standardtype">Remove the floppy disk from the
+                floppy drive.</li>
+            </ol>
+            <p class="standardtype">That&acute;s all. If you want to
+              know the
+              details of what is happening: clicking the floppy icon
+              mounts the
+              floppy and launches the file manager. Then when you close
+              the file
+              manager, the floppy will be unmounted. You must remember
+              one thing though, <strong>do not remove the floppy
+                diskette before
+                you close the file manager, or while the floppy-drive
+                light is
+                still flashing. Doing so could damage your floppy
+                data.</strong></p>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#index">Top</a></p>
+            <hr>
+            <h2><u><a name="cdrom"></a>3. CDROM Drives</u></h2>
+            <p class="standardtype">You access these in the same manner
+              as the
+              floppy drive. Simply:</p>
+            <ol>
+              <li class="standardtype">Insert your CD into the cdrom
+                drive.</li>
+              <li class="standardtype">Click the "cdrom" icon. A file
+                manager
+                will be launched for you with the CDROM contents on the
+                <i>/mnt/cdrom</i> folder.</li>
+              <li class="standardtype">Use the file manager to read the
+                data from
+                the cdrom.</li>
+              <li class="standardtype">After you're finished, you MUST
+                close the
+                file manager.</li>
+            </ol>
+            <p class="standardtype">Note that <i>music</i> CD's are not
+              a proper filesystem and therefore cannot be mounted via
+              this method. You can check a music CD's contents with a
+              ripping program such as RipperX or a CD Player such as
+              xmms.</p>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#index">Top</a></p>
+            <hr>
+            <h2><u><a name="cdwriter"></a>4. CDWRITER Drive</u></h2>
+            <p class="standardtype">Ok, this is a bit different. We
+              cannot use a
+              file manager to write data onto a CDR platter. You must
+              launch a cd-burning program from the user menu. Those
+              programs are:
+              k3b (on VL SOHO) or graveman (on VL Standard).</p>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#index">Top</a></p>
+            <hr>
+            <h2><u><a name="usbstorage"></a>5. USB Storage and vl-hot</u></h2>
+            <p class="standardtype">Technically, USB storage devices
+              (including
+              Pen Drives, flash memory readers and mp3 players, etc.)
+              are a different story than floppy
+              or CDROM drives because they are handled by the hotplug
+              system.
+              Fortunately, VL is able to make it work similarly on
+              either xfce or KDE.</p>
+            <p class="standardtype">As of VL SOHO v5.1 and later
+              versions usb-mount has been superceded by <i>vl-hot</i>.
+              vl-hot is an automated USB mounting system based on the
+              udev kernel routines. Theoretically, if you have vl-hot
+              running correctly on VL SOHO 5.1.1 or later versions if
+              you plug in a USB or PCMCIA device it should autmoatically
+              be mounted for you and you should then be able to browse
+              the files on that device with any file manager. vl-hot is
+              a purely udev based automount system for any kind of
+              pluggable storage device that conforms to the block device
+              specification and so uses scsi emulation. Hardware known
+              to work with vl-hot are USB pendrives, hard disks, digital
+              cameras, memory card readers, PCCARD (or PCMCIA) memory
+              cards and drives. Firewire devices should work, but there
+              are no user reports on this kind of hardware yet. The
+              working specifications of vl-hot are:</p>
+            <ul>
+              <li>the mount base directory will be "/mnt/vl-hot/".
+              </li>
+              <li>each drive will have a "sd?" directory (where "?"
+                represents a letter of the alphabet).
+              </li>
+              <li>each mounted partition will have a "vol#" directory
+                (where "#" represents a number) within the drive
+                directory. An exception to this rule is in the case of
+                non-MBR devices, where there is no partition table.
+              </li>
+              <li>desktop icons are dynamically created/deleted. With
+                KDE these have unmount options in the context
+                (right-click) menu. </li>
+              <li>the unmount operation has completed succesfully once
+                the desktop icon disappears.
+              </li>
+              <li>for window managers other than xfce or KDE you should:
+                1) close down the file manager, 2) remove the device and
+                then, 3) use the command "umount /mnt/vl-hot/sd?" as
+                root, to correctly unmount the device.
+              </li>
+            </ul>
+            <p class="standardtype">With xfce or KDE when you plug-in
+              the usb-storage device, a "pendrive" icon should
+              pop up on the desktop. Just click it to access the
+              pendrive
+              contents. After you unplug the pendrive, the icon will
+              disappear if using KDE. If you use xfce double-click the
+              unmount icon to unmount the device and then remove the
+              device. Writing is not cached, so there is little chance
+              of losing data
+              when unplugging incorrectly.</p>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#index">Top</a></p>
+            <hr>
+            <h2><u><a name="howtheywork"></a>6. How They Work</u></h2>
+            <p class="standardtype">This is the explanation if you want
+              to know
+              the underlying mechanisms of filesystem mounting.
+              Normally, all of these are configured by
+              VL autosetup during installation and only in unusual
+              circumstances will you need to concern yourself with
+              manually mounting a device. However, problems may occur
+              and this information may assist you:</p>
+            <h3><u>6.1 Floppy and CDROM drives</u></h3>
+            <p class="standardtype">All storage devices (like everything
+              else
+              in Unix/Linux) are treated as a file. To this end they are
+              usually
+              given a filename in the /dev directory (e.g. <i>/dev/cdrom</i>).
+Before
+              accessing a storage device it must be "mounted". Floppy
+              and
+              CDROM drives both work on the same principle.</p>
+            <ol>
+              <li class="tightenable">
+                <p class="standardtype">Firstly, during the install
+                  process VectorLinux
+                  autodetection makes a symbolic link to the actual
+                  device. Usually,
+                  /dev/floppy links to /dev/fd0 and /dev/cdrom links to
+                  one of the IDE
+                  controllers (/dev/hdb, /dev/hdc, etc). Think of the
+                  symlink as an
+                  alias that hides the actual device. You can check it
+                  out by
+                  using:<br>
+                </p>
+                <pre class="tightenable top bottom">tux@engrob4:$ ls -l /dev/cdrom
+lrwxrwxrwx  1 root root 8 2004-10-06 00:33 /dev/cdrom -&gt; /dev/hdc
+</pre>
+                <p class="standardtype">You may set that up manually, or
+                  use
+                  vcdset.</p>
+              </li>
+              <li style="list-style: none"><br>
+              </li>
+              <li>
+                <p class="standardtype">Then, the symlink is registered
+                  on
+                  /etc/fstab like this</p>
+                <pre class="tightenable top bottom"># The 'noauto' option indicates that the file system should not be mounted
+# with 'mount -a' 'user' indicates that normal users are allowed to mount it
+/dev/cdrom      /mnt/cdrom      iso9660 defaults,noauto,ro,user 0 0
+/dev/fd0        /mnt/floppy     auto    defaults,noauto,user    0 0
+</pre>
+              </li>
+              <li class="tightenable">
+                <p class="standardtype">When the user clicks the
+                  floppy/cdrom icon,
+                  it launches a script that actually does the mounting
+                  for you. This
+                  is the simplified version.</p>
+                <pre class="tightenable top bottom">#!/bin/sh
+mount /mnt/cdrom
+file_manager /mnt/cdrom/
+umount /mnt/cdrom
+</pre>
+              </li>
+              <li class="standardtype">Look at the script, after
+                launching the
+                file manager, it waits for it to exit then unmounts the
+                /mnt/cdrom.
+                That's why you have to close the file manager.</li>
+            </ol>
+            <p>&nbsp;</p>
+            <h3><u>6.2 CDWRITER</u></h3>
+            <p class="standardtype">For CDWRITER, k3b and graveman will
+              access
+              the device directly. So we don't have to bother about
+              mounting it.
+            </p>
+            <p class="western" align="center">&nbsp;</p>
+            <h3><u>6.3 USB-STORAGE</u></h3>
+            <p class="standardtype">USB storage is handled by hotplug or
+              by vl-hot (for versions VL SOHO5.1 and later). Hotplug
+              on Linux was designed to be as smart as Plug&amp;Play on
+              Windows.
+              However, both of them have also proved to be
+              troublemakers. So
+              yeah, if everything goes right, your USB-storage works
+              this
+              way:</p>
+            <ol>
+              <li class="standardtype">When you plug in the pendrive,
+                the hotplug
+                system will detect it.</li>
+              <li class="standardtype">The hotplug system launches the
+                registered
+                script, in this case "usb-mount". You may check the
+                registration on
+                <i>/etc/hotplug/usb</i>.</li>
+              <li class="standardtype">To run properly, usb-mount needs
+                root
+                privileges. So it should have an entry on <i>/etc/sudoers</i>.</li>
+              <li class="standardtype">The usb-mount script will
+                automatically
+                mount the device into <i>/mnt/usb-storage/device-0</i>
+                (or -1, -2,
+                etc as appropriate)</li>
+              <li class="standardtype">If KDE is running, usb-mount
+                creates a
+                desktop icon.</li>
+              <li class="standardtype">When you unplug the device, the
+                hotplug
+                system calls usb-umount.</li>
+              <li class="standardtype">The usb-umount script deletes the
+                desktop
+                icon and unmounts the /mnt/usb-storage/device-0.</li>
+            </ol>
+            <p class="standardtype">Actually it is not quite that
+              simple, but
+              you get the picture, right ? If you have VL SOHO 5.1 or
+              later your system will use vl-hot instead of usb-mount.
+              How vl-hot works can be read in more detail at <a
+                href="http://jjrweb.byethost.com/vl/dev/vl-hot/">"Joe1962"'s
+                website</a>.</p>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#index">Top</a></p>
+            <hr>
+            <h2><a name="credits"></a><font face="Arial, sans-serif"><u>7.
+                  Credits</u></font></h2>
+            <p class="standardtype" style="margin-bottom: 0cm"><font
+                face="Arial, sans-serif">Copyright 2007 Vector Linux<br>
+                Released under [GNU Free Document License [ <a
+                  class="western"
+                  href="http://www.gnu.org/licenses/fdl.html"><u>http://www.gnu.org/licenses/fdl.html</u></a>
+                ]<br>
+                Contributed By: Kocil, Joe1962, Lagagnon, LLL</font></p>
+            <p class="western" style="margin-bottom: 0cm" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_external_storage_en.html#index">Top</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+  </body>
+</html>

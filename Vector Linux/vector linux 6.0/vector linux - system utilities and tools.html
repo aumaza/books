@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vector linux - system utilities and tools</title>
+  </head>
+  <body>
+    <table align="center" bgcolor="#FFFFFF" border="1" cellpadding="0"
+      cellspacing="8">
+      <tbody>
+        <tr>
+          <td>
+            <table align="center" border="0" cellpadding="2"
+              cellspacing="0" width="100%">
+              <tbody>
+                <tr>
+                  <td class="HeaderBack"><img
+                      src="http://vectorlinux.osuosl.org/docs/vl60/images/newfront.jpg"
+                      height="80" width="600"></td>
+                </tr>
+                <tr>
+                  <td class="MenuTypeNewThin">
+                    <div class="MenuTypeLink" align="center"><strong><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/index.html">Overview</a>
+                        &nbsp;|&nbsp; <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com/forum2/">VectorLinux
+                          Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://vectorlinux.osuosl.org/docs/">Online
+                          Documentation</a></strong></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" border="0" cellpadding="0"
+              cellspacing="0" width="95%">
+              <tbody>
+                <tr>
+                  <td height="80">
+                    <div align="center">
+                      <h2><font face="Arial, sans-serif"><font
+                            color="#006699"><b><u>VectorLinux v6.0
+                                System Utilities and
+                                Tools</u></b></font></font></h2>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h3 style="margin-bottom: 0cm"><font face="Arial,
+                        sans-serif"><b>CONTENTS</b></font></h3>
+                    <pre class="standardtype">  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#VasmCC"><span lang="es-ES"><font face="Arial, sans-serif">1. VasmCC</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#vpackager"><font face="Arial, sans-serif">2. vpackager</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#vcpufreq"><font face="Arial, sans-serif">3. vcpufreq</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#firestarter"><span lang="es-ES"><font face="Arial, sans-serif">4. Firestarter</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#vl-hot-config"><span lang="es-ES"><font face="Arial, sans-serif">5. HAL, vl-hot &amp; vl-hot-config</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#vlsmbmount"><span lang="es-ES"><font face="Arial, sans-serif">6. vlsmbmount</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#vwifi"><span lang="es-ES"><font face="Arial, sans-serif">7. vwifi</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#wicd"><span lang="es-ES"><font face="Arial, sans-serif">8. Wicd</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#slapt"><span lang="es-ES"><font face="Arial, sans-serif">9. slapt-get-notifier</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#vburn"><span lang="es-ES"><font face="Arial, sans-serif">10. vburn &amp; tburn</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html#gdm"><span lang="es-ES"><font face="Arial, sans-serif">11. gdm</font></span></a>
+</pre>
+                    <br>
+                    <p>VectorLinux v6.0 provides users with a number of
+                      system tools
+                      and utilities to make administration of their
+                      computer system
+                      easier than hand-editing configuration files.
+                      These utilities are
+                      described in detail below, but for the most part,
+                      their usage is
+                      trivial and obvious. Where that is not the case
+                      the intricacies are
+                      explained.</p>
+                    <hr>
+                    <h3 style="margin-bottom: 0.21cm"><u><a
+                          name="VasmCC" id="VasmCC"></a> <font
+                          face="Arial, sans-serif"><font>1.
+                            VasmCC</font></font></u></h3>
+                    <p>VasmCC is the VectorLinux (System) Control
+                      Centre. It provides
+                      an iconic GUI interface to vasm. VASM is the
+                      Vector Administration
+                      and System Menu, fully explained in the <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_admin_vasm_en.html">VASM
+                        manual</a>. "vasm" itself is an
+                      ncurses based text menu interface, while VasmCC is
+                      simply a GUI
+                      wrapper to vasm. The image below show the basic
+                      functionality of
+                      this software.<br>
+                      <br>
+                      <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/vasmcc.jpg"></p>
+                    <hr>
+                    <h3 style="margin-bottom: 0.21cm"><u><a
+                          name="vpackager" id="vpackager"></a>2.
+                        vpackager</u></h3>
+                    <p>vpackager is a VectorLinux utility which enables
+                      users to build
+                      a properly packaged VL .tlz package from source
+                      code. A complete
+                      explanation of the VL package management system
+                      (gslapt and
+                      slapt-get) is found in our <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html">slapt-get/gslapt/packages
+                        manual</a>.</p>
+                    The user is also referred to our forum where a full
+                    explanation on
+                    <a
+                      href="http://forum.vectorlinux.com/index.php?topic=1380.0">how
+to
+                      build a package</a> is described.
+                    <p>vpackager documentation is fully explained at the
+                      <a
+                        href="http://code.google.com/p/vpackager/wiki/HowToUse">vpackager
+                        website</a>, so will not be fully re-iterated
+                      here. Newer Linux
+                      users should be aware that vpackager is not
+                      required to install or
+                      remove packages. Such functionality is provided
+                      instead by
+                      "gslapt". The image below shows the basic
+                      functionality of
+                      vpackager.</p>
+                    <br>
+                    <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/vpackager1.gif"><br>
+                    <hr>
+                    <h3 style="margin-bottom: 0.21cm"><span
+                        class="western"><a name="vcpufreq" id="vcpufreq"></a></span><font
+                        face="Arial, sans-serif"><font><u>3. vcpufreq</u></font></font></h3>
+                    <p>"vcpufreq" is a Central Processing Unit (CPU)
+                      frequency
+                      configuration utility developed in Gambas by
+                      Joe1962 for
+                      VectorLinux. It makes it easy to change the CPU
+                      frequency governor
+                      (with those CPU's which have such a function) and
+                      related frequency
+                      settings. It does not (yet) load the appropriate
+                      cpufreq module for
+                      your system. vcpufreq includes the CLI utility
+                      "vcpufreq-load" to
+                      set the saved configuration on system start. This
+                      utility requires
+                      root access and requires that the appropriate
+                      module is loaded.
+                      With most modern CPU's this will be done at boot
+                      up. If this is not
+                      the case then the user must find out which module
+                      is relevant and
+                      works with their CPU and then use the command
+                      "modprobe
+                      name_of_module" in their /etc/rc.d/rc.local file,
+                      to ensure the
+                      module is loaded at boot time. A listing of the
+                      available CPU
+                      modules are found in the directory
+                      /usr/src/linux-2.6.???/arch/i386/kernel/cpu/cpufreq.
+                      vcpufreq would
+                      be useful to those with notebook computers in
+                      order to reduce CPU
+                      frequency (and hence battery usage). The image
+                      below shows the
+                      basic functionality of vcpufreq.<br>
+                      <br>
+                      <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/vcpufreq1.gif"></p>
+                    <hr>
+                    <h3><a name="firestarter" id="firestarter"></a> <u><font
+                          face="Arial, sans-serif">4. Firestarter</font></u></h3>
+                    <p>"Firestarter" makes configuring a firewall for
+                      Linux easy and
+                      replaces the older VL utility "vleasytables" for
+                      VL version 6.0.
+                      Nonetheless, newbies should know exactly what a <a
+                        href="http://en.wikipedia.org/wiki/Firewall">firewall
+                        is</a> before
+                      proceeding to enable a firewall under VectorLinux.
+                      If you are
+                      behind a hardware router, you are not serving
+                      files to other
+                      machines, you the only user of your machine, are a
+                      generally
+                      careful user of the Internet and do not normally
+                      run your computer
+                      as root user then a firewall may not be necessary.
+                      Otherwise enable
+                      a firewall. For more details please read the <a
+                        href="http://www.fs-security.com/docs.php">Firestarter
+                        documentation</a>.</p>
+                    The image below shows the status interface screen of
+                    Firestarter.<br>
+                    <br>
+                    <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/firestarter.jpg">
+                    <hr>
+                    <h3><a name="vl-hot-config" id="vl-hot-config"></a>
+                      <u><font face="Arial, sans-serif">5. HAL, vl-hot
+                          and
+                          vl-hot-config</font></u></h3>
+                    <p>HAL and vl-hot are utilities which enable
+                      auto-detection and
+                      auto-mounting of devices such as CDROM drives,
+                      external hard
+                      drives, USB devices, etc. <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_utilities.html">HAL</a>
+                      (Hardware Abstraction
+                      Layer) is a daemon which provides an easy way for
+                      applications to
+                      discover the hardware on the system. It basically
+                      detects new
+                      hardware or inserted drives and media and
+                      automatically pops up the
+                      software necessary to handle the new device. <a
+href="http://broadcast.oreilly.com/2009/02/vl-hot-a-non-polling-alternati.html">vl-hot</a>
+                      is a purely udev based automount system for any
+                      kind of
+                      pluggable storage device that conforms to the
+                      block device
+                      specification and so uses scsi emulation. Both
+                      utilities do much
+                      the same thing but vl-hot is much less resource
+                      intensive. HAL is
+                      the default application installed - if you have a
+                      slower computer
+                      or enjoy less resource intensive applications then
+                      you can go into
+                      "vasm" and change the HAL system to vl-hot.</p>
+                    <p>"vl-hot-config" provides simple configuration to
+                      the VectorLinux
+                      automounting system called vl-hot. Hardware known
+                      to work with
+                      vl-hot are USB pendrives, hard disks, digital
+                      cameras, memory card
+                      readers, PCCARD (or PCMCIA) memory cards and
+                      external USB drives.
+                      Firewire devices should work, but there are no
+                      user reports on this
+                      kind of hardware yet. More information on vl-hot
+                      and its
+                      differences to the HAL automount system are found
+                      in the <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_mounting_guide_en.html">VL
+                        mounting manual</a>.</p>
+                    <p>The working specifications of vl-hot are such
+                      that the mount
+                      base directory will be "/mnt/vl-hot/", each drive
+                      will have a "sd?"
+                      directory (where "?" represents a letter of the
+                      alphabet) and each
+                      mounted partition will have a "vol#" directory
+                      (where "#"
+                      represents a number) within the drive directory.
+                      An exception to
+                      this rule is in the case of non-MBR devices, where
+                      there is no
+                      partition table. Desktop icons are dynamically
+                      created/deleted
+                      (currently only for KDE, xfce and LXDE) and these
+                      have an unmount
+                      options in the context (right-click) menu. (In VL
+                      Light 6.0 using
+                      IceWM of JWM window managers you can get to the
+                      device by opening
+                      the "My Documents" icon and check the right hand
+                      panel for your
+                      device). There is a conventional unmount (should
+                      be used normally)
+                      as well as options for unmount with signalling to
+                      the process that
+                      is holding open the mount and unmount with killing
+                      of said process
+                      (the last two should be tried in that order, when
+                      the normal
+                      unmount fails). The unmount operation has
+                      completed successfully
+                      once the desktop icon disappears.</p>
+                    <p>vl-hot-config enables the user to change the base
+                      mount
+                      directory, the mount icon, what should be included
+                      and
+                      automatically excluded from the mount process, the
+                      log file
+                      locations, sound notifications and mount specifics
+                      depending on
+                      filesystem type.</p>
+                    The image below shows the basic functionality of
+                    vl-hot-config.<br>
+                    <br>
+                    <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/vl-hot-config1.gif">
+                    <hr>
+                    <h3><a name="vlsmbmount" id="vlsmbmount"></a> <u><font
+                          face="Arial, sans-serif">6. vlsmbmount</font></u></h3>
+                    <p>"vlsmbmount" is simply a front end menu message
+                      to the xsmb.sh
+                      shell script, which assists a user in connecting
+                      their computers
+                      via Samba. For this system to work the user must
+                      have the smbd and
+                      nmbd service daemons running beforehand. To do so
+                      go to System,
+                      VASM, SUPER, SERVICE, SRVSET, 4 and enable the
+                      Samba daemon.</p>
+                    The images below shows the basic functionality of
+                    vlsmbmount.<br>
+                    <br>
+                    <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/vsmbmount1.gif">
+                    <hr>
+                    <h3><a name="vwifi" id="vwifi"></a> <u><font
+                          face="Arial, sans-serif">7. vwifi</font></u></h3>
+                    <p>"vwifi" is a relatively simple bash script which
+                      attempts to
+                      detect the user's wireless card device and to
+                      launch the wifi
+                      services via the iwconfig, dhcpcd and ifconfig
+                      network commands. If
+                      it does not find an appropriate module for your
+                      device it will ask
+                      you for an appropriate one from a supplied list.
+                      The user must know
+                      what module to choose. To determine the correct
+                      module you must
+                      know what chipset your wireless device uses. This
+                      can often be
+                      determine with the "lspci" command. Then visit <a
+                        href="http://www.linux-wlan.org">this Linux
+                        wireless site</a> for more
+                      information on your chipset and the appropriate
+                      module to use. Any
+                      further questions regarding problems about VL and
+                      wireless might be
+                      solved by reading <a
+                        href="http://www.vectorlinux.com/forum2/index.php?topic=1282.0">our
+wireless
+                        HOWTO</a>.</p>
+                    <hr>
+                    <h3><a name="wicd" id="wicd"></a> <u><font
+                          face="Arial, sans-serif">8. Wicd</font></u></h3>
+                    <p>"Wicd" is enabled by default on VectorLinux 6.0.
+                      It enables one
+                      to scan for available networks and create profiles
+                      for your
+                      preferred networks. At boot time, running Wicd as
+                      a continuous
+                      daemon will automatically scan for an available
+                      preferred network
+                      and connect to it. For further information visit
+                      the <a href="http://wicd.sourceforge.net">Wicd
+                        website</a> or <a
+                        href="https://help.ubuntu.com/community/WICD">here</a>.</p>
+                    The image below shows the basic functionality of
+                    Wicd.<br>
+                    <br>
+                    <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/wicd.jpg">
+                    <hr>
+                    <h3><a name="slapt" id="slapt"></a> <u><font
+                          face="Arial, sans-serif">9. slapt-get-notifier</font></u></h3>
+                    <p>"slapt-get-notifier" is a small daemon enabled by
+                      default on
+                      VectorLinux 6.0. It notifies the user about
+                      package updates
+                      available via slapt-get and gslapt. It is modeled
+                      after the Ubuntu
+                      update-notifier. slapt-update-notifier places an
+                      icon in the user's
+                      notification area when updates are available.
+                      Clicking the icon
+                      starts upgrading with gslapt.</p>
+                    <hr>
+                    <h3><a name="slapt" id="slapt"></a> <u><font
+                          face="Arial, sans-serif">10. vburn &amp; tburn</font></u></h3>
+                    <p>"vburn" is a small, simple GUI optical drive
+                      burning
+                      application. "tburn" is its console based
+                      equivalent. They are for
+                      CD burners and not for DVD burning. For that
+                      functionality please
+                      use "k3b". vburn &amp; tburn are examples of very
+                      slim, trim and
+                      fast Linux applications.</p>
+                    The image below shows the basic functionality of
+                    vburn.<br>
+                    <br>
+                    <img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_utilities/vburn.jpg">
+                    <hr>
+                    <h3><a name="slapt" id="slapt"></a> <u><font
+                          face="Arial, sans-serif">11. gdm</font></u></h3>
+                    <p>"gdm" is the login manager application now used
+                      on VL 6.0
+                      Standard. Previous users will note this change
+                      because either the
+                      kdm and xdm login managers were used on previous
+                      editions of VL
+                      Standard. The main differences to note with gdm
+                      are that one may
+                      actually change languages within gdm, configure
+                      gdm itself from the
+                      login screen and enable a remote login. gdm is
+                      highly customizable
+                      but this requires reading its <a
+                        href="http://library.gnome.org/admin/gdm/2.24/">documentation</a>.</p>
+                    The image below shows the basic functionality of
+                    gdm.<br>
+                    <img
+                      src="http://vectorlinux.osuosl.org/docs/vl60/images/gdm.jpg"></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

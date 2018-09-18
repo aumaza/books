@@ -1,0 +1,488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vector linux - printing with vector linux 6.0</title>
+  </head>
+  <body>
+    <table align="center" bgcolor="#FFFFFF" border="1" cellpadding="0"
+      cellspacing="8">
+      <tbody>
+        <tr>
+          <td>
+            <table align="center" border="0" cellpadding="2"
+              cellspacing="0" width="100%">
+              <tbody>
+                <tr>
+                  <td class="HeaderBack"><img
+                      src="http://vectorlinux.osuosl.org/docs/vl60/images/newfront.jpg"
+                      height="80" width="600"></td>
+                </tr>
+                <tr>
+                  <td class="MenuTypeNewThin">
+                    <div class="MenuTypeLink" align="center"><strong><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/index.html">Overview</a>
+                        &nbsp;|&nbsp; <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com/forum2/">VectorLinux
+                          Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://vectorlinux.osuosl.org/docs/">Online
+                          Documentation</a></strong></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" border="0" cellpadding="0"
+              cellspacing="0" width="95%">
+              <tbody>
+                <tr>
+                  <td height="80">
+                    <div align="center">
+                      <h2><b><u><font color="#006699" face="Arial,
+                              sans-serif">Printing
+                              with VectorLinux 6.0</font></u></b></h2>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h3><b>CONTENTS</b></h3>
+                    <pre class="standardtype"><a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#2"><font face="Arial, Helvetica, sans-serif">1. Pre-Installation check</font></a>
+<a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#4"><font face="Arial, Helvetica, sans-serif">2. Install &amp; Configure your printer using CUPS</font></a>
+<a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#5"><font face="Arial, Helvetica, sans-serif">3. Printing to Windows server via SAMBA</font></a>
+<a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#6"><font face="Arial, Helvetica, sans-serif">4. Sharing Your Printer with Windows via SAMBA</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#61"><font face="Arial, Helvetica, sans-serif">4.1. Setting up SAMBA</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#62"><font face="Arial, Helvetica, sans-serif">4.2. CUPS configuration</font></a> 
+</pre>
+                    <hr>
+                    <p class="western" style="margin-bottom: 0.21cm"><a
+                        name="2"></a>
+                      <font size="5"><b><u>1. Pre-Installation Check</u></b></font></p>
+                    <p class="standardtype">Some printer manufacturers
+                      have made more
+                      efforts to support Linux than others. This support
+                      takes the form
+                      of either releasing Linux-specific drivers or at
+                      least releasing
+                      crucial hardware data to the Linux community so
+                      others can write
+                      the necessary drivers. Two manufacturers who have
+                      excelled are
+                      Hewlett Packard and Brother. Others are improving
+                      their Linux
+                      support. To date probably the least Linux-friendly
+                      manufacturer has
+                      been Lexmark. Before purchasing or enabling a
+                      printer please check
+                      that it is supported by Linux at <a
+                        class="western"
+                        href="http://openprinting.org/printer_list.cgi">the
+                        "OpenPrinting"
+                        website</a>. "Most" printers now manufactured do
+                      work with Linux
+                      but there are some exceptions - the website above
+                      is
+                      definitive.</p>
+                    <p class="standardtype">If you have a parallel port
+                      printer you
+                      should have enabled the parallel port during the
+                      install process.
+                      If you did not do this go to VASM, SUPER,
+                      HARDWARE, HWSET, enable
+                      parallel. If you have a newer HP printer you
+                      should check that
+                      either the hpijs and/or hplip packages have been
+                      installed to your
+                      system - if not then install them (use "gslapt").
+                      If you have a
+                      printer which requires a special driver you must
+                      install this
+                      driver prior to launching the CUPS configuration
+                      steps (below). The
+                      website above will point you in the right
+                      direction. Please ensure
+                      you follow the driver install directions exactly
+                      or it is unlikely
+                      you will magically get your printer to work.</p>
+                    <p class="standardtype">If you are going to use a
+                      printer on a
+                      Windows server you should check if the printer is
+                      available (see
+                      the section "Printing to Windows Servers via
+                      Samba").</p>
+                    <p class="western" style="margin-bottom: 0cm"
+                      align="center">
+                      <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#Top">Top</a></p>
+                    <hr>
+                    <p class="western" style="margin-bottom: 0.21cm"><a
+                        name="4"></a>
+                      <font size="5"><b><u>2. Install &amp; Configure
+                            your printer using
+                            CUPS</u></b></font></p>
+                    <p class="standardtype">Open your web browser of
+                      choice and in its
+                      address bar type:</p>
+                    <b><code class="Code1">http://localhost:631/</code></b><br>
+                    <p class="standardtype">Choose "Do Administration
+                      Tasks" and then
+                      enter "root" as username and root&acute;s password
+                      at the
+                      prompt.</p>
+                    <p class="standardtype">To add a printer, select
+                      "Add Printer" and
+                      answer questions as required. If your printer is a
+                      USB printer you
+                      should see the USB device and the printer name in
+                      the drop down
+                      devices list. For a parallel port printer you
+                      normally select
+                      "#LPT1" from the device list.<br>
+                      <br>
+                      When this is complete you should test the printer.
+                      (Select Printers
+                      and then select Print Test Page). You may open
+                      your browser and
+                      enter the CUPS server page (as described above)
+                      whenever needed to
+                      administer your printer(s). The <a
+                        href="http://localhost:631/help/">CUPS help
+                        pages</a> also contain very
+                      useful documentation. If you are going to use a
+                      printer on a
+                      Windows server (or a Linux Server which supports
+                      SAMBA) see the
+                      section "Printing to Windows Servers via SAMBA"
+                      below.</p>
+                    <p class="western" style="margin-bottom: 0cm"
+                      align="center">
+                      <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#Top">Top</a></p>
+                    <hr>
+                    <p class="western" style="margin-bottom: 0.21cm"><a
+                        name="5"></a>
+                      <font size="5"><b><u>3. Printing to Windows
+                            Servers via
+                            SAMBA</u></b></font></p>
+                    <p class="standardtype">(Adapted From CUPS Software
+                      Admin
+                      Manual)</p>
+                    <p class="standardtype">One way to print to a
+                      printer on a Windows
+                      Server is through the Microsoft Server Message
+                      Block ("SMB")
+                      protocol. Support for this protocol is provided
+                      with the free SAMBA
+                      software package. This is included in the base
+                      install of
+                      VectorLinux v6.</p>
+                    <p class="standardtype">If you are going to use a
+                      printer on a
+                      Windows server ensure that you can access the
+                      server with the
+                      printer and determine share name via smbclient:</p>
+                    <code class="Code1">/usr/bin/smbclient -L server -U
+                      user</code><br>
+                    <p class="standardtype">where server is name of the
+                      server and user
+                      is a login name on the server.</p>
+                    <p class="standardtype">You should get something
+                      like:</p>
+                    <p class="standardtype"><font size="2"><font
+                          face="Courier New, monospace">added interface
+                          ip=192.168.0.4
+                          bcast=192.168.0.255 nmask=255.255.255.0<br>
+                          Got a positive name query response from
+                          192.168.0.4 ( 192.168.0.4
+                          )<br>
+                          Password: (not shown)<br>
+                          <br>
+                          Sharename Type Comment<br>
+                          PRINTER$ Disk<br>
+                          INKJET Printer<br>
+                          DOWNLOAD Disk<br>
+                          IPC$ IPC Remote Inter Process Communication<br>
+                        </font></font><br>
+                      In this case the sharename is INKJET.</p>
+                    <p class="standardtype">Before you proceed with the
+                      printer
+                      installation, check to see if there exists a
+                      symbolic link
+                      <i>smb</i> in the directory <i>/usr/lib/cups/backend/.</i>
+                      (If you
+                      installed CUPS using the preceding instructions
+                      the link should
+                      exist). If it is not there, you will need to
+                      create it by running
+                      the following command:</p>
+                    <code class="Code1">ln -s `which smbspool`
+                      /usr/lib/cups/backend/smb</code><br>
+                    <code class="Code1">ln -s /usr/bin/smbspool
+                      /usr/lib/cups/backend/smb</code><br>
+                    <p class="standardtype"><br>
+                      Notice that "which smbspool" is enclosed in back
+                      ticks, not single
+                      quotes! The back ticks will execute the command
+                      within and use the
+                      result in the ln command. The latter command works
+                      for the default
+                      installation of all versions of VectorLinux 6.0.
+                      Alternatively, you
+                      can create this link using Midnight Commander.</p>
+                    <p class="standardtype">Once you have made the link
+                      you can
+                      configure your printer as in section 3. When
+                      prompted for device,
+                      choose "Windows Printer via SAMBA" which is near
+                      the bottom of the
+                      list of devices. When prompted for device URI set
+                      it with:</p>
+                    <code class="Code1">smb://user:pass@workgroup/server/sharename</code><br>
+                    <p class="standardtype">The <i>workgroup</i> name
+                      need only be
+                      specified if your system is using a different
+                      workgroup. The
+                      <i>user:pass</i> strings are required when
+                      printing to Windows NT,
+                      2K or XP servers or to shares with passwords
+                      enabled under Windows
+                      95 and 98.</p>
+                    <p class="standardtype">In these cases the entry
+                      could be
+                      simplified to one of:</p>
+                    <code class="Code1">smb://workgroup/server/sharename<br>
+                      smb://server/sharename<br>
+                      smb://user:pass@server/sharename</code><br>
+                    <p class="standardtype"><b>NOTE:</b> The user/pass
+                      must match an
+                      existing, active account on the server.</p>
+                    <p class="western" style="margin-bottom: 0cm"
+                      align="center">
+                      <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#Top">Top</a></p>
+                    <hr>
+                    <p class="western" style="margin-bottom: 0.21cm"><a
+                        name="6"></a>
+                      <font size="5"><b><u>6. Sharing Your Printer with
+                            Windows via
+                            SAMBA</u></b></font></p>
+                    <p class="standardtype">(Adapted from Debian and
+                      Windows Shared
+                      Printing mini-HOWTO by Ian Ward <a
+                        class="western"
+                        href="http://www.tldp.org/HOWTO/Debian-and-Windows-Shared-Printing/">http://www.tldp.org/HOWTO/Debian-and-Windows-Shared-Printing/)</a>).</p>
+                    <p class="standardtype">In this section we discuss
+                      how to set up
+                      VectorLinux to act as a print server for other
+                      printers on our
+                      network via SAMBA. It is assumed that you have
+                      your printer working
+                      locally using CUPS. We will need to make several
+                      changes to both
+                      CUPS and SAMBA configuration files.</p>
+                    <p class="standardtype">Each of the Windows clients
+                      must have the
+                      appropriate printer drivers.<br>
+                    </p>
+                    <p class="western" style="margin-bottom: 0.11cm"><a
+                        name="61"></a>
+                      <font face="Arial, sans-serif"><font size="3"><b><u>4.1
+                              Setting up
+                              SAMBA</u></b></font></font></p>
+                    <p class="standardtype">If you are allowing
+                      anonymous access to
+                      your printer you will need to create a user
+                      account for remote
+                      print jobs. As root (or su) do the following:</p>
+                    <code class="Code1">useradd -d /home/smbprint -s -m
+                      /bin/false
+                      smbprint</code><br>
+                    <p class="standardtype">This command adds a user
+                      called "smbprint"
+                      to your system. Make sure there is enough disk
+                      space in
+                      <i>/home/smbprint</i>, the "smbprint" user's home
+                      directory, to
+                      spool files. Since we have no password for the
+                      account "smbprint"
+                      we include "-s /bin/false". This causes an error
+                      if someone tries
+                      to access the system using this account. If you
+                      have configured
+                      CUPS to restrict printing to certain users on your
+                      system, you must
+                      allow the "smbprint" user to access printers you
+                      want to share.</p>
+                    <p class="standardtype">The Samba configuration file
+                      is
+                      <i>/etc/samba/smb.conf</i>. The following is an
+                      example
+                      configuration file set up to use CUPS with the
+                      "smbprint" user:</p>
+                    <p class="standardtype"><font face="Courier New,
+                        monospace"><font size="2">global<br>
+                        </font></font>
+                      <font face="Courier New, monospace"><font size="2">workgroup
+                          =
+                          WORKGROUP</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">printcap
+                          name =
+                          cups</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">printing
+                          =
+                          cups</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">security
+                          =
+                          share</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">guest
+                          account =
+                          smbprint<br>
+                        </font></font> <font face="Courier New,
+                        monospace"><font size="2">[printers]</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">comment
+                          = all
+                          printers</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">printable
+                          =
+                          yes</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">guest
+                          ok =
+                          yes<br>
+                        </font></font> <font face="Courier New,
+                        monospace"><font size="2">create mode =
+                          0700</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">guest
+                          only =
+                          yes</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">use
+                          client
+                          driver = yes</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">path
+                          =
+                          /home/smbprint</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">browseable
+                          =
+                          yes</font></font></p>
+                    <p class="standardtype">The last line allows the
+                      Windows (and other
+                      SMB) clients to see the share when browsing.</p>
+                    <p class="standardtype">Please note that this
+                      configuration will
+                      allow printing by anyone that can make a network
+                      connection to your
+                      computer and is not recommended for computers on
+                      untrusted
+                      networks, such as computers with direct Internet
+                      connections. If
+                      you need to implement access control, set security
+                      = user or
+                      security = domain and read the Samba man pages for
+                      further
+                      information. In addition you can refer to "The
+                      Unofficial Samba
+                      HOWTO" at <a class="western"
+                        href="http://hr.uoregon.edu/davidrl/samba/"><u>http://hr.uoregon.edu/davidrl/samba/</u></a>
+                      for further pointers.</p>
+                    <p class="standardtype">Once you have added the
+                      above settings to
+                      your Samba configuration file you must restart
+                      Samba with the
+                      command:</p>
+                    <code class="Code1">/etc/rc.d/init.d/samba restart</code><br>
+                    <p class="standardtype"><b>Notes:</b> <font
+                        color="#FF0000"><br>
+                      </font> The above assumes that script <i>/etc/rc.d/init.d/samba</i>
+                      exists and is executable. A copy of the script is
+                      available in the
+                      directory <i>/etc/rc.d/init.d/sample-scripts</i>
+                      if you have set up
+                      SAMBA to start as part of RC.M.</p>
+                    <p class="standardtype">If SAMBA does not start at
+                      boot, one method
+                      to do this is to create symbolic links, S44samba
+                      and K55samba, to
+                      the above script in <i>/etc/rc.d/rc2.d</i> if you
+                      boot to text mode
+                      and <i>/etc/rc.d/rc5.d</i> if you boot to a GUI.<br>
+                    </p>
+                    <p class="standardtype"><a name="62"></a><font
+                        face="Arial, sans-serif"><font style="font-size:
+                          13pt" size="3"><b><u>4.2 CUPS
+                              Configuration</u></b></font></font></p>
+                    <p class="standardtype">Windows printer drivers
+                      format their output
+                      for the printer before sending it across the
+                      network. You must
+                      configure CUPS to accept the pre-formatted output
+                      by uncommenting
+                      the following line from <i>/etc/cups/mime.convs</i>:</p>
+                    <i>application/octet-stream application/vnd.cups-raw
+                      0 -</i><br>
+                    <p class="standardtype">Also uncomment the following
+                      line from
+                      <i>/etc/cups/mime.types</i>:</p>
+                    <i>application/octet-stream</i><br>
+                    <p class="standardtype">Now CUPS must be told to
+                      allow connections
+                      from other machines on the network. Add these
+                      lines to
+                      <i>/etc/cups/cupsd.conf</i>:</p>
+                    <p style="margin-bottom: 0cm" align="left"
+                      lang="en-US"><font face="Courier New, monospace"><font
+                          size="2">&lt;Location
+                          /printers&gt;<br>
+                        </font></font> <font face="Courier New,
+                        monospace"><font size="2">AuthType
+                          None</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">Order
+                          Deny,Allow</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">Deny
+                          From
+                          None</font></font><br>
+                      <font face="Courier New, monospace"><font size="2">Allow
+                          From
+                          All<br>
+                        </font></font> <font face="Courier New,
+                        monospace"><font size="2">&lt;/Location&gt;</font></font></p>
+                    <p class="standardtype">As in the Samba
+                      configuration, this
+                      configuration allows any computer to connect to
+                      your printers and
+                      is not recommended for computers on untrusted
+                      networks. For
+                      example, if you want restrict printing to the
+                      subnet 192.168.0.*
+                      replace <i>Allow From All</i> with <i>Allow From
+                        192.168.0.0/24</i>.</p>
+                    <p class="standardtype">For information about
+                      tightening access
+                      control to your printers, see the cupsd.conf man
+                      page and the CUPS
+                      documentation.</p>
+                    <p class="standardtype">Finally, restart cups with
+                      the following
+                      command:</p>
+                    <code>/etc/rc.d/init.d/cups restart</code><br>
+                    <p class="standardtype">Your Linux printers should
+                      now be
+                      accessible to Windows PCs on the LAN. Follow the
+                      usual steps for
+                      adding a network printer to your Windows PCs, and
+                      remember to print
+                      a test page.</p>
+                    <p class="western" style="margin-bottom: 0cm"
+                      align="center">
+                      <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_printing_guide_en.html#Top">Top</a></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

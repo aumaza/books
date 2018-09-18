@@ -1,0 +1,597 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vector linux - the vector linux packaging system</title>
+  </head>
+  <body>
+    <table align="center" bgcolor="#FFFFFF" border="1" cellpadding="0"
+      cellspacing="8">
+      <tbody>
+        <tr>
+          <td>
+            <table align="center" border="0" cellpadding="2"
+              cellspacing="0" width="100%">
+              <tbody>
+                <tr>
+                  <td class="HeaderBack"><img
+                      src="http://vectorlinux.osuosl.org/docs/vl60/images/newfront.jpg"
+                      height="80" width="600"></td>
+                </tr>
+                <tr>
+                  <td class="MenuTypeNewThin">
+                    <div class="MenuTypeLink" align="center"><strong><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/index.html">Overview</a>
+                        &nbsp;|&nbsp; <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com/forum2/">VectorLinux
+                          Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://vectorlinux.osuosl.org/docs/">Online
+                          Documentation</a></strong></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" border="0" cellpadding="0"
+              cellspacing="0" width="95%">
+              <tbody>
+                <tr>
+                  <td height="80">
+                    <div align="center">
+                      <h2><font face="Arial, sans-serif"><font
+                            color="#006699"><b><u>The
+                                VectorLinux Packaging System</u></b></font></font></h2>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h3><font face="Arial, sans-serif"><b>CONTENTS</b></font></h3>
+                    <ol class="standardtype">
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#introduction">Introduction</a></li>
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#update">Update
+                          the package list</a></li>
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#installpkgs">Install
+                          the packages</a></li>
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#othermenus">Other
+                          useful slapt-get commands</a></li>
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#gslapt">gslapt</a></li>
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#knownproblems">Known
+                          problems</a></li>
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#slackcommands">Slackware
+                          Package Commands</a></li>
+                      <li><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#building">Building
+                          Packages</a></li>
+                    </ol>
+                    <br>
+                    <hr>
+                    <h2><u><a name="introduction" id="introduction"></a>1.
+                        Introduction</u></h2>
+                    <p class="standardtype">Unlike the Microsoft Windows
+                      world which
+                      uses executable <i>.exe</i> files to install
+                      software the Linux
+                      world uses "packaging systems". Red Hat Linux and
+                      Mandriva use
+                      <i>.rpm</i> packages, Ubuntu, Debian, Mepis,
+                      Xandros use
+                      <i>.deb</i> packages and Slackware/Vector use <i>.tgz</i>
+                      packages.
+                      VectorLinux also uses ".tlz" packages, which take
+                      less space and
+                      enable us to provide more software on one CD. Many
+                      Linux packages
+                      are contained in FTP repositories and software is
+                      available which
+                      automates the download and installation of the
+                      correct package for
+                      your system in one easy step. VectorLinux uses a
+                      package management
+                      system based on <i>slapt-get</i> (text mode) and
+                      <i>gslapt</i>
+                      (graphical, GUI mode).</p>
+                    <p class="standardtype">The VectorLinux packaging
+                      system is based
+                      around the Slackware packaging system and consists
+                      of <i>.tgz</i>
+                      or <i>.tlz</i> packages. However, the Slackware
+                      system has been
+                      improved by slapt-get. slapt-get mimics the Debian
+                      apt packaging
+                      system. It automates the download, cataloguing and
+                      install process
+                      and also provides some dependency checking which
+                      was not available
+                      with the Slackware system. gslapt is a GUI-based
+                      wrapper around
+                      slapt-get, so is the recommended packaging
+                      software for newcomers
+                      to VectorLinux. On the other hand if you are a
+                      confident command
+                      line user you will find slapt-get, coupled with
+                      piping to other
+                      Linux commands very powerful.</p>
+                    <p class="standardtype">slapt-get and gslapt enable
+                      VectorLinux
+                      users to easily download, install, upgrade,
+                      remove, search, and
+                      query packages of software on their system. You
+                      only really need
+                      need to do two steps to install/upgrade or remove
+                      software packages
+                      :</p>
+                    <ol>
+                      <li class="standardtype">Update local information
+                        on packages
+                        available from your chosen source(s).</li>
+                      <li class="standardtype">Install, Upgrade or
+                        Remove the packages of
+                        your choice.</li>
+                    </ol>
+                    <p class="standardtype"><b>NOTE:</b>VectorLinux 6.0
+                      now includes by
+                      default the small daemon <a
+                        href="http://software.jaos.org/#slapt-update-notifier">"slapt-update-notifier"</a>.
+                      This utility will check the VectorLinux repository
+                      and will pop-up
+                      a small notifier in the bottom right applet
+                      section of either KDE
+                      or xfce to inform the user when updates are
+                      available. If clicked
+                      gslapt will be launched. Please ensure that you do
+                      wish to do this.
+                      Although VL packagers are very careful at their
+                      job there is no
+                      guarantee that software updates will not break
+                      your system. You
+                      have been warned!</p>
+                    <hr>
+                    <h2><u><a name="update" id="update"></a>2. Update
+                        the Package
+                        List</u></h2>
+                    <p class="standardtype">This step downloads the
+                      necessary package
+                      information details from the VectorLinux
+                      repository (a specific FTP
+                      site). You must ensure your Internet connection is
+                      working, then:
+                      1) command line method: <code class="Code1">slapt-get
+                        --update</code> , or 2) GUI method: launch
+                      "gslapt", click Update
+                      icon. These commands can take a few seconds to a
+                      few minutes
+                      depending on the speed of your Internet
+                      connection, the load on the
+                      server and the speed of your system.</p>
+                    <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#Top"
+                        class="standardtype">Top</a></p>
+                    <hr>
+                    <h2><u><a name="installpkgs" id="installpkgs"></a>3.
+                        Install the
+                        Packages</u></h2>
+                    <p class="standardtype">1) command line method: <code
+                        class="Code1">slapt-get --install [packagenames]</code>
+                      , or 2) gslapt
+                      method: launch gslapt, search for your required
+                      packages in the
+                      list, click those you want, click Package Install.
+                      Remember that
+                      this command actually fetches the package from a
+                      server and then
+                      installs it. This can take some time depending on
+                      the speed of your
+                      Internet connection, the load on the server and
+                      the speed of your
+                      system. Please be patient.</p>
+                    <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#Top"
+                        class="standardtype">Top</a></p>
+                    <hr>
+                    <h2><u><a name="othermenus" id="othermenus"></a>4.
+                        Other useful
+                        slapt-get commands</u></h2>
+                    <p class="standardtype">Please refer to the
+                      documentation for
+                      slapt-get: <code class="Code1">man slapt-get</code>,
+                      the HOWTOs at
+                      the VL Forum: <a
+                        href="http://forum.vectorlinux.com/index.php?topic=11.0">slapt-get
+                        basics</a> and <a
+                        href="http://forum.vectorlinux.com/index.php?topic=57.0">gslapt
+                        basics</a> or go to <a
+                        href="http://software.jaos.org/BUILD/slapt-get/FAQ.html">the
+                        slapt-get
+                        FAQ site for more advanced topics.</a></p>
+                    <p><span class="standardtype">You may wish to try
+                        some of these
+                        slapt-get commands:<br>
+                        <br>
+                        - to list all the available packages from the
+                        source repository:
+                        <code class="Code1">slapt-get --available</code><br>
+                        - to list only those packages that you have
+                        already installed:
+                        <code class="Code1">slapt-get --installed</code><br>
+                        - to search the listings for specific
+                        package(s): <code class="Code1">slapt-get
+                          --search [packagename(s)]</code><br>
+                        - to install (or to upgrade an already
+                        installed) package(s):
+                        <code class="Code1">slapt-get --install
+                          [packagename(s)]</code><br>
+                        - to remove packages(s): <code class="Code1">slapt-get
+                          --remove
+                          [packagename(s)]</code><br>
+                        - to clear your temp directory of downloaded
+                        packages: <code class="Code1">slapt-get --clean</code><br>
+                        - to show a package(s) description: <code
+                          class="Code1">slapt-get
+                          --show [package(s)]</code><br>
+                        - to reinstall an existing package: <code
+                          class="Code1">slapt-get
+                          --reinstall --install [package]</code><br>
+                        - to downgrade a package: <code class="Code1">slapt-get
+                          --reinstall
+                          --install [exactpackagenameandnumbers]</code><br>
+                        - to show a sorted, paged list of available
+                        packages from the
+                        source repository: <code class="Code1">slapt-get
+                          --available|sort|less</code><br>
+                        - to show a sorted, paged list of installed
+                        packages on your
+                        system: <code class="Code1">slapt-get
+                          --installed|sort|less</code><br>
+                        - to show a sorted, paged list of available,
+                        uninstalled packages:
+                        <code class="Code1">slapt-get --available|grep
+                          inst=no|sort|less</code><br>
+                        - to show only available packages related to
+                        e.g. fluxbox:
+                        <code class="Code1">slapt-get --available|grep
+                          fluxbox</code><br>
+                        - to show only available, uninstalled packages
+                        specifically
+                        packaged for VL5: <code class="Code1">slapt-get
+                          --available|grep
+                          inst=no|grep vl5|sort|less</code><br>
+                        - to install all packages pertaining to e.g.
+                        fluxbox: <code class="Code1">slapt-get
+                          --available|grep fluxbox|awk '{print
+                          $1}'|sort|uniq|xargs -r slapt-get --install</code><br>
+                        - to install every available package not yet
+                        installed (DANGER!):
+                        <code class="Code1">slapt-get --available|grep
+                          inst=no|awk '{print
+                          $1}'|sort|uniq|xargs -r slapt-get --install</code><br>
+                      </span></p>
+                    <p class="western" align="center"><span
+                        class="standardtype"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#Top"
+                          class="standardtype">Top</a></span></p>
+                    <hr>
+                    <h2><span class="standardtype"><u><a name="gslapt"
+                            id="gslapt"></a>5. gslapt</u></span></h2>
+                    <p class="standardtype"><span class="standardtype"><i>gslapt</i>
+                        is
+                        the GUI software for managing VectorLinux
+                        packages. It is the
+                        software most likely to be used by newcomers to
+                        VL. It is a GUI
+                        wrapper around typical slapt-get commands (see
+                        section above) and
+                        makes slapt-get much easier unless you are very
+                        comfortable with
+                        the command line. The thumbnails below
+                        illustrate the essential
+                        features you need to know to operate gslapt
+                        effectively. Click on
+                        the thumbnails to see a larger version.</span></p>
+                    <p class="standardtype"><span class="standardtype">The
+                        gslapt
+                        window is comprised of 5 sections, arranged
+                        vertically. From top
+                        down these are the 1) menu panel, 2) icon panel,
+                        3) search panel,
+                        4) package listing panel and 5) package
+                        description panel. In
+                        essence, gslapt is a very user-friendly so we
+                        will not belabour
+                        this section. Please note that the gslapt
+                        command "Mark All
+                        Upgrades" followed by "Execute" will upgrade
+                        every installed
+                        package on your system for which there is a
+                        newer version at the
+                        repository. This is the equivalent of the
+                        slapt-get command
+                        <code class="Code1">slapt-get --upgrade</code>.
+                        <b>Either of these
+                          commands can be dangerous and may lead to a
+                          broken system - you
+                          have been warned!</b> See section below for
+                        further
+                        details.</span></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <table frame="void" bgcolor="white" border="0"
+                      cellpadding="10" cellspacing="0">
+                      <tbody>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_basic.png"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_basic.png"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_wd.png"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_wd.png"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_excludes.png"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_excludes.png"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center">Standard gslapt screen</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">Preferences: Working
+                              Directory</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">Preferences: Excludes</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <table frame="void" bgcolor="white" border="0"
+                      cellpadding="10" cellspacing="0">
+                      <tbody>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_sources.png"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_sources.png"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_search.png"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_search.png"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                          <td width="25%">
+                            <div align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_install.png"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/images/gslapt/gslapt_prefs_install.png"
+                                  border="0" height="150" width="200"></a></div>
+                          </td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td width="25%">
+                            <div align="center">Preferences: Sources</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">Search for Packages</div>
+                          </td>
+                          <td width="25%">
+                            <div align="center">Install Packages</div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <h2><u><a name="knownproblems" id="knownproblems"></a>6.
+                        Known
+                        problems</u></h2>
+                    <h3>System Upgrades</h3>
+                    <p class="standardtype">Unfortunately at the moment,
+                      the
+                      VectorLinux repository is not yet as robust and
+                      debugged as a
+                      typical Debian package site (but it gets better by
+                      the week)!.
+                      Consequently, it is highly recommended that users
+                      <strong>refrain
+                        from attempting full system upgrades.</strong>
+                      In other words, do
+                      not use the commands <code class="Code1">slapt-get
+                        --upgrade</code>
+                      or "gslapt, Mark All Upgrades, Execute". Either of
+                      these commands
+                      will upgrade <i>every</i> installed package on
+                      your system for
+                      which there is a more recent version. It is
+                      suggested that you
+                      <code class="Code1">slapt-get --install
+                        [packagenames]</code> only
+                      for those packages which you definetely require an
+                      upgrade for a
+                      functionality improvement or to cure a serious
+                      security risk to the
+                      older package. At present, it is wiser to actually
+                      reinstall a
+                      stable, newer release of VectorLinux than to
+                      attempt a system
+                      upgrade with <i>slapt-get --upgrade</i>. Remember
+                      the old adage:
+                      "if it ain't broke don't fix it!". The VL
+                      developers and packagers
+                      are working to improve our package repository so
+                      that sometime in
+                      the near future full "safe" complete system
+                      upgrades using
+                      slapt-get --upgrade will be a viable option.</p>
+                    <h3>Slackware Packages</h3>
+                    <p><span class="standardtype">VectorLinux is able to
+                        install
+                        Slackware packages. However, Slackware does not
+                        normally support
+                        slapt-get nor do Slackware packages do any
+                        dependency checking. For
+                        this reason we do not recommend enabling any
+                        Slackware repositories
+                        in the /etc/slapt-get/slapt-getrc configuration
+                        file (or with
+                        gslapt, Edit, Preferences, Sources, Add a
+                        Source). The default
+                        slapt-get configuration file will enable the
+                        user to download and
+                        install Vector packages only. Slackware packages
+                        which are
+                        non-system packages will probably work fine with
+                        VL but you may
+                        have to install all the dependant packages first
+                        and there is no
+                        guarantee the package will work properly. If you
+                        do decide to load
+                        a Slackware package please ensure you download
+                        packages built for
+                        the correct version of Slackware. For VL6.0 the
+                        Slackware version
+                        it is based upon is v.12.1</span></p>
+                    <p class="standardtype">To install a Slackware
+                      package that you
+                      have downloaded you use the Slackware "installpkg"
+                      command rather
+                      than slapt-get or gslapt (see section below for
+                      more details).</p>
+                    <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#Top"
+                        class="standardtype">Top</a></p>
+                    <hr>
+                    <h2><u><a name="slackcommands" id="slackcommands"></a>7.
+                        Other
+                        Slackware Package Commands</u></h2>
+                    <p class="standardtype">For the sake of completeness
+                      this section
+                      documents basic Slackware Package commands which
+                      are also available
+                      to the VL user. Remember that slapt-get (and
+                      gslapt) are built upon
+                      Slackware package commands. The Slackware
+                      commands, unlike
+                      slapt-get and gslapt do not retrieve packages from
+                      mirror sites:
+                      they assume you have already downloaded the
+                      appropriate package.
+                      The commands available are: <code class="Code1">installpkg,
+removepkg,
+                        upgradepkg, explodepkg, makepkg and pkgtool.</code>
+                      You
+                      will find a "man page" for each of these commands,
+                      e.g.
+                      <code class="Code1">man installpkg</code> for a
+                      full explanation of
+                      how to use each of these commands. Some examples
+                      of Slackware
+                      package commands usage:</p>
+                    <ul>
+                      <li>to install a "leafpad" package which you
+                        downloaded from
+                        linuxpackages.net, first "cd" into the directory
+                        where the package
+                        is located and then: <code class="Code1">installpkg
+                          leafpad-0.8.4-i486-1arf.tgz</code>.</li>
+                      <li>to remove an "abiword" package from your
+                        system: <code class="Code1">removepkg abiword</code>.</li>
+                      <li>to extract the contents of a Slackware package
+                        into the current
+                        directory: <code class="Code1">explodepkg
+                          leafpad-0.8.4-i486-1arf.tgz</code>.</li>
+                      <li>to install, remove or view packages from a
+                        handy menu system:
+                        <code class="Code1">pkgtool</code> .</li>
+                    </ul>
+                    <p class="standardtype">One of the most convenient
+                      features of
+                      "mc", the Midnight Commander menu-based file
+                      manager, is that VL
+                      has added some Slackware package commands to the
+                      "F2" menu. One may
+                      easily pack, install and remove Slackware/Vector <i>.tgz</i>
+                      packages using mc in this manner. In the mc F2
+                      menu you also can
+                      convert an RPM package to a Slackware package.
+                      This facility is
+                      also available from the command line using the
+                      command:
+                      <code class="Code1">rpm2tgz</code>.</p>
+                    <p class="standardtype">Furthermore, VL provides the
+                      convenient
+                      command: <code class="Code1">pkgtool</code> .
+                      "pkgtool" is the
+                      Slackware package utility - a command line wrapper
+                      around the
+                      Slackware package commands mentioned in the
+                      paragraphs above, with
+                      a few enhancements. By typing: <code
+                        class="Code1">pkgtool</code>
+                      as root, you will see the options available to
+                      you.</p>
+                    <hr>
+                    <h2><u><a name="building" id="building"></a>8.
+                        Building
+                        Packages</u></h2>
+                    <p class="standardtype">Experienced Linux users who
+                      are familiar
+                      with compiling software from source code are
+                      encouraged to
+                      contribute to the VectorLinux community by
+                      building packages which
+                      are not yet in the VL repositories. Your
+                      contributions will enhance
+                      VL for all users by providing a more comprehensive
+                      suite of
+                      packages for the VL community.</p>
+                    <p class="standardtype">The procedure to build a
+                      proper VectorLinux
+                      package is outlined at the VectorLinux Forum <a
+                        href="http://forum.vectorlinux.com/index.php?topic=1380.0">here</a>.
+                      Please follow the procedures exactly as any
+                      deviations from this
+                      methodology may result in non-robust package that
+                      may break a
+                      user's system.</p>
+                    <p class="standardtype">VL now has a new application
+                      provided with
+                      6.0 called "vpackager". This newbie-friendly GUI
+                      software automates
+                      the compilation and creation of a VectorLinux
+                      package from source
+                      code. More details can be found <a
+                        href="http://code.google.com/p/vpackager/wiki/HowToUse">here</a>.</p>
+                    <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_slaptget_en.html#Top"
+                        class="standardtype">Top</a></p>
+                    <hr></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>&nbsp;</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

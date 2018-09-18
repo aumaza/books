@@ -1,0 +1,2284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>Vector linux installation guide</title>
+  </head>
+  <body>
+    <table align="center" bgcolor="#FFFFFF" border="1" cellpadding="0"
+      cellspacing="8">
+      <tbody>
+        <tr>
+          <td>
+            <table align="center" border="0" cellpadding="2"
+              cellspacing="0" width="100%">
+              <tbody>
+                <tr>
+                  <td class="HeaderBack"><img
+                      src="http://vectorlinux.osuosl.org/docs/vl60/images/newfront.jpg"
+                      height="80" width="600"></td>
+                </tr>
+                <tr>
+                  <td class="MenuTypeNewThin">
+                    <div class="MenuTypeLink" align="center"><strong><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/index.html">Overview</a>
+                        &nbsp;|&nbsp; <a
+                          href="http://vectorlinux.osuosl.org/docs/vl60/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://forum.vectorlinux.com">VectorLinux
+                          Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                          href="http://vectorlinux.osuosl.org/docs/">Online
+                          Documentation</a></strong></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" border="0" cellpadding="0"
+              cellspacing="0" width="95%">
+              <tbody>
+                <tr>
+                  <td height="80">
+                    <h2 align="center"><b><font color="#006699"
+                          face="Arial, Helvetica, sans-serif"><u>Installation
+                            Guide</u></font></b></h2>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h3><font face="Arial, Helvetica, sans-serif"><b>CONTENTS</b></font></h3>
+                    <pre class="standardtype" style="margin-bottom: 0cm"><font face="Arial, Helvetica, sans-serif"><a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#requirements">1. System requirements</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#partitioning">2. Preparing hard drive Partitions</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#tools_win">2.1 Tools for Windows/DOS</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#tools_lin">2.2 Tools for Linux</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#tools_other">2.3 VectorLinux Included Tools</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#integrity">3. Obtaining VectorLinux</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#integrity_win">3.1 Tools for Windows</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#integrity_lin">3.2 Tools for Linux</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#installation">4. Installing VectorLinux</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#controllers">4.1 Supported controllers</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#iso_win">4.2 Direct ISO Install on a Windows Host</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#iso_linux">4.3 Direct ISO Install on a Linux Host</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#cd_install">4.4 Bootable CD Install</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#usb">4.5 USB Device Install</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#network">4.6 Network Install</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#floppy_install">4.7 Floppy and CD Install</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#guiinstall"> 5a. The Graphical Installation process: step by step</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#installsteps">5b. The Text-Based Installation process: step by step</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#postinstall">5c. Text-Based Post-install configuration</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#lilo">5c.1 Set up Lilo</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#configure">5c.2 Configuring VectorLinux</a>
+<a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#firsttime">7. Using the system for the first time</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#login">7.1 Login to VectorLinux</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#admin">7.2 System administration</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#passwords">7.3 Create passwords and users</a>
+    <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#reboot">7.4 Reboot and Shutdown</a>
+ <a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#troubleshoot">8. Troubleshooting</a>
+</font>
+
+</pre>
+                    <p>&nbsp;</p>
+                    <hr>
+                    <h2 style="margin-bottom: 0cm"><span class="western"><font
+                          face="Arial, Helvetica, sans-serif"><u><a
+                              name="requirements" id="requirements"></a></u></font></span><font
+                        face="Arial, Helvetica, sans-serif"><u>Getting
+                          Started</u></font></h2>
+                    <p><span class="standardtype">For the users
+                        convenience and choice
+                        VectorLinux releases several editions - called
+                        the Standard, SOHO,
+                        Deluxe, Live and Light editions. The Standard
+                        Edition is our
+                        "foundation" distribution - a fast and stable
+                        but complete distro
+                        that fits on ~3GB of hard drive space and
+                        includes the xfce desktop
+                        environment. It will work well on most older
+                        computers and
+                        positively flies on newer ones. The SOHO Edition
+                        (Small Office,
+                        Home Office) includes the more extensive KDE
+                        desktop environment
+                        along with OpenOffice and many office and
+                        multimedia applications
+                        for today's modern computers. The Deluxe
+                        Editions are available for
+                        purchase in Standard or SOHO CD's along with a
+                        second CD with
+                        1000MB of extra applications including FreeRock
+                        Gnome, KDE,
+                        Enlightenment17, Opera and others. You help
+                        support VectorLinux by
+                        purchasing our Deluxe Versions. The Live version
+                        enables you to use
+                        VL's fast, secure operating system on any
+                        computer, or to try out
+                        VectorLinux for the first time without actually
+                        installing. The
+                        Light edition is for those with old computers,
+                        low RAM or dialup
+                        Internet. Each edition has specific hardware
+                        requirements. Please
+                        ensure you have read the requirements for the
+                        edition you are about
+                        to install before proceeding. The good news is
+                        that the
+                        installation procedure for all editions is
+                        basically the same and
+                        is fast.</span></p>
+                    <p class="western" style="margin-bottom: 0cm"
+                      align="center">
+                      <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h2><font face="Arial, Helvetica, sans-serif"><u><b><a
+                              name="requirements" id="requirements"></a></b>1.
+                          System
+                          Requirements</u></font></h2>
+                    <p class="western"><font face="Arial, Helvetica,
+                        sans-serif"><span class="standardtype">The
+                          following table lists system requirements for
+                          the various editions
+                          of VectorLinux:</span></font></p>
+                    <table align="center" border="1" cellpadding="5"
+                      cellspacing="0" width="95%">
+                      <tbody>
+                        <tr class="standardtype">
+                          <td><strong>Item</strong></td>
+                          <td><em><strong>Standard</strong></em></td>
+                          <td><em><strong>SOHO</strong></em></td>
+                          <td><em><strong>Deluxe</strong></em></td>
+                          <td><em><strong>Live</strong></em></td>
+                          <td><em><strong>Light</strong></em></td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td><strong>Processor</strong></td>
+                          <td>Pentium III</td>
+                          <td>Pentium IV</td>
+                          <td>Pentium IV</td>
+                          <td>Pentium III</td>
+                          <td>Pentium II</td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td><strong>Memory (min.)</strong></td>
+                          <td>128 MB</td>
+                          <td>256 MB</td>
+                          <td>512 MB</td>
+                          <td>512 MB</td>
+                          <td>64 MB</td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td><strong>Hard Drive (root)</strong></td>
+                          <td>&gt;3.4 GB</td>
+                          <td>&gt;3.8 GB</td>
+                          <td>&gt;5 GB</td>
+                          <td>not applicable</td>
+                          <td>&gt;2 GB</td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td><strong>Hard Drive (swap)</strong></td>
+                          <td>256 MB</td>
+                          <td>512 MB</td>
+                          <td>512 MB</td>
+                          <td>not applicable</td>
+                          <td>128 MB</td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td><strong>Hard Drive (home)</strong></td>
+                          <td>as needed</td>
+                          <td>as needed</td>
+                          <td>as needed</td>
+                          <td>not applicable</td>
+                          <td>as needed</td>
+                        </tr>
+                        <tr class="standardtype">
+                          <td><strong>Video</strong></td>
+                          <td>800x600 pixels, 16 bits color</td>
+                          <td>1024x768 pixels, 24 bits color</td>
+                          <td>1024x768 pixels, 24 bits color</td>
+                          <td>1024x768 pixels, 24 bits color</td>
+                          <td>800x600 pixels, 16 bits color</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="standardtype" style="margin-bottom: 0cm">Of
+                      course, you
+                      will also need a compatible keyboard, mouse, and a
+                      CDROM drive.
+                      Other hardware components such as a network card,
+                      modem, sound
+                      card, CD-writer, DVD, printer, etc., are optional.
+                      Linux also
+                      supports modern USB devices including pen drives,
+                      digital cameras,
+                      and scanners.</p>
+                    <div align="center">
+                      <pre class="standardtype" style="margin-bottom: 0cm"><span class="standardtype"></span><a href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"><font face="Arial, Helvetica, sans-serif">Top</font></a>
+</pre>
+                      <div align="left">
+                        <div align="center">
+                          <div align="left">
+                            <hr>
+                            <h2><a name="partitioning" id="partitioning"></a>
+                              <font face="Arial, Helvetica, sans-serif"><u><b>2.
+                                    Understanding Hard Drive
+                                    Partitions</b></u></font></h2>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">For newbies
+                              this
+                              is probably the most difficult but also
+                              the most important concept
+                              to learn before installing <i>any</i>
+                              operating system on a
+                              computer. Before an operating system or
+                              data can be stored on a
+                              hard drive that drive must be partitioned
+                              and then each partition
+                              must be formatted for a specific
+                              filesystem. A partition is a
+                              physical or logical "part" of the hard
+                              drive. A filesystem is a
+                              storage container and "database" for
+                              storing files. For more
+                              details about partitions please <a
+                                href="http://en.wikipedia.org/wiki/Disk_partitioning">read
+                                this</a> and
+                              for details on Linux filesystems go <a
+                                href="http://www.linux.org/lessons/advanced/x1254.html">here</a>.</p>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">In the
+                              Microsoft
+                              Windows or default Ubuntu Linux install
+                              process usually only one
+                              partition and one filesystem encompassing
+                              the entire hard drive is
+                              created. In MS Windows this process tends
+                              to be hidden from the
+                              user. So when you install MS Windows (or
+                              if you have a computer
+                              with only MS Windows pre-installed) it
+                              tends to wipe out any other
+                              partitions that may have existed on your
+                              drive. On the other hand
+                              VectorLinux and many other Linux distros
+                              provide you with the
+                              option and ability to delete, save, create
+                              or resize partitions and
+                              to format those partitions with different
+                              filesystems. This enables
+                              you to have more than one operating system
+                              on one hard drive (i.e.
+                              "dual boot") and enables easier and more
+                              secure backups.</p>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">If you intend
+                              to
+                              dual boot your computer with both MS
+                              Windows and VL you should
+                              install Windows first. This is because in
+                              its narcissistic
+                              presumptions Windows takes over the entire
+                              hard drive. If you
+                              intend to install Windows after VL then
+                              you will need to do the
+                              following:</p>
+                            <ol class="standardtype"
+                              style="margin-bottom: 0cm">
+                              <li>use the "gparted" application from a
+                                Live Linux CD to reduce
+                                the size of your "/home" partition</li>
+                              <li>install MS Windows to the now free
+                                space on your hard
+                                drive</li>
+                              <li>re-run the lilo or grub boot loader
+                                install process from the VL
+                                Install CD to overwrite the Windows
+                                master boot record (MBR). Lilo
+                                or Grub will find the Windows partition
+                                and add it to the boot
+                                menu.</li>
+                            </ol>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">Assuming you
+                              already have only MS Windows on your hard
+                              drive the entire drive
+                              will have already been dedicated to
+                              Windows (probably denoted as
+                              C:). In order to install VL on the same
+                              hard drive which already
+                              contains a MS Windows operating system you
+                              must reduce the size of
+                              the Windows partition to give you room to
+                              install Linux. The
+                              easiest way to do this is to use the <a
+                                href="http://en.wikipedia.org/wiki/Gparted">gparted</a>
+                              application from
+                              <a
+                                href="http://en.wikipedia.org/wiki/Live_CD">Live
+                                Linux CD</a>.
+                              Almost all Live Linux CD's (including
+                              VectorLinux LIVE) contain the
+                              gparted application. Documentation for
+                              gparted is available from
+                              its Help Menu or online <a
+                                href="http://gparted.sourceforge.net/documentation.php">here</a>.</p>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">If you are
+                              simply installing VL and VL alone and you
+                              want to take over the
+                              entire hard drive for VL then you do not
+                              need to do any of the
+                              above. The VL install CD includes
+                              partitioning software that can do
+                              partitioning during the install process.</p>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><font face="Arial,
+                                  Helvetica, sans-serif"><br>
+                                  <a name="tools_lin" id="tools_lin"></a></font></span>
+                              <font face="Arial, Helvetica, sans-serif">2.1</font>
+                              <font face="Arial, Helvetica, sans-serif"><u>Partitions
+                                  Recommended for
+                                  VectorLinux</u></font></h4>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">For an
+                              efficient
+                              Linux install the developers at
+                              VectorLinux recommend that when you
+                              install VL you consider creating the
+                              following partitions:</p>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Root
+                                  partition: this is the main
+                                  partition to install the Linux system
+                                  and all software programs.
+                                  See the table above for our
+                                  recommended minimum root partition
+                                  sizes for each VL version. You should
+                                  also include additional space
+                                  to install other applications at a
+                                  later date. As a rough guideline
+                                  make your root partition at least 5GB
+                                  in size.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Swap
+                                  partition: required to enable
+                                  virtual memory. It expands the
+                                  capacity of your actual random
+                                  access memory (RAM), so that you can
+                                  run more programs at the same
+                                  time. It should be twice the size of
+                                  your actual computer's RAM, up
+                                  to a maximum of about 1GB.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Home
+                                  partition: for storing your own
+                                  data. Only you ca determine how large
+                                  this should be. If you intend
+                                  to store lots of music and video files
+                                  it will need to be at least
+                                  10GB in size, probably much larger.
+                                  Normally, most users use up as
+                                  much of the remaining hard drive space
+                                  (after creating "root" and
+                                  "swap") as possible for their home
+                                  partition. The advantage of
+                                  having a /home partition distinct from
+                                  root ("/") is that at any
+                                  time you can simply image (ghost) the
+                                  /home partition to preserve
+                                  your data files and you can also
+                                  install a new version of VL
+                                  without overwriting all your setup
+                                  files and data.</font></li>
+                            </ul>
+                            <span class="standardtype">You may prepare
+                              these partitions prior
+                              to the installation by using partitioning
+                              software (such as
+                              gparted) or you may actually prepare your
+                              hard disk partitions
+                              during the install process (this latter
+                              method is easier and is
+                              recommended for all newbies). You should
+                              at least know the
+                              partition sizes you want for root, home
+                              and swap beforehand (see
+                              above).</span>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><font face="Arial,
+                                  Helvetica, sans-serif"><br>
+                                  <a name="tools_lin" id="tools_lin"></a></font></span>
+                              <font face="Arial, Helvetica, sans-serif">2.2</font>
+                              <font face="Arial, Helvetica, sans-serif"><u>Linux
+                                  partition naming
+                                  scheme</u></font></h4>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">MS Windows
+                              presents hard drive partitions to the user
+                              as: C:, D:. E:, etc.
+                              However, Unix/Linux uses a different
+                              notation. Firstly, a computer
+                              may have more than one hard drive. Linux
+                              maps each hard drive as a
+                              device. For example:</p>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">/dev/hda
+                                  : primary controller Master
+                                  IDE drive.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">/dev/hdb
+                                  : primary controller Slave
+                                  IDE drive.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">/dev/hdc
+                                  : secondary controller
+                                  Master IDE drive.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">/dev/hdd
+                                  : secondary controller
+                                  Slave IDE drive.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">/dev/sda
+                                  : first SATA/SCSI
+                                  device.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">/dev/sdb
+                                  : second SATA/SCSI
+                                  device.</font></li>
+                            </ul>
+                            <span class="standardtype">If you have only
+                              one IDE hard drive, it
+                              is almost certainly "/dev/hda". The second
+                              hard drive could be
+                              /dev/hdb or /dev/hdc, depending on which
+                              controller it is
+                              installed.</span>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">Next, each hard
+                              drive can be divided into four PRIMARY
+                              partitions. For the first
+                              hard drive (/dev/hda), they are mapped as
+                              /dev/hda1 .. /dev/hda4,
+                              respectively. But what if you want more
+                              than four partitions?</p>
+                            <p class="standardtype"><font face="Arial,
+                                Helvetica, sans-serif">Unfortunately,
+                                four is a legacy
+                                limit you can do nothing about. The
+                                work-around is that one of the
+                                primary partitions (/dev/hda2 ..
+                                /dev/hda4) can be used as an
+                                EXTENDED partition. Inside the extended
+                                partition, you may create
+                                more LOGICAL partitions. The logical
+                                partitions are named
+                                /dev/hda5, /dev/hda6 and so on.</font></p>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">All SATA drives
+                              will be labelled as "/dev/sda" and for the
+                              second drive as
+                              "/dev/sdb", ... etc.</p>
+                            <h2><b><u><a name="integrity" id="integrity"></a></u></b>
+                              <font face="Arial, Helvetica, sans-serif"><u><b>3.
+                                    Obtaining
+                                    VectorLinux</b></u></font></h2>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">Each edition of
+                              VectorLinux is distributed as an ISO
+                              (.iso) "image" file. To obtain
+                              it and prepare it for installation the
+                              steps are:</p>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Decide
+                                  which edition of VectorLinux
+                                  you want. Download the ISO image file
+                                  (.iso) and the corresponding
+                                  md5 checksum file (.md5). The download
+                                  sites are listed at the
+                                  <a
+                                    href="http://vectorlinux.com/downloads">VectorLinux
+                                    website,
+                                    download page</a> and also in the <a
+href="http://vectorlinux.osuosl.org/docs/vl60/index.html">Overview
+                                    Document</a>.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">You
+                                  should check the image file
+                                  before burning it to a CD, to make
+                                  sure it has not been corrupted
+                                  during download transmission. For
+                                  that, you need to do an "md5sum
+                                  check", that means comparing the
+                                  "fingerprint" of your image file
+                                  (.iso) against the fingerprint stored
+                                  in the checksum file
+                                  (.md5).</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Note
+                                  that VL allows you to install
+                                  the .iso file directly without
+                                  actually burning to a CD first (see
+                                  Install Methods below), so if you do
+                                  not wish to burn a CD you
+                                  don't have to. If you do burn the
+                                  image onto a CD using a CD-writer
+                                  and ensure that you burn the .iso
+                                  image as an IMAGE, not as a data
+                                  file. If you burn the .iso as a data
+                                  file you will not be able to
+                                  boot your new CD. Check your CD
+                                  burning software documentation on
+                                  how to burn as an "image".</font></li>
+                            </ul>
+                            <span class="standardtype">If you don't have
+                              a good, fast Internet
+                              connection, or a CD-writer, you may order
+                              a well-prepared CD from
+                              <a href="http://vectorlinux.com/cd-store">our
+                                store</a>.</span>
+                            <h4 style="margin-bottom: 0cm"><a
+                                name="integrity_win" id="integrity_win"></a><font
+                                face="Arial, Helvetica, sans-serif">3.1
+                                <u>Checksum Tools for MS Windows</u></font></h4>
+                            <p style="margin-bottom: 0cm"><font
+                                face="Arial, Helvetica, sans-serif"><span
+                                  class="standardtype">You may
+                                  download the ISO image and MD5
+                                  checksum using any web browser, FTP
+                                  client, or download manager. However,
+                                  some web browsers
+                                  (<i>Internet Explorer</i>, for
+                                  instance) have a tendency to
+                                  rename</span></font> <span
+                                class="standardtype"><font face="Arial,
+                                  Helvetica, sans-serif">.md5 files as
+                                  .htm or .txt. You can
+                                  just rename it back to .md5.</font></span></p>
+                            <p style="margin-bottom: 0cm"><span
+                                class="standardtype"><font face="Arial,
+                                  Helvetica, sans-serif">For
+                                  integrity checking, download and unzip
+                                  the GUI tool <a
+                                    href="http://www.md5summer.org/">md5summer</a>.
+                                  On initial use it asks
+                                  permission to associate the extension
+                                  .md5 with itself. If you
+                                  agree, you just need to double-click
+                                  on a .md5 file to check the
+                                  integrity of the original file (as
+                                  long as they are both in the
+                                  same folder). Otherwise, you have to
+                                  manually browse to the .md5
+                                  file within the md5summer interface,
+                                  then click on the</font>
+                                <font face="Times New Roman, serif">"<font
+                                    face="Arial, Helvetica, sans-serif">Verify
+                                    sums</font>"</font>
+                                <font face="Arial, Helvetica,
+                                  sans-serif">button and select the
+                                  .md5 file. If you get an OK for the VL
+                                  .iso image file, you can
+                                  proceed to burn it as an image (see
+                                  notes above re proper
+                                  burning).</font></span></p>
+                            <p class="standardtype">After that, you may
+                              want to burn the ISO
+                              image onto a CD (but you don't have to -
+                              see below). For this, use
+                              the program that is provided by your
+                              CD-writer (e.g: Adaptech CD
+                              Writer, or Nero Burner). Ensure you burn
+                              as an IMAGE not as a
+                              file.</p>
+                            <h4 style="margin-bottom: 0cm"><font
+                                face="Arial, Helvetica, sans-serif"><a
+                                  name="integrity_lin"
+                                  id="integrity_lin"></a>3.2 <u>Checksum
+                                  Tools for Linux</u></font></h4>
+                            <p class="standardtype">Most Linux systems
+                              already have the tools
+                              so you will not have to download any
+                              utilities. Here is how to do
+                              that on Linux console/terminal in three
+                              steps:</p>
+                            <ul>
+                              <li>
+                                <p class="standardtype">Downloading the
+                                  ISO image and MD5:<br>
+                                  nohup wget
+ftp://anymirror/path-to/veclinux-6.0/iso-release/vl-6.0.???.iso<br>
+                                  nohup wget
+ftp://anymirror/path-to/veclinux-6.0/iso-release/vl-6.0.???.iso.md5.txt<br>
+                                  (** Replace the pathname ??? above
+                                  with correct path **)</p>
+                              </li>
+                              <li>
+                                <p class="standardtype">Checking the
+                                  integrity:<br>
+                                  md5sum -c vl-6.0.???.iso.md5.txt</p>
+                              </li>
+                              <li>
+                                <p class="standardtype">Burning the ISO
+                                  onto a CD:<br>
+                                  cdrecord -v fs=6m speed=4 dev=2,0
+                                  vl-6.0.???.iso</p>
+                              </li>
+                            </ul>
+                            <span class="standardtype">Instead of the
+                              command line you can of
+                              course use "k3b" for the above jobs.</span>
+                            <p style="margin-bottom: 0cm" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"
+                                class="standardtype"><font face="Arial,
+                                  Helvetica, sans-serif">Top</font></a></p>
+                            <hr>
+                            <h2 style="margin-bottom: 0cm" align="left"><a
+                                name="installation" id="installation"></a><font
+                                face="Arial, Helvetica, sans-serif"><u><b>4.
+                                    Installing
+                                    VectorLinux</b></u></font></h2>
+                            <p><span class="standardtype">To obtain
+                                VectorLinux you need to
+                                either purchase a Deluxe CD from our <a
+                                  href="http://vectorlinux.com/cd-store">CD
+                                  Store</a> or download an "iso"
+                                image from a <a
+                                  href="http://vectorlinux.com/downloads">VectorLinux
+mirror
+                                  site</a>. Once connected to the mirror
+                                site navigate to the
+                                ...distr/vectorlinux/veclinux-6.0
+                                directory at the mirror site you
+                                have chosen. Within that directory you
+                                will see two subdirectories:
+                                /iso-release and /iso-soho (amongst
+                                others). The /iso-release
+                                directory is where you will find iso
+                                images for the VL 6.0 Standard
+                                and VL 6.0 Standard Live Editions. The
+                                /iso-soho directory is where
+                                you will find iso images for VL 6.0 SOHO
+                                Edition (when available).
+                                Then download your iso of choice.</span></p>
+                            <p><span class="standardtype"><span
+                                  class="standardtype">Prior to
+                                  starting the installation, you must
+                                  know two things: 1) what type
+                                  of hard drive controller your computer
+                                  has and 2) which method you
+                                  will use to install. Today, there are
+                                  three common hard drive
+                                  controllers: IDE, SCSI, SATA and
+                                  Adaptec(for CDROMS). You must boot
+                                  the installation using the kernel that
+                                  supports your controller.
+                                  The default kernel works for SATA-IDE
+                                  drives (which probably
+                                  includes about 95% of today's
+                                  desktop/laptop computers). The second
+                                  concern is which install method to
+                                  use. This depends on the
+                                  capability of the target computer.
+                                  VectorLinux can be installed via
+                                  one of these methods:</span></span></p>
+                            <ul>
+                              <li class="standardtype">Direct ISO File
+                                from a Windows host.</li>
+                              <li class="standardtype">Direct ISO File
+                                from a Linux host.</li>
+                              <li class="standardtype">Bootable CD.</li>
+                              <li class="standardtype">from a USB
+                                device.</li>
+                              <li class="standardtype">from a network.</li>
+                              <li class="standardtype">Floppy disk and
+                                CD.</li>
+                            </ul>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><a name="controllers"
+                                  id="controllers"></a></span><font
+                                face="Arial, Helvetica, sans-serif">4.1</font>
+                              <font face="Arial, Helvetica, sans-serif"><u>Supported
+                                  controllers</u></font></h4>
+                            <p class="western" style="margin-bottom:
+                              0cm"><font face="Arial, Helvetica,
+                                sans-serif"><span class="standardtype">VectorLinux
+                                  supports and can be installed on
+                                  systems
+                                  using SATA/IDE/ATA hard drive
+                                  controllers - the most popular ones
+                                  in laptop/desktop systems. Another
+                                  well known standard is a SCSI
+                                  controller, but due to its high
+                                  pricing, it is only common on
+                                  commercial server systems.</span></font></p>
+                            <p class="western" style="margin-bottom:
+                              0cm"><span class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">If
+                                  you are
+                                  having difficulties using your SATA
+                                  drives, make sure you have set
+                                  the BIOS correctly. In a nutshell, set
+                                  the BIOS to "<i>Enhanced
+                                    mode SATA only"</i>. This is counter
+                                  intuitive, but it means use
+                                  enhanced mode <u>only</u> on the
+                                  SATA, not just use the SATA and
+                                  turn off the PATA. If you set it to
+                                  enhanced mode SATA+PATA, the
+                                  kernel will lock as it tries to use an
+                                  IDE driver for the SATA
+                                  controller. Your symptoms will be that
+                                  the kernel install may hang
+                                  after detecting hda - hdd.</font></span></p>
+                            <p class="standardtype"><font face="Arial,
+                                Helvetica, sans-serif">Please know your
+                                hard drive
+                                controller type because it determines
+                                the kernel required for
+                                installation. The default kernel
+                                supports the SATA/IDE controllers
+                                (this is the one for probably 99% of
+                                workstation computers on the
+                                market). Otherwise, you need to specify
+                                either "scsi" or "adaptec"
+                                kernel during the install.</font></p>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><a name="iso_win"
+                                  id="iso_win"></a></span><font
+                                face="Arial, Helvetica, sans-serif">4.2</font>
+                              <font face="Arial, Helvetica, sans-serif"><u>Direct
+                                  ISO on a Windows
+                                  Host</u></font></h4>
+                            <p><font face="Arial, Helvetica, sans-serif"><span
+                                  class="standardtype">This is a new
+                                  method that will save you having to
+                                  burn a CD. Assume that you already
+                                  have Windows running on the
+                                  computer, and the partitions have been
+                                  prepared as suggested
+                                  above.</span></font></p>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Download
+                                  your iso of choice as
+                                  described above. Move it to the top
+                                  level directory (C:\ or D:\).
+                                  Don't forget to check its integrity as
+                                  explained
+                                  previously.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">You
+                                  MUST now rename the iso to
+                                  follow DOS 8.3 filename specs (e.g.
+                                  VL60.ISO, not
+                                  vl60.1.24vl6.iso), and the filename
+                                  should be all capital
+                                  letters.</font></li>
+                              <li><span class="standardtype"><font
+                                    face="Arial, Helvetica, sans-serif">The
+                                    next files should be placed into
+                                    C:\loadlin</font></span>
+                                <ul>
+                                  <li class="standardtype"><font
+                                      face="Arial, Helvetica,
+                                      sans-serif"><strong>loadlin.exe</strong><br>
+                                      Get it from &#8220;install/loadlin/&#8221;
+                                      directory within the FTP
+                                      site.<br>
+                                    </font></li>
+                                  <li class="standardtype"><font
+                                      face="Arial, Helvetica,
+                                      sans-serif"><strong>initrd.img</strong><br>
+                                      Find it as &#8220;isolinux/initrd.img&#8221;
+                                      within the FTP
+                                      site<br>
+                                    </font></li>
+                                </ul>
+                                <ul>
+                                  <li class="standardtype"><font
+                                      face="Arial, Helvetica,
+                                      sans-serif"><strong>The kernel
+                                        file that matches
+                                        your system</strong> (ide, scsi,
+                                      sata, adaptec)<br>
+                                      You may select one of them from
+                                      &#8220;isolinux/kernel/&#8221;
+                                      directory within FTP site.</font></li>
+                                </ul>
+                              </li>
+                            </ul>
+                            <p class="standardtype"><font face="Arial,
+                                Helvetica, sans-serif">Then proceed with
+                                the
+                                installation:</font></p>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Shutdown
+                                  Windows to DOS
+                                  mode.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Type
+                                  &#8220;cd C:\loadlin&#8221;
+                                  &lt;enter&gt; (without quotes)</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Type
+                                  &#8220;loadlin ide
+                                  root=/dev/ram rw initrd=initrd.img&#8221;
+                                  &lt;enter&gt; (without
+                                  quotes).</font></li>
+                            </ul>
+                            <p class="standardtype"><font face="Arial,
+                                Helvetica, sans-serif">You should
+                                replace the
+                                &#8220;ide&#8221; with the name of the kernel that
+                                you downloaded
+                                earlier. The standard installation
+                                process will be
+                                started.</font></p>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><a name="iso_linux"
+                                  id="iso_linux"></a></span><font
+                                face="Arial, Helvetica, sans-serif">4.3
+                                <u>Direct ISO on a Linux
+                                  Host</u></font></h4>
+                            <p class="standardtype">If you have another
+                              Linux running on the
+                              computer, this method will be easy. You
+                              need to download the
+                              following files into a directory (e.g:
+                              /home/download):</p>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">The
+                                  chosen VectorLinux ISO image
+                                  file.</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif"><strong>vlinstall-iso</strong><br>
+                                  Find it as
+                                  &#8220;install/vinstall/vinstall-iso&#8221; within
+                                  the
+                                  FTP site<br>
+                                </font></li>
+                            </ul>
+                            <span class="standardtype">Now go to the
+                              text console (press
+                              Cntrl-Alt-F1) and login as root. Proceed
+                              as follows:</span>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Switch
+                                  to run level 2 (or 3 in
+                                  Slackware/Redhat, etc)<br>
+                                  <em>init 2 &lt;enter&gt;</em><br>
+                                </font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Go
+                                  to the directory where you
+                                  downloaded the files, i.e.:
+                                  /home/download<br>
+                                  <em>cd /home/download&lt;enter&gt;</em><br>
+                                </font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Now,
+                                  install using the ISO file<br>
+                                  <em>./vinstall-iso vl-6.0.iso
+                                    &lt;enter&gt;</em></font></li>
+                            </ul>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><a name="cd_install"
+                                  id="cd_install"></a></span><font
+                                face="Arial, Helvetica, sans-serif">4.4
+                                <u>Bootable CD</u></font></h4>
+                            <p class="western" style="margin-bottom:
+                              0cm"><font face="Arial, Helvetica,
+                                sans-serif"><span class="standardtype">Use
+                                  this
+                                  method if you already have the VL
+                                  install CD, and your computer is
+                                  capable of booting it.</span></font></p>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm"><font
+                                face="Arial, Helvetica, sans-serif">First,
+                                you may need to change the
+                                boot order. Changing the boot order
+                                allows your system to boot from
+                                different devices like your hard drive,
+                                floppy drive or CDROM
+                                drive.<br>
+                                When you select an installation method,
+                                you might have to set up
+                                your system to boot accordingly. To do
+                                this, immediately after your
+                                computer starts up go to the BIOS
+                                options setup screen <b>(1)</b>.
+                                There should be an option for boot order
+                                (general options are C
+                                drive, A drive, CDROM drive, etc).
+                                Choose which should boot first
+                                (in this case CDROM drive), save out of
+                                the BIOS screens and
+                                restart the computer. You can change the
+                                boot order back when you
+                                are finished installing VL.</font></p>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm"><font
+                                face="Arial, Helvetica, sans-serif"><b>Note:<br>
+                                  (1)</b>Not all systems use the
+                                "Delete" key to enter the BIOS. Some
+                                systems use one of the function keys
+                                (F1-F12). Some use a
+                                combination of keystrokes. Often the
+                                initial boot screen when you
+                                turn on your computer will tell you
+                                which keystroke to use to enter
+                                the BIOS setup. If not, check your
+                                computer or motherboard manual.
+                                Failing that check your computer
+                                manufacturer's website
+                                documentation for your specific computer
+                                model #.</font></p>
+                            <p class="standardtype"><font face="Arial,
+                                Helvetica, sans-serif">After the boot
+                                order is properly
+                                set, place the VL installation CD in the
+                                CD drive and reboot the
+                                system. The boot process will give you a
+                                prompt. This is the chance
+                                for you to select the correct kernel
+                                that supports your controller.
+                                If you do NOT have a SCSI or Adaptec
+                                controller (99% of machines
+                                don't), then simply press [enter] to use
+                                the default kernel
+                                (sata/ide) with the graphical installer.
+                                Otherwise, type the kernel
+                                you want, e.g:</font></p>
+                            <p><span class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif"><i>boot:
+                                    scsi
+                                    [enter]</i></font></span></p>
+                            <p class="standardtype">If you wish to use
+                              the text based install
+                              procedure (recommended if you have
+                              installed VL before, are not a
+                              newbie and/or prefer a slightly faster
+                              install process) then type
+                              "linux" at the first line install prompt.</p>
+                            <span class="standardtype">That's it. The
+                              chosen graphical install
+                              procedure will then be started.</span>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><a name="usb" id="usb"></a></span><font
+                                face="Arial, Helvetica, sans-serif">4.5
+                                <u>USB Stick Install</u></font></h4>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">Two methods for
+                              installing VL from a USB stick (pen drive)
+                              are discussed <a
+                                href="http://forum.vectorlinux.com/index.php?topic=5721.0">here
+                                on the
+                                VL Forum</a>. These methods have not yet
+                              been confirmed by other
+                              users but do apparently work.</p>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><a name="network"
+                                  id="network"></a></span><font
+                                face="Arial, Helvetica, sans-serif">4.6
+                                <u>Network
+                                  Install</u></font></h4>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">You may install
+                              VL from a network as long as your computer
+                              is capable of booting
+                              from a network (a PXE boot). This is
+                              useful for some laptops that
+                              don't have an optical drive and are not
+                              capable of booting from a
+                              USB device. The method is explained <a
+                                href="http://forum.vectorlinux.com/index.php?topic=8038.0">here
+                                on our
+                                HOWTO Forum</a>.</p>
+                            <h4 style="margin-bottom: 0cm"><span
+                                class="western"><a name="floppy_install"
+                                  id="floppy_install"></a></span><font
+                                face="Arial, Helvetica, sans-serif">4.7
+                                <u>Floppy
+                                  Install</u></font></h4>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm">This method
+                              allows you to install VectorLinux using
+                              the VL CD (any edition) and
+                              two floppy disks. You may have to use this
+                              method if the target
+                              computer cannot boot from the CD
+                              (especially on older laptops). We
+                              assume that you already have the
+                              VectorLinux CD prepared and ready.
+                              You may use it to create the floppies on
+                              another Windows or a Linux
+                              host. Preparation on a Windows HOST is as
+                              follow:</p>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Insert
+                                  the CD into the drive,
+                                  assumed to be drive D:</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Launch
+                                  a dos prompt</font></li>
+                              <li><span class="standardtype"><font
+                                    face="Arial, Helvetica, sans-serif">Insert
+                                    blank floppy #1, enter this
+                                    command:</font></span>
+                                <pre>cd D:\install\rawrite
+rawrite
+Enter source file name: D:\install\floppy\bare.i
+Enter destination drive: A <font face="Arial, Helvetica, sans-serif">                 </font> 
+</pre>
+                                <font face="Arial, Helvetica,
+                                  sans-serif"><font face="Arial,
+                                    Helvetica, sans-serif"><span
+                                      class="standardtype">The
+                                      bare.i is an kernel image file
+                                      that supports IDE controller. If
+                                      you
+                                      have SCSI controller, use the
+                                      scsi.s
+                                      instead.</span></font></font></li>
+                              <li><span class="standardtype"><font
+                                    face="Arial, Helvetica, sans-serif">Take
+                                    out floppy #1, Insert floppy
+                                    #2, enter this command:</font></span>
+                                <pre><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">rawrite
+Enter source file name: D:\install\floppy\rootdisk.img
+Enter destination drive: A
+</font></font></font></font></font>
+</pre>
+                              </li>
+                            </ul>
+                            <span class="standardtype">On a Linux host,
+                              the preparation is as
+                              follows:</span>
+                            <ul>
+                              <li><span class="standardtype"><font
+                                    face="Arial, Helvetica, sans-serif">Launch
+                                    a terminal</font></span></li>
+                              <li><span class="standardtype"><font
+                                    face="Arial, Helvetica, sans-serif">Insert
+                                    the CD and mount
+                                    it.</font></span>
+                                <pre><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">mount /dev/cdrom /mnt/cdrom
+</font></font></font></font></font>
+</pre>
+                              </li>
+                              <li><span class="standardtype"><font
+                                    face="Arial, Helvetica, sans-serif">Insert
+                                    blank floppy #1, write the
+                                    kernel image into it using this
+                                    command:</font></span>
+                                <pre><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">cat /mnt/cdrom/install/floppy/bare.i &gt; /dev/fd0
+</font></font></font></font></font>
+</pre>
+                              </li>
+                              <li><span class="standardtype"><font
+                                    face="Arial, Helvetica, sans-serif">Take
+                                    out floppy #1, Insert floopy
+                                    #2, enter this command:</font></span>
+                                <pre><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif"><font face="Arial, Helvetica, sans-serif">cat /mnt/cdrom/install/floppy/rootdisk.img &gt; /dev/fd0
+</font></font></font></font></font>
+</pre>
+                              </li>
+                            </ul>
+                            <span class="standardtype">Now with the
+                              VectorLinux CD and the two
+                              floppies:</span>
+                            <ul>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Set
+                                  the computer to boot from the
+                                  floppy drive</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Insert
+                                  the CD</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Insert
+                                  the floppy #1</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">Boot
+                                  the computer</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">On
+                                  the boot: prompt, press
+                                  [enter]</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">After
+                                  asked, replace floppy #1 with
+                                  floppy #2</font></li>
+                              <li class="standardtype"><font
+                                  face="Arial, Helvetica, sans-serif">VL
+                                  install screen will
+                                  appear</font></li>
+                            </ul>
+                            <p class="standardtype"
+                              style="margin-bottom: 0cm" align="center">
+                              <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"><font
+                                  face="Arial, Helvetica, sans-serif">Top</font></a></p>
+                            <hr>
+                            <h2><span class="western"><a
+                                  name="guiinstall" id="guiinstall"></a></span><font
+                                face="Arial, Helvetica, sans-serif"><u><b>5a.
+                                    The Graphical (GUI Based)
+                                    Installation Process: Step by Step</b></u></font></h2>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif">When you
+                        launch the installation
+                        process, the first screen presented to you lets
+                        you choose either
+                        the default kernel (IDE/SATA) or another kernel
+                        (by pressing F1).
+                        Normally you just hit the enter key unless you
+                        have a SCSI or
+                        ADAPTEC hard drive. After a few seconds the
+                        graphical installer
+                        will launch. For the most part the graphical
+                        installer is intuitive
+                        and self-explanatory. However, the following
+                        sections will touch on
+                        some of perhaps the more confusing issues that
+                        may be faced by
+                        newcomers to VectorLinux.</font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif">The first
+                        GUI installer screen is
+                        seen below. For all of the installer screens to
+                        following
+                        applies:</font></p>
+                    <ul class="standardtype" style="margin-bottom: 0cm">
+                      <li><font face="Arial, Helvetica, sans-serif">the
+                          leftmost
+                          rectangular panel simply shows the progress of
+                          the install, with a
+                          red dot indicating the current process</font></li>
+                      <li><font face="Arial, Helvetica, sans-serif">the
+                          right panel is
+                          the area where the user may need to make input
+                          choices</font></li>
+                      <li><font face="Arial, Helvetica, sans-serif">the
+                          bottom buttons
+                          will always be: "Back" to go back to the
+                          previous install process,
+                          "Exit Installation" to immediately exit the
+                          Install (however, if
+                          you have made changes to partitions these will
+                          already be made and
+                          there is no backtracking from that process)
+                          and "Next" to go to the
+                          next Install process after you have made
+                          choices in the rightmost
+                          panel.</font></li>
+                    </ul>
+                    <p class="standardtype" style="margin-bottom: 0cm">In
+                      this first
+                      process you choose the language for both the
+                      install as well as for
+                      the Linux operating system itself:</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui1.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">The
+                      second GUI
+                      installer screen - "Find Installation Media" is
+                      seen below. This
+                      screen enables the user to choose a particular VL
+                      ISO that may be
+                      located on either one of your hard disk
+                      partitions, a USB device or
+                      an optical device. In the vast majority of cases
+                      it will find the
+                      VL CD you burned to install and the screen is
+                      really just for
+                      information purposes. However, if you have a
+                      number of VL ISO files
+                      on different devices then you click on the upper
+                      information widget
+                      to choose which ISO you wish to install.
+                      Information is also
+                      provided to you on absolute minimum hard drive
+                      space install
+                      requirements. Then click Next.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui2.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">Now
+                      comes the
+                      disk partitioning process. If you are a newbie and
+                      have not already
+                      done so please ensure that you have read section 2
+                      above concerning
+                      partitioning. At this point you are given the
+                      option to use
+                      existing disk partitions which you may have
+                      already created with
+                      other partitioning software, or to modify (and
+                      create) partitions
+                      from within the installer. The latter option is
+                      the easiest
+                      method.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui3.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">If
+                      you chose the
+                      option to "Modify" above you are then presented
+                      with the "gparted"
+                      application to either delete, resize, create,
+                      format new or
+                      existing partitions. gparted documentation is
+                      available <a
+                        href="http://gparted.sourceforge.net/documentation.php">here</a>
+                      so we
+                      will not reiterate that information here.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui4.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">The
+                      next step is
+                      to choose the partitions for the VL install and
+                      how to use them.
+                      Click the upper right Help button for more info. A
+                      complete list of
+                      partitions found on your hard drives is presented
+                      to you. We
+                      suggest you reread Section 2.1 above concerning
+                      recommended VL
+                      partitions and then proceed by selecting the
+                      "mount point" (ie:
+                      "root" / , "swap" swap and "home" /home). You
+                      should then choose a
+                      filesystem (either ext3 or reiserfs are
+                      recommended for normal home
+                      use).</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui5.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">On
+                      the next two
+                      screens the user selects whether to do a full
+                      install (recommended)
+                      or custom install. The custom install is really
+                      only necessary
+                      where the user has hard drive space limitations.
+                      The difference
+                      between a frugal and full install is really only
+                      about 1.5GB of
+                      space. By clicking on the left side of the package
+                      name the user
+                      can choose whether or not to install a specific
+                      package. Obviously,
+                      this should only be done if the user knows what
+                      the package is
+                      actually used for!</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui6.png"></p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui7.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">The
+                      next screen
+                      is an installation summary. Ensure your chosen
+                      partitions are
+                      correct as are the packages you want to omit,
+                      because the next
+                      stage is the actual installation to the hard drive
+                      of all the
+                      system files and packages.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui8.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">Progress
+                      of
+                      VectorLinux operating system files and packages
+                      installation is
+                      then shown with accurate status bars. On modern
+                      computers this
+                      process should take less than 15 minutes.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui9.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">Once
+                      the
+                      installation of system files is complete the
+                      system configuration
+                      steps are started - the first of these being to
+                      install the
+                      <a
+                        href="http://en.wikipedia.org/wiki/LILO_%28boot_loader%29">Linux
+Loader
+                        - "lilo" boot manager</a>. For newbies we
+                      suggest that you
+                      go with the default values as presented to you and
+                      click the "Next"
+                      button. Lilo will find any other operating systems
+                      on your hard
+                      drives (such as Windows if this is a dual boot
+                      installation) and
+                      will create and entry for all operating systems in
+                      the boot loader.
+                      For more advanced users this panel enables you to:</p>
+                    <ul>
+                      <li>not
+                        /usr/share/vim/vim71/compiler/tidy.viminstall
+                        lilo (for
+                        instance if VL is a second distro and you
+                        already have grub)</li>
+                      <li>install the boot loader to somewhere other
+                        than the MBR (eg: a
+                        floppy disk or USB device)</li>
+                      <li>choose whether or not to include a specific
+                        operating system on
+                        the boot menu</li>
+                      <li>choose the name for the OS as it will appear
+                        on the boot
+                        menu</li>
+                      <li>choose kernel boot options for each specific
+                        OS</li>
+                      <li>choose the video resolution for the boot
+                        loader; useful where
+                        you might have an older 15" monitor</li>
+                    </ul>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui10.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">We
+                      now select
+                      our timezone.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui11.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">The
+                      installer
+                      then prompts for a root password. If you want
+                      proper Unix based
+                      security you must enter a hard root password on
+                      this screen.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui12.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">You
+                      may now
+                      enter as many users as you wish. You should always
+                      have at least
+                      one user account which you will use as your normal
+                      account -
+                      normally you would just use your first name in
+                      lowercase letters
+                      for this account. Never use the root account for
+                      normal work. To do
+                      so violates the basic strong security for which
+                      Unix/Linux is
+                      famous. In the "Rights Management" panel we
+                      suggest you leave the
+                      default values unless you are an experienced Linux
+                      user and have
+                      specific requirements for access rights for a
+                      particular user. once
+                      you have entered user details you <i>must</i>
+                      click then click the
+                      "Create User" button. You may create a number of
+                      users on this same
+                      screen.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui13.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">On
+                      the Network
+                      Configuration screen you must give your computer
+                      both a name and
+                      domain name. It is recommended that for normal
+                      home network
+                      configurations you keep the defaults as prsented,
+                      i.e. use WiCD to
+                      manage the networks, use DHCP to domain name
+                      service, etc. If you
+                      have a wireless device and a regular ethernet
+                      device they will show
+                      as tabs: "eth0" and "ath0" or "wlan0". You can
+                      configure each
+                      network device separately, but for newbies the
+                      defaults will
+                      probably suffice. Manual DNS servers
+                      specifications are only for
+                      networks where you have been given a specific IP
+                      address. Most
+                      Internet Service Providers (ISP) use DHCP.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui14.png"></p>
+                    <p class="standardtype" style="margin-bottom: 0cm">The
+                      Final
+                      Hardware Configuration screen requires no input.
+                      It simply notifies
+                      you that the VL installation is now complete and
+                      you may reboot the
+                      computer. Upon reboot there will still be some
+                      hardware
+                      configuration setup requiring input from the user.
+                      For that
+                      information please jump to Section 5c.2 below.</p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/gui15.png"></p>
+                    <h2><span class="western"><a name="installsteps"
+                          id="installsteps"></a></span><font
+                        face="Arial, Helvetica, sans-serif"><u><b>5b.
+                            The Text-Based
+                            Installation Process: Step by Step</b></u></font></h2>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif">When you
+                        launch the installation
+                        process, the first screen presented to you lets
+                        you choose either
+                        the default kernel (IDE/SATA) or another kernel
+                        (by pressing
+                        F1).</font></p>
+                    <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst1.png"></p>
+                    <ol>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">Start up &#8211; On the
+                            next screen
+                            you have four options:<br>
+                          </font></span>
+                        <ul>
+                          <li class="standardtype"><font face="Arial,
+                              Helvetica, sans-serif">Select the keymap
+                              to be used during
+                              the installation. You should select this
+                              menu for the first time if
+                              your keyboard in a non-US layout.</font></li>
+                          <li class="standardtype"><font face="Arial,
+                              Helvetica, sans-serif">Start the
+                              installation. The reason
+                              why we are here!</font></li>
+                          <li class="standardtype"><font face="Arial,
+                              Helvetica, sans-serif">Repair lilo (Linux
+                              Loader). This is
+                              a handy utility in case you have an
+                              installed Vector Linux, but
+                              somehow you cannot boot it because of a
+                              corrupted LILO.</font></li>
+                          <li class="standardtype"><font face="Arial,
+                              Helvetica, sans-serif">Exit. This will
+                              bring you to the
+                              Linux command prompt. It might be required
+                              if something is wrong
+                              with the installation and you are capable
+                              enough at the Linux
+                              command line to fix it manually.</font></li>
+                        </ul>
+                        <br>
+                        <p align="center"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst2.png"></p>
+                        <br>
+                        <br>
+                      </li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">Once you start the
+                            installation, the
+                            routine will look for the installation media
+                            in the following
+                            places:</font></span>
+                        <ul>
+                          <li class="standardtype"><font face="Arial,
+                              Helvetica, sans-serif">Any hard drive
+                              partition that
+                              contains installation files</font></li>
+                          <li class="standardtype"><font face="Arial,
+                              Helvetica, sans-serif">Any hard drive
+                              partition that
+                              contains the ISO file in the top directory</font></li>
+                          <li class="standardtype"><font face="Arial,
+                              Helvetica, sans-serif">CDROM drive</font></li>
+                        </ul>
+                        <span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">If a media is found,
+                            it will ask you
+                            to confirm. Select Yes to proceed, No to
+                            search another
+                            media.</font></span><font face="Arial,
+                          Helvetica, sans-serif"><br>
+                          <br>
+                        </font>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst3.png"></font></p>
+                        <font face="Arial, Helvetica, sans-serif"><br>
+                          <br>
+                          <br>
+                        </font></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">The next screen shows
+                            you the hard
+                            drive requirements of the soon to be
+                            installed edition. If you have
+                            already set up your partitions, then start
+                            the installation now.
+                            Otherwise you can create or modify the hard
+                            drive partitions using
+                            the built in tools. RESIZE menu is a simple
+                            front end for
+                            GNUParted. Meanwhile the FDISK menu will
+                            launch a menu-driven
+                            partitioning program called cfdisk (see the
+                            three images
+                            following). Warning: do not proceed to the
+                            INSTALL menu if you
+                            don't have the required 3 partitions (root,
+                            swap and home) at the
+                            required sizes, because the install will
+                            surely
+                            fail.</font></span><font face="Arial,
+                          Helvetica, sans-serif"><br>
+                        </font>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst4.png"></font></p>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst5.png"></font></p>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst6.png"></font></p>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst7.png"></font></p>
+                        <font face="Arial, Helvetica, sans-serif"><br>
+                          <br>
+                        </font></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">You are now presented
+                            with a list of
+                            the next steps the routine will perform, it
+                            goes through each of
+                            these steps in order.</font></span><font
+                          face="Arial, Helvetica, sans-serif"><br>
+                        </font>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst8.png"></font></p>
+                        <font face="Arial, Helvetica, sans-serif"><br>
+                          <br>
+                        </font></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">In the check-files
+                            screen, you may
+                            choose which files are to be verified for
+                            any damage or corruption.
+                            If you are confident enough about them you
+                            could skip the
+                            verification, but if the files are somehow
+                            damaged the installation
+                            will probably fail later. If you have
+                            already done an <i>md5sum</i>
+                            check on the .iso file then this step is
+                            probably
+                            unnecessary.<br>
+                          </font></span></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">Now the routine will
+                            present you
+                            with any swap partition detected. Choose the
+                            swap partition to use
+                            and select OK..<br>
+                          </font></span></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">The next step is to
+                            choose your root
+                            partition. This is the partition on which
+                            you want to install
+                            VectorLinux. You will have the chance to
+                            select a different
+                            partition for your /home directory later.<br>
+                          </font></span></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">Then select the
+                            filesystem you
+                            prefer for the root partition: reiserfs,
+                            ext3 or ext2.<br>
+                            ext2 is the older Linux filesystem, reiserfs
+                            and ext3 are both
+                            newer and more robust journaling
+                            filesystems. ext3 is a general
+                            standard and reiserfs is particularly fast
+                            with many small
+                            files.<br>
+                          </font></span></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">Next, you can choose
+                            to use a
+                            different partition for your /home directory
+                            or use the same one
+                            that is used as root. The "/home" is where
+                            files that belong to
+                            users are to be stored, and "root" is where
+                            the Operating
+                            System&acute;s files and all packaged
+                            software will be
+                            stored.<br>
+                          </font></span>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst9.png"></font></p>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst10.png"></font></p>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst11.png"></font></p>
+                      </li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">The next two dialog
+                            screens allow
+                            you to choose what main packages and
+                            individual software
+                            applications you wish to install.</font></span>
+                        <font face="Arial, Helvetica, sans-serif"><br>
+                        </font>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst12.png"></font></p>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst13.png"></font></p>
+                        <font face="Arial, Helvetica, sans-serif"><br>
+                          <br>
+                        </font></li>
+                      <li><span class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">You are now ready to
+                            install
+                            VectorLinux to your system. You can review
+                            the choices you have
+                            made and go back and do some modifications,
+                            or you can select OK to
+                            continue installing VectorLinux. Once you
+                            hit OK, and the
+                            installation proceeds, it will format the
+                            partitions you selected
+                            for root and /home, and any information in
+                            them will be erased, so
+                            please verify everything before
+                            continuing.</font></span><font face="Arial,
+                          Helvetica, sans-serif"><br>
+                        </font>
+                        <p align="center"><font face="Arial, Helvetica,
+                            sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst14.png"></font></p>
+                      </li>
+                    </ol>
+                    <span class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">The installation will
+                        take a little
+                        while, so you may have a short break. The
+                        installation time will
+                        vary depending on your system&acute;s speed. It
+                        can be as quick as
+                        10 minutes. After some minutes, your monitor
+                        screen may go blank as
+                        it enters a power saving mode. If it does, press
+                        <strong>[SHIFT]</strong> on the keyboard to
+                        restore your monitor.
+                        DO NOT hit [enter] or [space] as you could
+                        inadvertently accept a
+                        choice the install routine might have reached at
+                        that
+                        point.</font></span>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">After the installation is
+                        done, you
+                        will be required to do some basic configuration,
+                        as explained in
+                        Section 6.</font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"
+                      align="center" lang="es-AR"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"><font
+                          face="Arial, Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h2><font face="Arial, Helvetica, sans-serif"><b><u><a
+                              name="postinstall" id="postinstall"></a></u></b><u><b>5c.
+                            Post-Install
+                            Configuration</b></u></font></h2>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif">Once VL has
+                        been installed, a
+                        configuration screen is presented. This allows
+                        you to configure
+                        sound, video, network, etc. This screen can also
+                        be accessed later
+                        using "Vasm" as root.</font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif">However, it
+                        is recommended that you
+                        <strong>do not skip</strong> this configuration
+                        step at
+                        installation time.</font></p>
+                    <h4 style="margin-bottom: 0cm"><span class="western"><font
+                          face="Arial, Helvetica, sans-serif"><u><a
+                              name="lilo" id="lilo"></a></u></font></span><font
+                        face="Arial, Helvetica, sans-serif">5c.1 <u>Set
+                          Up LILO</u></font></h4>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif">You will be
+                        prompted to set-up
+                        &#8220;LILO&#8221;, the Linux Loader that boots the
+                        system.</font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">Choose where to install
+                        lilo:</font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">-
+                        the root partition (if you installed VL to
+                        /dev/hda2, this would
+                        install lilo to /dev/hda2)<br>
+                        - the MBR (master boot record) for the disk<br>
+                        - a floppy drive</font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst15.png"></font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">If you want Lilo to take
+                        over the
+                        boot process entirely, install to the MBR of the
+                        hard disk (this is
+                        the most common scenario). LILO will detect
+                        other operating systems
+                        on your hard drives and make an entry for them
+                        in its boot menu. If
+                        you already have another boot manager installed
+                        on some partition
+                        that can point to your Linux partition, then you
+                        can install Lilo
+                        to the root partition where you installed VL. If
+                        you are not sure
+                        and you don't want to cause any problems,
+                        install to a floppy. But
+                        you must then ensure that your computer's BIOS
+                        is set to boot from
+                        the floppy drive first. This is the slowest boot
+                        method, and only
+                        suggested if you do not want to alter your
+                        existing boot manager.
+                        For most systems installing to the MBR is safe
+                        and easy.</font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst16.png"></font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">Choose to enable
+                        framebuffer or not.
+                        This option affects how the boot process looks,
+                        and the onscreen
+                        indications will let you know what option is
+                        best for
+                        you.</font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst17.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst18.png"></font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">Add any additional
+                        parameter you
+                        need to boot you system. If your system
+                        didn&acute;t require any
+                        special kernel parameters to perform the
+                        installation, then leave
+                        this field empty.</font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">If you have them, Lilo
+                        will detect
+                        the partitions and Operating Systems on your
+                        hard disk and allow
+                        you to select which ones you want to have
+                        available in your new
+                        boot menu.</font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">After you have installed
+                        VL, you can
+                        change the lilo configuration by using "vasm" as
+                        root, which will
+                        bring up the configuration screen again, or,
+                        also as root, you can
+                        edit the<br>
+                        /etc/lilo.conf file by hand. After editing the
+                        file, be sure to
+                        issue the following command as root: "/sbin/lilo
+                        -v". This will
+                        commit the changes to the lilo bootloader.</font></p>
+                    <h4 style="margin-bottom: 0cm"><span class="western"><font
+                          face="Arial, Helvetica, sans-serif"><br>
+                          <a name="configure" id="configure"></a></font></span>
+                      <font face="Arial, Helvetica, sans-serif">5c.2 <u>Configuring
+                          VectorLinux</u></font></h4>
+                    <p class="western" style="margin-bottom: 0cm"><span
+                        class="standardtype">Once Lilo is installed, the
+                        next steps are to
+                        configure this new system. If you installed with
+                        an ISO file
+                        directly from a Linux host the system will have
+                        to reboot first
+                        before doing this next configuration step.</span></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst19.png"></font></p>
+                    <p class="western" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><span
+                          class="standardtype">The first
+                          screen shows the configuration steps, and
+                          allows you to choose
+                          which ones are to be performed. The wise
+                          decision is to select them
+                          all, unless you have experienced problems with
+                          a particular step
+                          previously. At this point you are walked
+                          through a series of
+                          screens to configure the keyboard, auto-setup
+                          the basic hardware,
+                          select network settings, set the video, sound,
+                          and time zone. The
+                          configuration will try to detect most of the
+                          settings
+                          automatically.</span></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst20.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst21.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst22.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst23.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst24.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst25.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst26.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst27.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst28.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst29.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst30.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst31.png"></font></p>
+                    <p align="center"><font face="Arial, Helvetica,
+                        sans-serif"><img
+src="http://vectorlinux.osuosl.org/docs/vl60/manuals/img_install/inst32.png"></font></p>
+                    <p class="western" style="margin-bottom: 0cm"><span
+                        class="standardtype"><font face="Arial,
+                          Helvetica, sans-serif">In the
+                          last step, the configuration asks you to
+                          change the root
+                          (superuser, administrator) password and add
+                          the first ordinary
+                          user. Please don't skip this step for your own
+                          security. On any
+                          operating system, working daily as root is not
+                          advisable, so you
+                          should set up a normal user and use that for
+                          normal tasks and
+                          resort to root only for administering the
+                          system.</font></span></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">When this is done, you
+                        simply press
+                        &#8220;OK&#8221; to restart the system and boot into
+                        VectorLinux
+                        for the first time.</font></p>
+                    <p class="western" style="margin-bottom: 0cm"
+                      align="center">
+                      <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"><font
+                          face="Arial, Helvetica, sans-serif">Top</font></a></p>
+                    <hr>
+                    <h2 style="margin-bottom: 0cm" align="left"><a
+                        name="firsttime" id="firsttime"></a><font
+                        face="Arial, Helvetica, sans-serif"><u><b>7.
+                            Using the system for the first time</b></u></font></h2>
+                    <h4 class="western" style="margin-bottom: 0cm">&nbsp;</h4>
+                    <h4 style="margin-bottom: 0cm"><span class="western"><a
+                          name="login" id="login"></a></span><font
+                        face="Arial, Helvetica, sans-serif">7.1 <u>Login
+                          to
+                          VectorLinux</u></font></h4>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">If you chose to boot into
+                        RunLevel 4
+                        (the X GUI system), when the VectorLinux boot
+                        process has been
+                        completed you will be presented with a graphical
+                        login screen where
+                        you should enter your personal username and
+                        password (do not use
+                        root unless absolutely necessary). After logging
+                        in the desktop
+                        environment will load and within seconds you
+                        will see the desktop.
+                        Have fun!</font></p>
+                    <p class="standardtype"><font face="Arial,
+                        Helvetica, sans-serif">As well as the GUI
+                        desktop, you will
+                        get six text consoles. You may switch between
+                        them by pressing
+                        [Ctrl]-[Alt]-[F1] through [Ctrl]-[Alt]-[F6] on
+                        the keyboard. You
+                        will be asked for a username and password. If
+                        you did not change
+                        the root&acute;s password during installation
+                        you should use root
+                        as username and leave the password empty.
+                        Otherwise, use the name
+                        and password of the account you created earlier.
+                        You may return to
+                        the GUI by pressing [Ctrl]-[Alt]-[F7]</font></p>
+                    <span class="standardtype">If you chose to boot into
+                      RunLevel 2 (a
+                      text console environment) you may switch to
+                      RunLevel 4 (GUI) by
+                      typing:</span>
+                    <pre>    user:$ startx
+   
+</pre>
+                    <span class="standardtype">Alternatively, you can
+                      launch the GUI
+                      login mode by switching runlevel into 4 or 5.
+                      Please login as root
+                      on the console, then type:</span>
+                    <pre>    root:# init 4
+   
+</pre>
+                    <h4 style="margin-bottom: 0cm"><font face="Arial,
+                        Helvetica, sans-serif"><br>
+                        <a name="admin" id="admin"></a>7.2 <u>System
+                          Administration</u></font></h4>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif">If you want
+                        to further configure
+                        your VL system, you should launch <a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl5_admin_vasm_en.html">VASM
+                          (Vector Administration and System
+                          Menu)</a> from either a terminal or from the
+                        desktop menu. You will
+                        be asked for root's password. This utility is
+                        explained in detail
+                        in the previous link and will not be reiterated
+                        here.</font></p>
+                    <h4 style="margin-bottom: 0cm"><font face="Arial,
+                        Helvetica, sans-serif"><span
+                          class="standardtype"><a name="reboot"
+                            id="reboot"></a></span><font face="Arial,
+                          Helvetica, sans-serif">7.3 <u>Reboot and
+                            Shutdown</u></font></font></h4>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">There are
+                          many ways to reboot the
+                          system, including</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">- From a
+                          console (not GUI) press
+                          Ctrl-Alt-Del<br>
+                          - From a console or GUI terminal, type
+                          "reboot"<br>
+                          - From a GUI windows manager, choose "reboot"
+                          menu.</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">Meanwhile,
+                          to turn off the system,
+                          you may:</font></font></p>
+                    <p class="western" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><span
+                          class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">- Type
+                            "halt" or "poweroff" from a console.<br>
+                            - Select "shutdown" menu from a windows
+                            manager if
+                            available.</font></span></font></p>
+                    <p class="western" style="margin-bottom: 0cm"
+                      align="center">
+                      <font face="Arial, Helvetica, sans-serif"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"
+                          class="standardtype"><font face="Arial,
+                            Helvetica, sans-serif">Top</font></a></font></p>
+                    <hr>
+                    <h2 style="margin-bottom: 0cm" align="left"><font
+                        face="Arial, Helvetica, sans-serif"><span
+                          class="western"><a name="troubleshoot"
+                            id="troubleshoot"></a></span><font
+                          face="Arial, Helvetica, sans-serif"><u><b>8.
+                              Troubleshooting</b></u></font></font></h2>
+                    <p class="western" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><br>
+                          <span class="standardtype"><u><strong>Error
+                                type
+                                1</strong></u><strong>:</strong></span></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>installation
+                            gives you a message
+                            saying that it can't find the vector bz2
+                            kernel and / or saying
+                            that /dev/xxxx is not a valid block device.</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">This error
+                          usually appears when you
+                          have more than one optical drive
+                          (CD/CD-RW/DVD/DVD-W) and you are
+                          trying to install Vector from the second unit.
+                          Move the
+                          installation CD to the first drive.</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><strong><u>Error
+                              type
+                              2</u>:</strong></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>Installation
+                            halts or does not
+                            start properly after a seemingly correct
+                            installation or you get
+                            messages about CRC errors during install</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">That kind
+                          of issue often suggests
+                          file corruption during download or a faulty
+                          burning
+                          process.</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">The first
+                          thing to do, if you
+                          haven't already done so, is to check the .iso
+                          file for corruption;
+                          please refer to section 3 of this manual. If
+                          the .iso file passed
+                          the md5sum integrity check , then you could
+                          try burning the file at
+                          a slower speed or use higher quality media.</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">Remember
+                          to burn as a cd image, not
+                          as a conventional file!</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><strong><u>Error
+                              type
+                              3</u>:</strong></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">You get
+                          one of these two
+                          messages:</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>Kernel
+                            Panic: Aiee, killing
+                            interrupt handler!<br>
+                            In interrupt handler - not syncing.</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">or</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>Error!
+                            There was a problem!<br>
+                            Code: 39 36 75 03 5b 5e c3 5b 89 f0 31 c9 ba
+                            03 00 00 00 5e e9
+                            cb<br>
+                            Installation not complete<br>
+                            Please press enter to activate this console</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">Those
+                          errors are usually related to
+                          old hardware, and could mean that you need to
+                          pass some kernel
+                          commands to the boot process. It could also
+                          mean that there is some
+                          sort of hardware problem with your computer,
+                          but if you had it
+                          working previously with another operating
+                          system then it is
+                          probably one of the following:</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">Some
+                          commands you may try
+                          are:</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>linux
+                            mem=16M</i> (replace 16
+                          with the correct amount of memory in your PC)<br>
+                          <i>linux ide=nodma</i> (disable udma access,
+                          for old hard
+                          drives)</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">These
+                          commands disable power
+                          management, Notebooks often require them:</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>linux
+                            noacpi<br>
+                          </i> l<i>inux
+                            noapm<br>
+                            linux pci=noacpi<br>
+                            linux acpi=off<br>
+                            linux apm=off</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><strong><u>Error
+                              type
+                              4</u>:</strong></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>Your
+                            SCSI or SATA hard drive is
+                            not available to install VL on it.</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">The
+                          required driver for your SCSI
+                          card is not being loaded, and therefore your
+                          disks are not seen by
+                          the install routine.</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><u><strong>Error
+                              type
+                              5</strong></u><strong>:</strong></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">Installing
+                          from CDROM drive fails
+                          with this error: "<i>mount: /dev/scd7 is not a
+                            valid block
+                            device</i>"</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">Your CDROM
+                          or CDRW drive requires
+                          scsi emulation. When the installation greets
+                          you with the first
+                          prompt (where it says "boot:" at the bottom
+                          left) you should type
+                          :</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>ide
+                            hdx=ide-scsi</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">(where x
+                          is your cd-rom
+                          unit).</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">If that
+                          doesn't work restart and try
+                          writing</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>scsi
+                            hdx=ide-scsi</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">(where x
+                          is your cd-rom
+                          unit).</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><i>Note:
+                            The Linux Kernel 2.6.x
+                            treats CD-Rx drives in a different way than
+                            previous kernels, so
+                            this problem shouldn&acute;t arise, it is
+                            still mentioned here for
+                            the record.</i></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><u><strong>Error
+                              type
+                              6</strong></u><strong>:</strong></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">The
+                          installation halts somewhere
+                          near the end during the install of packages
+                          and the install process
+                          gives you an error message that it cannot
+                          proceed. This often
+                          indicates that you may not have apportioned
+                          sufficient hard drive
+                          space for the "/" (root) partition.
+                          VectorLinux requires a minimum
+                          of 3GB to install, 3.8GB for the SOHO edition.
+                          You will need to
+                          increase the size of the root partition before
+                          proceeding to
+                          re-install the system. This can be done using
+                          cfdisk during the
+                          second install screen.</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif"><u><strong>Error
+                              type
+                              7</strong></u><strong>:</strong></font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"><font
+                        face="Arial, Helvetica, sans-serif"><font
+                          face="Arial, Helvetica, sans-serif">The
+                          installation locks up, with no
+                          response from the keyboard, and often occurs
+                          right near the
+                          beginning of the install process when you see
+                          the kernel-loading
+                          messages. This usually indicates that you have
+                          faulty RAM. Use a
+                          Live Linux CD and run "memtest" to confirm
+                          that you have a faulty
+                          RAM memory module on your computer.</font></font></p>
+                    <p class="standardtype" style="margin-bottom: 0cm"
+                      align="center">
+                      <font face="Arial, Helvetica, sans-serif"><a
+href="http://vectorlinux.osuosl.org/docs/vl60/manuals/vl6_installation_guide_en.html#Top"><font
+                            face="Arial, Helvetica, sans-serif">Top</font></a></font></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

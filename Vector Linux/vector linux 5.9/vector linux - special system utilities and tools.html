@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vector linux - special system utilities and tools</title>
+  </head>
+  <body>
+    <table align="center" border="0" cellpadding="3" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td width="20%"><img
+              src="http://vectorlinux.osuosl.org/docs/vl59/images/vl2k5.gif"
+              height="136" width="120"></td>
+          <td width="40%">
+            <div align="center">
+              <p><span class="VectorLinux"><font face="Arial, Helvetica,
+                    sans-serif" size="+3"><u><strong>Vector Linux
+                        5.9</strong></u></font></span></p>
+              <h3 class="InfoCenter"><font face="Arial" size="+1"><b>Documentation</b></font></h3>
+            </div>
+          </td>
+          <td width="20%">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="4" cellspacing="2"
+      width="95%">
+      <tbody>
+        <tr>
+          <td class="MenuTypeNew">
+            <div align="center"><font face="Arial"><strong><span
+                    class="MenuTypeLink"><a name="index"></a><a
+                      href="http://vectorlinux.osuosl.org/docs/vl59/index.html">Overview</a>
+                    &nbsp;|&nbsp; <a
+                      href="http://vectorlinux.osuosl.org/docs/vl59/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/forum/">VectorLinux
+                      Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/Docs/">Online
+                      Documentation</a></span></strong></font></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="0" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td height="80">
+            <div align="center">
+              <h2><font face="Arial, sans-serif"><font color="#006699"><b><u>VectorLinux
+                        v5.9 Special System Utilities and Tools</u></b></font></font></h2>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="margin-bottom: 0cm"><font face="Arial,
+                sans-serif"><b>CONTENTS</b></font></h3>
+            <pre class="standardtype">  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#VasmCC"><span lang="es-ES"><font face="Arial, sans-serif">1. VasmCC</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#vpackager"><font face="Arial, sans-serif">2. vpackager</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#vcpufreq"><font face="Arial, sans-serif">3. vcpufreq</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#vleasytables"><span lang="es-ES"><font face="Arial, sans-serif">4. vleasytables</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#vl-hot-config"><span lang="es-ES"><font face="Arial, sans-serif">5. vl-hot-config</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#vlsmbmount"><span lang="es-ES"><font face="Arial, sans-serif">6. vlsmbmount</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#vwifi"><span lang="es-ES"><font face="Arial, sans-serif">7. vwifi</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_utilities.html#wifi-radar"><span lang="es-ES"><font face="Arial, sans-serif">8. wifi-radar</font></span></a>
+</pre>
+            <br>
+            <p>VectorLinux v5.9 provides users with a number of new
+              system tools to make administration of their computer
+              system easier than hand-editing configuration files. These
+              utilities are described in detail below, but for the most
+              part, their usage is trivial and obvious. Where that is
+              not the case the intracacies are explained. </p>
+            <hr>
+            <h3 style="margin-bottom: 0.21cm"><u><a name="VasmCC"></a> <font
+                  face="Arial, sans-serif"><font>1. VasmCC</font></font></u></h3>
+            <p>VasmCC is the VectorLinux Control Centre. It provides an
+              iconic GUI interface to vasm, and is modelled upon Suse
+              Linux's YAST software. VASM is the Vector Administration
+              and System Menu, fully explained in the <a
+href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_admin_vasm_en.html">VASM
+                manual</a>. VASM itself is an ncurses based text menu
+              interface, which may appear archaic to some, but is fully
+              functional nonetheless. VasmCC is simply a GUI wrapper to
+              vasm. It is still under development as at February 1st,
+              2008. There is presently more functionality to the system
+              adminstrator by using vasm rather than VasmCC. The images
+              below show the basic functionality of this sofware.
+              <br>
+              <img
+src="http://vectorlinux.osuosl.org/docs/vl59/manuals/img_utilities/vasmcc1.gif"></p>
+            <hr>
+            <h3 style="margin-bottom: 0.21cm"><u><a name="vpackager"></a>2.
+                vpackager</u></h3>
+            <p>vpackager is VectorLinux's new utility which enables
+              users to build a properly packaged VL .tlz package from
+              source code. A complete explanation of the VL package
+              management system (gslapt and slapt-get) is found in our <a
+href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_slaptget_en.html">slapt-get/gslapt/packages
+                manual</a>.</p>
+            The user is also referred to our forum where a full
+            explanation on <a
+              href="http://www.vectorlinux.com/forum2/index.php?topic=1380.0">how
+              to build a package</a> is described.
+            <p>vpackager documentation is fully explained at the <a
+                href="http://code.google.com/p/vpackager/wiki/HowToUse">vpackager
+                website</a>, so will not be fully re-iterated here.
+              Newer Linux users should be aware that vpackager is not
+              required to install or remove packages. Such functionality
+              is provided instead by "gslapt". The image below shows the
+              basic functionality of vpackager.</p>
+            <br>
+            <img
+src="http://vectorlinux.osuosl.org/docs/vl59/manuals/img_utilities/vpackager1.gif">
+            <hr>
+            <h3 style="margin-bottom: 0.21cm"><span class="western"><a
+                  name="vcpufreq"></a></span><font face="Arial,
+                sans-serif"><font><u>3. vcpufreq</u></font></font></h3>
+            <p>"vcpufreq" is a Central Processing Unit (CPU) frequency
+              configuration utility developed in Gambas by Joe1962 for
+              VectorLinux. It makes it easy to change the CPU frequency
+              governor (with those CPU's which have such a function) and
+              related frequency settings. It does not (yet) load the
+              appropriate cpufreq module for your system. vcpufreq
+              includes the CLI utility "vcpufreq-load" to set the saved
+              configuration on system start. This utility requires root
+              access and requires that the appropriate module is loaded.
+              With most modern CPU's this will be done at boot up. If
+              this is not the case then the user must find out which
+              module is relevant and works with their CPU and then use
+              the command "modprobe name_of_module" in their
+              /etc/rc.d/rc.local file, to ensure the module is loaded at
+              boot time. A listing of the available CPU modules are
+              found in the directory
+              /usr/src/linux-2.6.22.14/arch/i386/kernel/cpu/cpufreq.
+              vcpufreq would be useful to those with notebook computers
+              in order to reduce CPU frequency (and hence battery
+              usage). The image below shows the basic functionality of
+              vcpufreq.
+              <br>
+              <img
+src="http://vectorlinux.osuosl.org/docs/vl59/manuals/img_utilities/vcpufreq1.gif"></p>
+            <hr>
+            <h3><a name="vleasytables"></a> <u><font face="Arial,
+                  sans-serif">4.
+                  vleasytables</font></u></h3>
+            <p>"vleasytables" is a simple, unique, menu driven utility
+              which enables a user to rapidly build their own custom
+              firewall. It is basically a front end to the Linux
+              software utility "iptables" and therefore requires root
+              access. The utility enables one to also start and stop the
+              firewall and have the firewall loaded on every boot. This
+              utility should only be used with those having a reasonably
+              good knowledge of firewalls and iptables.</p>
+            The image below shows the basic functionality of
+            vleasytables.
+            <br>
+            <img
+src="http://vectorlinux.osuosl.org/docs/vl59/manuals/img_utilities/vleasytables1.gif">
+            <hr>
+            <h3><a name="vl-hot-config"></a> <u><font face="Arial,
+                  sans-serif">5.
+                  vl-hot-config</font></u></h3>
+            <p>"vl-hot-config" provides simple configuration to the
+              VectorLinux automounting system called vl-hot. vl-hot is a
+              purely udev based automount system for any kind of
+              pluggable storage device that conforms to the block device
+              specification (and so it uses scsi emulation). It was
+              officially included in Vector Linux 5.1 SOHO and
+              subsequent releases. Hardware known to work with vl-hot
+              are USB pendrives, hard disks, digital cameras, memory
+              card readers, PCCARD (or PCMCIA) memory cards and external
+              USB drives. Firewire devices should work, but there are no
+              user reports on this kind of hardware yet. More
+              information on vl-hot and its differences to the HAL
+              autmount system are found in the <a
+href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_mounting_guide_en.html">VL
+                mounting manual</a> and the <a
+href="http://vectorlinux.osuosl.org/docs/vl59/manuals/vl5_external_devices_en.html">VL
+                external devices manual</a>.</p>
+            <p> The working specifications of vl-hot are such that the
+              mount base directory will be "/mnt/vl-hot/", each drive
+              will have a "sd?" directory (where "?" represents a letter
+              of the alphabet) and each mounted partition will have a
+              "vol#" directory (where "#" represents a number) within
+              the drive directory. An exception to this rule is in the
+              case of non-MBR devices, where there is no partition
+              table. Desktop icons are dynamically created/deleted
+              (currently only for KDE and xfce) and these have an
+              unmount options in the context (right-click) menu. There
+              is a conventional unmount (should be used normally) as
+              well as options for unmount with signalling to the process
+              that is holding open the mount and unmount with killing of
+              said process (the last two should be tried in that order,
+              when the normal unmount fails). The unmount operation has
+              completed succesfully once the desktop icon disappears. </p>
+            <p>vl-hot-config enables the user to change the base mount
+              directory, the mount icon, what should be included and
+              automatically excluded from the mount process, the log
+              file locations, sound notifications and mount specifics
+              depending on filesystem type.</p>
+            The image below shows the basic functionality of
+            vl-hot-config.
+            <br>
+            <img
+src="http://vectorlinux.osuosl.org/docs/vl59/manuals/img_utilities/vl-hot-config1.gif">
+            <hr>
+            <h3><a name="vlsmbmount"></a> <u><font face="Arial,
+                  sans-serif">6.
+                  vlsmbmount</font></u></h3>
+            <p>"vlsmbmount" is simply a front end menu message to the
+              xsmb.sh shell script, which assists a user in connecting
+              their computers via Samba. For this system to work the
+              user must have the smbd and nmbd service daemons running
+              beforehand. To do so go to System, VASM, SUPER, SERVICE,
+              SRVSET, 4 and enable the Samba daemon.</p>
+            The images below shows the basic functionality of
+            vlsmbmount.
+            <br>
+            <img
+src="http://vectorlinux.osuosl.org/docs/vl59/manuals/img_utilities/vsmbmount1.gif">
+            <hr>
+            <h3><a name="vwifi"></a> <u><font face="Arial, sans-serif">7.
+                  vwifi</font></u></h3>
+            <p>"vwifi" is a relatively simple bash script which attempts
+              to detect the user's wireless card device and to launch
+              the wifi services via the iwconfig, dhcpcd and ifconfig
+              network commands. If it does not find an appropriate
+              module for your device it will ask you for an appropriate
+              one from a supplied list. The user should know what module
+              to choose. To know this the user must determine his/her
+              chipset within the wireless device (use "lspci") and then
+              visit <a
+href="http://vectorlinux.osuosl.org/docs/vl59/manuals/www.linux-wlan.org">this
+                Linux wireless site</a>. Any further questions regarding
+              problems about VL and wireless might be solved by reading
+              <a
+                href="http://www.vectorlinux.com/forum2/index.php?topic=1282.0">our
+                wireless HOWTO</a>.</p>
+            <hr>
+            <h3><a name="wifi-radar"></a> <u><font face="Arial,
+                  sans-serif">8.
+                  wifi-radar</font></u></h3>
+            <p>"wifi-radar" enables you to scan for available networks
+              and create profiles for your preferred networks. At boot
+              time, running WiFi Radar will automatically scan for an
+              available preferred network and connect to it. You can
+              drag and drop your preferred networks to arrange the
+              profile priority. For further information visit the <a
+                href="http://wifi-radar.systemimager.org/">wifi-radar
+                website</a>.</p>
+            The image below shows the basic functionality of wifi-radar.
+            <br>
+            <img
+src="http://vectorlinux.osuosl.org/docs/vl59/manuals/img_utilities/wifi-radar1.gif">
+            <hr>
+            <h3><a name="credits"></a><font face="Arial, sans-serif"><u>9.
+                  Credits</u></font></h3>
+            <p class="western" style="margin-bottom: 0cm"><font
+                face="Arial, sans-serif">Copyright 2008 Vector Linux<br>
+                Released under [GNU Free Document License [ <a
+                  class="western"
+                  href="http://www.gnu.org/licenses/fdl.html"><u>http://www.gnu.org/licenses/fdl.html</u></a>
+                ]<br>
+              </font></p>
+            <p><font face="Arial, sans-serif">Text by various
+                VectorLinux developers and lagagnon, 2008.</font></p>
+            <font face="Arial, sans-serif">
+            </font></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

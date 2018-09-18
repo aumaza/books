@@ -1,0 +1,339 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vectorlinux5.8 - discover the power of the CLI</title>
+  </head>
+  <body>
+    <table align="center" border="0" cellpadding="3" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td width="20%"><img
+              src="http://vectorlinux.osuosl.org/docs/vl58/images/vl2k5.gif"
+              height="136" width="120"></td>
+          <td width="40%">
+            <div align="center">
+              <p><span class="VectorLinux"><font face="Arial, Helvetica,
+                    sans-serif" size="+3"><u><strong>Vector Linux
+                        5.8</strong></u></font></span></p>
+              <h3 class="InfoCenter"><font face="Arial" size="+1"><b>Documentation</b></font></h3>
+            </div>
+          </td>
+          <td width="20%">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="4" cellspacing="2"
+      width="95%">
+      <tbody>
+        <tr>
+          <td class="MenuTypeNew">
+            <div align="center"><font face="Arial"><strong><span
+                    class="MenuTypeLink"><a name="index"></a><a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/index.html">Overview</a>
+                    &nbsp;|&nbsp; <a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/forum/">VectorLinux
+                      Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/Docs/">Online
+                      Documentation</a></span></strong></font></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="0" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td height="80">
+            <div align="center">
+              <h2><font face="Arial, sans-serif"><font color="#006699"><b><u>Discover
+                        the Power of the CLI</u></b></font></font></h2>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="margin-bottom: 0cm"><font face="Arial,
+                sans-serif"><b>CONTENTS</b></font></h3>
+            <ol class="standardtype">
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#mounting">Introduction</a></li>
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#cliapps">Useful
+                  CLI applications</a>
+                <ol>
+                  <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#filemanager">mc
+                      - File manager</a></li>
+                  <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#ftpclient">mc
+                      - FTP client</a></li>
+                  <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#webbrowser">Lynx
+                      - web browser</a></li>
+                  <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#wget">wget
+                      - download manager</a></li>
+                  <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#pkginstaller">mc
+                      - package installer and
+                      remover</a></li>
+                  <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#mount">mount
+                      - disk mounting</a></li>
+                </ol>
+              </li>
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#other">Other
+                  CLI References</a></li>
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#credits">Credits</a></li>
+            </ol>
+            <br>
+            <br>
+            <hr>
+            <h2><u><a name="introduction" id="introduction"></a>1.
+                Introduction</u></h2>
+            <p class="standardtype">Have you ever found yourself in a
+              situation
+              where a system refuses to enter the GUI and you need to
+              edit some
+              configuration file or download a patch or a driver? Some
+              operating systems are almost useless if you can&acute;t
+              access their GUI, but a strong point in Linux is that you
+              can do a
+              LOT from the <b>Command Line Interface (CLI)</b>, often
+              called "text mode", to administer or rescue your
+              operating system.</p>
+            <p class="standardtype">If you are unable to enter the GUI
+              (X
+              windows system) you will probably find yourself in a text
+              console.
+              You then login using your login name and your password.
+              Many of the
+              commands below can be run as a normal user, but for system
+              type
+              commands (installing packages, mount and many others) you
+              will need
+              to login as "root". If you are in a GUI you can enter CLI
+              commands
+              in a console terminal program such as aterm, xterm, mrxvt,
+              xfterm or
+              konsole.</p>
+            <hr>
+            <h2><u><a name="cliapps" id="cliapps"></a>2. Useful CLI
+                applications</u></h2>
+            <h3><u><a name="filemanager"></a>2.1 Filemanager</u></h3>
+            <p class="standardtype">Type "mc" to open Midnight
+              Commander. It is
+              a filemanager (so you can move, copy and delete files with
+              it). But mc is much more than a file manager. Press F2 to
+              see its extended menu capabilities. Press F1 to read the
+              Help File and/or type "man mc" in a console. With mc you
+              can also change file ownership, file permissions, create
+              symbolic links, view tar files and packages, install
+              packages, etcetera.</p>
+            <h3><u><a name="ftpclient"></a>2.2 FTP client</u></h3>
+            <p class="standardtype">mc is also an ftp client. You start
+              mc,
+              then press F9, press "P" or select "FTP" on the menu. You
+              will
+              reach a dialog where you must enter the connection
+              details; press
+              F1 to see instructions about the format. Or you can use
+              the Linux command line ftp client: "ftp". Read "man ftp".</p>
+            <h3><u><a name="webbrowser"></a>2.3 CLI web browser.</u></h3>
+            <p class="standardtype">Type "lynx
+              ftp.nluug.nl/pub/os/Linux/distr/vectorlinux/" and you will
+              be
+              browsing in CLI mode a mirror of the VectorLinux server.
+              Browse
+              around to get the files you need, then move them with mc
+              to their
+              appropriate location.</p>
+            <h3 class="tightenable top"><u><a name="wget"></a>2.4
+                Download
+                manager</u></h3>
+            <p class="standardtype">There is a command line utility
+              named
+              <i>wget</i> wich can be used as a Download Manager. It is
+              not
+              interactive but is rather a "set and forget" application.
+              Basically, you need to type &acute;wget&acute; followed by
+              the
+              address of a file and it downloads that file (or an entire
+              directory) to your current
+              directory.</p>
+            <blockquote>
+              <pre class="tightenable top">wget http://www.someserver.com/files/thisfile.tgz
+</pre>
+            </blockquote>
+            <p class="standardtype">Among other features, it can be used
+              for
+              http and ftp links, just type "man wget" to learn about
+              it&acute;s
+              many options. It excels at the automatic downloading of an
+              entire
+              website.</p>
+            <h3><u><a name="pkginstaller"></a>2.5 Package installer and
+                remover</u></h3>
+            <p class="standardtype">Yet again, mc proves to be
+              incredibly
+              useful.</p>
+            <ul>
+              <li class="standardtype"><strong>Install packages.</strong><br>
+                To install a package, open mc, browse to the directory
+                where the
+                package is located, select it and then press</li>
+            </ul>
+            <blockquote class="tightenable top">
+              <pre class="tightenable top">F2 -&gt; select install current .tgz package -&gt; press [Enter]
+</pre>
+              <p class="standardtype">You could also install it by using
+                the
+                command installpkg &lt;packagename&gt;, but you need to
+                be in the
+                directory where the .tgz file is located.</p>
+            </blockquote>
+            <ul>
+              <li class="tightenable bottom"><span class="standardtype"><strong>Remove
+                    Packages.</strong><br>
+                </span> <span class="standardtype">To remove a package,
+                  open mc,
+                  then browse to the /var/log/packages directory, select
+                  the one you
+                  want to remove and press</span></li>
+            </ul>
+            <blockquote class="tightenable top">
+              <pre class="tightenable top bottom">F2 -&gt; remove a package listed in [...] -&gt; press [Enter]
+</pre>
+            </blockquote>
+            <h3><u><a name="mount"></a>2.6 Mounting drives by CLI</u></h3>
+            <p class="standardtype">Before attempting a mount via the
+              command line we suggest you read the <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html">
+                Vector Linux Mounting Manual</a>. Attaching another
+              device to your filesystem
+              is easy. All you have to do is use the <i>mount</i>
+              command, along
+              with a few options. Using mount can also be made much more
+              simple
+              if the device has an entry in the <i>/etc/fstab</i>
+              configuration
+              file. For example, let's say that I wanted to mount my
+              CD-ROM drive
+              and that my fstab file looked like the example from the
+              previous
+              section. I would call mount like this:</p>
+            <blockquote>
+              <pre class="tightenable"># mount /mnt/cdrom
+</pre>
+            </blockquote>
+            <p class="standardtype">Since there is an entry in fstab for
+              that
+              mount point, mount knows what options to use. If there
+              wasn't an
+              entry for that device, I would have to use several options
+              for
+              mount:</p>
+            <blockquote>
+              <p><strong>Mounting a CDROM Drive:</strong></p>
+              <pre class="tightenable top"># mount -t iso9660 -o ro /dev/cdrom /mnt/cdrom
+</pre>
+              <p><strong>Mounting a Windows Fat32 partition with
+                  root-only
+                  access:</strong></p>
+              <pre class="tightenable top"># mount -t vfat -o rw /dev/hda1 /mnt/win
+</pre>
+            </blockquote>
+            <p class="standardtype">The <i>-t iso9660</i> is the
+              filesystem
+              type of the device to mount. In this case, it would be the
+              iso9660
+              filesystem which is what CD-ROM drives most commonly use.
+              The -o ro
+              tells mount to mount the device read-only. The /dev/cdrom
+              is the
+              name of the device to mount, and /mnt/cdrom is the
+              location on the
+              filesystem where we will mount the drive.</p>
+            <p class="standardtype">Before you can remove a floppy,
+              CD-ROM, or
+              other removable device that is currently mounted, you'll
+              have to
+              unmount it. That is done using the <i>umount</i> command
+              - note
+              that there is no "n" in "umount"! You can use either the
+              mounted
+              device or the mount point as the argument to umount. For
+              example,
+              if you wanted to unmount the CD-ROM from the previous
+              example,
+              either of these commands would work:</p>
+            <blockquote>
+              <pre class="tightenable" style="margin-bottom: 0.21cm"># umount /dev/cdrom
+# umount /mnt/cdrom
+
+
+</pre>
+            </blockquote>
+            <p class="standardtype"><strong>Note:</strong> Since version
+              VectorLinux 5.0 you can create and remove "mount points"
+              using
+              VASM, however, devices will not be mounted automatically;
+              so this
+              guide can prove useful when you need to mount a device but
+              you
+              can&acute;t use a GUI application for some reason.</p>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#index">Top</a></p>
+            <hr>
+            <h3><a name="other"></a><font face="Arial, sans-serif"><u>3.
+                  Other
+                  CLI References</u></font></h3>
+            <p class="standardtype" style="margin-bottom: 0cm"><font
+                face="Arial, sans-serif">The above information only
+                touches the surface
+                of the power of the CLI. Newbies may be interested in
+                reading the
+                following online reference materials concerning other
+                useful Linux
+                CLI commands:</font></p>
+            <ul>
+              <li><font face="Arial, sans-serif"><a
+                    href="http://burks.brighton.ac.uk/burks/linux/rute/rute.htm">Rute
+                    Users
+                    Tutorial</a></font></li>
+              <li><font face="Arial, sans-serif"><a
+                    href="http://www.tuxfiles.org/linuxhelp/cli.html">TuxFiles
+                    Linux CLI
+                    Tutorials</a></font></li>
+              <li><font face="Arial, sans-serif"><a
+                    href="http://linuxcommand.org/index.php">LinuxCommand.org</a></font></li>
+            </ul>
+            <hr>
+            <h3><font face="Arial, sans-serif"><a name="credits"></a><font
+                  face="Arial, sans-serif"><u>4. Credits</u></font></font></h3>
+            <p class="standardtype" style="margin-bottom: 0cm"><font
+                face="Arial, sans-serif"><font face="Arial, sans-serif">Copyright
+                  2007
+                  Vector Linux<br>
+                  Released under GNU Free Document License (<a
+                    class="western"
+                    href="http://www.gnu.org/licenses/fdl.html"><u>http://www.gnu.org/licenses/fdl.html</u></a>
+                  )<br>
+                  Contributed by: UKBill, Lagagnon, LLL</font></font></p>
+            <p class="western" style="margin-bottom: 0cm" align="center"><font
+                face="Arial, sans-serif"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_rediscover_cli_en.html#index">Top</a></font></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+  </body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vectorlinux5.8 - accessing disks and partition</title>
+  </head>
+  <body>
+    <table align="center" border="0" cellpadding="3" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td width="20%"><img
+              src="http://vectorlinux.osuosl.org/docs/vl58/images/vl2k5.gif"
+              height="136" width="120"></td>
+          <td width="40%">
+            <div align="center">
+              <p><span class="VectorLinux"><font face="Arial, Helvetica,
+                    sans-serif" size="+3"><u><strong>Vector Linux
+                        5.8</strong></u></font></span></p>
+              <h3 class="InfoCenter"><font face="Arial" size="+1"><b>Documentation</b></font></h3>
+            </div>
+          </td>
+          <td width="20%">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="4" cellspacing="2"
+      width="95%">
+      <tbody>
+        <tr>
+          <td class="MenuTypeNew">
+            <div align="center"><font face="Arial"><strong><span
+                    class="MenuTypeLink"><a name="index"></a><a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/index.html">Overview</a>
+                    &nbsp;|&nbsp; <a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/forum/">VectorLinux
+                      Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/Docs/">Online
+                      Documentation</a></span></strong></font></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="0" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td height="80">
+            <div align="center">
+              <h2><font face="Arial, sans-serif"><font color="#006699"><b><u>Accessing
+                        disks and
+                        partitions</u></b></font></font></h2>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="margin-bottom: 0cm"><font face="Arial,
+                sans-serif"><b>CONTENTS</b></font></h3>
+            <pre class="standardtype">  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#mounting"><span lang="es-ES"><font face="Arial, sans-serif">1. Mounting devices</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#vasm"><font face="Arial, sans-serif">2. Mounting devices with VASM</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#fstab"><font face="Arial, sans-serif">3. The fstab file</font></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#mountumount"><span lang="es-ES"><font face="Arial, sans-serif">4. mount and umount commands</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#udev"><span lang="es-ES"><font face="Arial, sans-serif">5. The vl-hot automount system</font></span></a>
+  <a class="western" href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#credits"><span lang="es-ES"><font face="Arial, sans-serif">5. Credits</font></span></a>
+</pre>
+            <p class="western"><br>
+            </p>
+            <hr>
+            <h3 style="margin-bottom: 0.21cm"><u><a name="mounting"></a>
+                <font face="Arial, sans-serif"><font>1. Mounting
+                    Devices</font></font></u></h3>
+            <p class="standardtype"><font face="Arial, sans-serif">In
+                Linux,
+                all of the drives, partitions and devices in your
+                computer are
+                treated as "files". Various hard drive partitions,
+                CD-ROMs, and
+                floppies are all placed in the same filesystem tree. In
+                order to be
+                able to access the contents of those devices you need to
+                "mount"
+                them, and for that you have to use the <code
+                  class="Code1">mount</code> and <code class="Code1">umount</code>
+                commands
+                or use an utility. This is a very flexible system and
+                enables you
+                to mount and work with filesystems from other operating
+                systems
+                such as Windows, as if they were on your Linux system.</font></p>
+            <p class="standardtype">The easiest way to mount a device
+              such as a
+              second hard disk or partition is by adding a permanent
+              entry in the
+              <i>/etc/fstab</i> file, along with the mounting options
+              and
+              permissions. Since VectorLinux 5, VASM provides an easy
+              method to
+              administer such entries for your mount points.</p>
+            <p class="standardtype"><font face="Arial, sans-serif"><strong>Note:</strong>
+                Some devices can be
+                automatically mounted when you boot up your computer.
+                These need to
+                be listed in the <i>/etc/fstab</i> file. Anything that
+                you want to
+                be mounted automatically should have an entry in that
+                file. For
+                other devices, you'll have to issue a command every time
+                you want
+                to use the device.</font></p>
+            <p class="western" style="margin-bottom: 0cm" align="center"><br>
+              <a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#index">Top</a></p>
+            <hr>
+            <h3 style="margin-bottom: 0.21cm"><u><a name="vasm"></a>2.
+                Mounting
+                devices with VASM</u></h3>
+            <p class="standardtype">VASM provides an easy method to
+              configure
+              additional local disks or partitions to be mounted in your
+              system.
+              Just launch it, select "FILESYSTEM", then "MOUNT", and
+              there you
+              can ADD or REMOVE mount points.</p>
+            <p class="standardtype"><b>- Adding mount points</b></p>
+            <blockquote>
+              <p class="standardtype">If you select "Add" you will be
+                presented
+                with a list of the local filesystems which are available
+                and which
+                are not already present in the fstab file (the file
+                where mount
+                points configuration is stored).</p>
+              <p class="standardtype">Select the one you want to
+                configure and
+                you will be asked where you want it to be mounted. Then
+                you will
+                see the default options it will be mounted with. If you
+                know what
+                you are doing, you can modify these options, otherwise
+                accept the
+                defaults and press "Ok".</p>
+              <p class="standardtype">The filesystem will not be
+                automatically
+                mounted, you will have to mount it manually by either
+                command line,
+                Kwikdisk, or utilities such as gkrellm.</p>
+              <p class="standardtype">If you mount it by command line,
+                and
+                assuming you created a mount point in /mnt/win, you
+                could use this
+                command (as root):</p>
+              <code class="Code1">mount /mnt/win</code>
+              <p class="standardtype">You could also use:</p>
+              <code class="Code1">mount -a</code>
+              <p class="standardtype">this will mount <em>all</em> of
+                the mount
+                points available in the configuration file, <i>/etc/fstab</i>.</p>
+              <p class="standardtype"><b>Note:</b> Keep in mind that the
+                default
+                settings make the filesystem mountable ONLY by the root
+                user and
+                not by ordinary users. If you want to make it mountable
+                by users
+                you could append "users," to the default options that
+                are presented
+                during the process.</p>
+            </blockquote>
+            <p class="standardtype"><b>- Deleting mount points</b></p>
+            <blockquote style="margin-bottom: 0.21cm">
+              <p class="standardtype">When you delete a mount point, all
+                you are
+                doing is telling the system not to access some
+                particular
+                filesystem (disk, partition, etc,), you are not actually
+                deleting
+                any contents of that filesystem.</p>
+              <p class="standardtype">So, if you choose to Delete a
+                mount point,
+                you will see a list of the devices configured to be
+                mountable (not
+                necessarily auto-mounted). Simply select those you want
+                to remove
+                and press "Ok". Their entries will be removed from the
+                configuration files and nothing will be modified in the
+                filesystem
+                itself.</p>
+              <p class="standardtype"><b>Notes:</b> It is highly
+                recommended that
+                you unmount the filesystem BEFORE you delete it's mount
+                point. If
+                you do not unmount the filesystem before, it will not be
+                unmounted
+                automatically, so you will have to do it either by
+                command line,
+                Kwikdisk, gkrellm or by rebooting the system.</p>
+            </blockquote>
+            <p class="western" style="margin-bottom: 0cm" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#index">Top</a></p>
+            <hr>
+            <h3 style="margin-bottom: 0.21cm"><span class="western"><a
+                  name="fstab"></a></span><font face="Arial, sans-serif"><font><u>3.
+                    The
+                    fstab file</u></font></font></h3>
+            <p class="standardtype">Since VL5, using VASM is all you
+              need to
+              know to mount your partitions or hardisks. However, for
+              those
+              wanting to know more about mounting devices, here is some
+              additional information.</p>
+            <p class="standardtype"><font face="Arial, sans-serif">Let's
+                look
+                at an example of the <i>/etc/fstab</i> file:</font></p>
+            <table border="0" cellpadding="3" cellspacing="0"
+              width="665">
+              <colgroup><col width="29">
+                <col width="96">
+                <col width="152">
+                <col width="95">
+                <col width="263">
+              </colgroup><tbody>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">&lt;device&gt;</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">&lt;mount point&gt;</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">&lt;type&gt;</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">&lt;options&gt;</font></font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/dev/hda3</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">ext3</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">defaults 1 1</font></font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/dev/hda2</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">swap</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">swap</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">defaults 0 0</font></font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/dev/hda1</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/mnt/windows</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">vfat</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">defaults,noauto 0 0</font></font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/dev/hda4</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/mnt/personal</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">vfat</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">defaults,auto,umask=000
+                          0 0</font></font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">none<br>
+                          none</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/dev/pts<br>
+                          /proc</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">devpts<br>
+                          defaults</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">gid=5,mode=620 0 0<br>
+                          0 0</font></font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/dev/fd0</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/mnt/floppy</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">msdos</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">defaults 0 0</font></font></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td width="29">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="96">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">dev/cdrom</font></font></p>
+                  </td>
+                  <td width="152">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">/mnt/cdrom</font></font></p>
+                  </td>
+                  <td width="95">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">iso9660</font></font></p>
+                  </td>
+                  <td width="263">
+                    <p class="western"><font face="Courier New,
+                        monospace"><font size="2">ro 0 0</font></font></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="standardtype"><font face="Arial, sans-serif">The
+                first
+                column is the device name. In this case, the devices are
+                four
+                partitions in an IDE hard drive, two special filesystems
+                that don't
+                need a device, a floppy, and a CD-ROM drive. The second
+                column is
+                where in the directory tree the device will be mounted.
+                This needs
+                to be a directory name, except in the case of a swap
+                partition. The
+                third column is the filesystem type of the device. For
+                Windows 9x
+                filesystems, this will be vfat, for normal Linux
+                filesystems, this
+                will be ext2 (second extended filesystem). CD-ROM drives
+                are
+                iso9660, and other Windows-based devices will either be
+                msdos or
+                vfat. NTFS filesystems read support is available but
+                write support
+                is not fully reliable yet.</font></p>
+            <p class="standardtype"><font face="Arial, sans-serif">The
+                umask
+                section deals with access permissions to FAT devices.
+                This is a
+                very complex topic that goes beyond the scope of this
+                guide, but
+                keep in mind that the 000 option poses almost no
+                restrictions about
+                how regular users can access the device.</font></p>
+            <p class="standardtype"><font face="Arial, sans-serif">The
+                last
+                column is a listing of options that apply to the mounted
+                filesystem. &#8220;defaults&#8221; is fine for just about
+                everything. However, read-only devices should be given
+                the ro flag.
+                There are a lot of options that can be used. Check the
+                fstab(5) man
+                page for more information. The last two columns are used
+                by fsck
+                and other commands that need to manipulate the devices.
+                Check the
+                man page for that information, as well.</font></p>
+            <p class="standardtype"><font face="Arial, sans-serif">When
+                you
+                install VectorLinux, the setup program will build much
+                of the fstab
+                file. The only time you will need to edit it is if you
+                add disks or
+                want devices to be automatically mounted at boot time.</font></p>
+            <p class="western" style="margin-bottom: 0cm" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#index">Top</a></p>
+            <hr>
+            <h3><a name="mountumount"></a> <u><font face="Arial,
+                  sans-serif">4.
+                  mount and umount commands</font></u></h3>
+            <p class="standardtype">Attaching another device to your
+              filesystem
+              is easy. All you have to do is use the mount command,
+              along with a
+              few options. <b>Using mount can also be made much more
+                simple if
+                the device has an entry in the /etc/fstab file.</b> For
+              example,
+              let's say that I wanted to mount my CD-ROM drive and that
+              my fstab
+              file looked like the example from the previous section. I
+              would
+              call mount like so:</p>
+            <code class="Code1"># mount /mnt/cdrom</code><br>
+            <p class="standardtype">Since there is an entry in fstab for
+              that
+              mount point, mount knows what options to use. If there
+              wasn't an
+              entry for that device, I would have to use several options
+              for
+              mount:</p>
+            <code class="Code1"># mount -t iso9660 -o ro
+              /dev/cdrom/cdrom</code><br>
+            <p class="standardtype">That command line includes the same
+              information as the example fstab did, but we'll go over
+              all the
+              parts anyways. The -t iso9660 is the filesystem type of
+              the device
+              to mount. In this case, it would be the iso9660 filesystem
+              which is
+              what CD-ROM drives most commonly use. The -o ro tells
+              mount to
+              mount the device read-only. The /dev/cdrom is the name of
+              the
+              device to mount, and /mnt/cdrom is the location on the
+              filesystem
+              to mount the drive.</p>
+            <p class="standardtype">Before you can remove a floppy,
+              CD-ROM, or
+              other removable device that is currently mounted, you'll
+              have to
+              unmount it. That is done using the <code class="Code1">umount</code>
+              command. You can use either the mounted
+              device or the mount point as the argument to umount. For
+              example,
+              if you wanted to unmount the CD-ROM from the previous
+              example,
+              either of these commands would work:</p>
+            <code class="Code1"># umount /dev/cdrom<br>
+              # umount /mnt/cdrom</code><br>
+            <p class="standardtype">In the default configuration of
+              VectorLinux, only the root user is able to mount and
+              umount
+              devices. You can allow regular users the ability to mount
+              devices
+              by adding "users" (without quotes) in your fstab file:</p>
+            <table border="0" cellpadding="3" cellspacing="0"
+              width="665">
+              <colgroup><col width="10">
+                <col width="102">
+                <col width="136">
+                <col width="41">
+                <col width="345">
+              </colgroup><tbody>
+                <tr>
+                  <td width="10">
+                    <p class="western"><br>
+                    </p>
+                  </td>
+                  <td width="102">
+                    <p class="western"><font face="Arial, sans-serif">/dev/hda4</font></p>
+                  </td>
+                  <td width="136">
+                    <p class="western"><font face="Arial, sans-serif">/mnt/personal</font></p>
+                  </td>
+                  <td width="41">
+                    <p class="western"><font face="Arial, sans-serif">vfat</font></p>
+                  </td>
+                  <td width="345">
+                    <p class="western"><font face="Arial, sans-serif">defaults,auto,users,umask=000
+                        0 0</font></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#index">Top</a></p>
+            <hr>
+            <h3><a name="udev"></a> <u><font face="Arial, sans-serif">5.
+The
+                  vl-hot Automount System</font></u></h3>
+            <p class="standardtype">As of SOHO version 5.1.1 VectorLinux
+              has provided the "vl-hot" automounting system, based on
+              udev in the 2.6 linux kernel. The system is designed to
+              auto-mount for the user such removeable devices as pen
+              drives, memory card readers, digital cameras, etc.
+              Theoretically, all you need do is plug the device into
+              your USB port on the computer and in KDE a device icon
+              will appear on your desktop which allows you file manager
+              access to that device. Similarly in VL Standard v5.8,
+              which uses the xfce desktop environment, the same
+              situation will occur.</p>
+            <hr>
+            <h3><a name="credits"></a><font face="Arial, sans-serif"><u>6.
+                  Credits</u></font></h3>
+            <p class="western" style="margin-bottom: 0cm"><font
+                face="Arial, sans-serif">Copyright 2007 Vector Linux<br>
+                Released under [GNU Free Document License [ <a
+                  class="western"
+                  href="http://www.gnu.org/licenses/fdl.html"><u>http://www.gnu.org/licenses/fdl.html</u></a>
+                ]<br>
+                Adapted from <a class="western"
+                  href="http://www.slackbook.org"><u><span lang="es-ES">The
+                      Slackware Book Project</span></u></a></font></p>
+            <p class="western" style="margin-bottom: 0cm" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_mounting_guide_en.html#index">Top</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+    <h2 class="western" align="center">&nbsp;</h2>
+  </body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1"
+      http-equiv="Content-Type">
+    <title>vectorlinux5.8 - Filesystem and how to find files</title>
+  </head>
+  <body>
+    <table align="center" border="0" cellpadding="3" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td width="20%"><img
+              src="http://vectorlinux.osuosl.org/docs/vl58/images/vl2k5.gif"
+              height="136" width="120"></td>
+          <td width="40%">
+            <div align="center">
+              <p><span class="VectorLinux"><font face="Arial, Helvetica,
+                    sans-serif" size="+3"><u><strong>Vector Linux
+                        5.8</strong></u></font></span></p>
+              <h3 class="InfoCenter"><font face="Arial" size="+1"><b>Documentation</b></font></h3>
+            </div>
+          </td>
+          <td width="20%">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="4" cellspacing="2"
+      width="95%">
+      <tbody>
+        <tr>
+          <td class="MenuTypeNew">
+            <div align="center"><font face="Arial"><strong><span
+                    class="MenuTypeLink"><a name="index"></a><a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/index.html">Overview</a>
+                    &nbsp;|&nbsp; <a
+                      href="http://vectorlinux.osuosl.org/docs/vl58/manuals/index.html">Documentation</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com">VectorLinux.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/forum/">VectorLinux
+                      Forum</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                      href="http://www.vectorlinux.com/Docs/">Online
+                      Documentation</a></span></strong></font></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" border="0" cellpadding="0" cellspacing="0"
+      width="95%">
+      <tbody>
+        <tr>
+          <td height="80">
+            <div align="center">
+              <h2><font face="Arial, sans-serif"><font color="#006699"><b><u>The
+VectorLinux
+                        Filesystem and How to Find
+                        Files</u></b></font></font></h2>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="margin-bottom: 0cm"><font face="Arial,
+                sans-serif"><b>CONTENTS</b></font></h3>
+            <ol class="standardtype">
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_filesystem_en.html#introduction">Introduction</a></li>
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_filesystem_en.html#config">Important
+                  Configuration Files</a></li>
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_filesystem_en.html#find">How
+                  To Find Files</a></li>
+              <li><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_filesystem_en.html#credits">Credits</a></li>
+            </ol>
+            <hr>
+            <h2><u><a name="introduction" id="introduction"></a>1.
+                Introduction</u></h2>
+            <p class="standardtype">VectorLinux, as with most other
+              Linux
+              distributions, tries to adhere to the <a
+                href="http://www.pathname.com/fhs/">Linux Filesytem
+                Hierarchy
+                Standard.</a> This standard is necessary to enable
+              developers and
+              users to install, move, place and find files in locations
+              that make
+              sense and are consistent between distributions. This
+              document will
+              not discuss the details of the Linux FHS as you can read
+              such
+              details at the above website. What we wish to point out
+              here are
+              the important directories and file locations for those
+              configuration files and directories which are particularly
+              relevant
+              or unique to VectorLinux. It is hoped this will enable
+              newcomers to
+              navigate the many Linux directories more effectively and
+              to know
+              where to find files to fix any problems that may arise.
+              Secondly, we
+              briefly discuss some of the Linux utilities that will help
+              you
+              locate files/directories.</p>
+            <p class="standardtype">It also needs to be known that
+              VectorLinux
+              is based upon the Slackware Linux distribution. Slackware
+              Linux
+              uses the BSD-style file layout for its system
+              initialization script
+              files. Consequently Slackware and Linux do not use System
+              V init
+              scripts. This is an important fact if you wish to navigate
+              or edit
+              the init configuration scripts. If interested, you can <a
+href="http://www.linux.com/article.pl?sid=06/01/03/1728227">
+                read about the difference</a> between BSD and System V
+              init
+              scripts.</p>
+            <p class="standardtype">VectorLinux provides <i>VASM</i>
+              the
+              "Vector Administration and Services Menu" system
+              administration
+              utility amongst other utilities, plus a fully configured
+              Linux
+              system for most common hardware. Thus it should generally
+              be
+              unnecessary for newcomers to have to manually edit any of
+              the
+              configuration files. You should also never have to edit
+              any of the
+              init scripts unless you are an expert. This document is
+              provided
+              for information purposes only.</p>
+            <hr>
+            <h2><u><a name="config" id="config"></a>2. Important
+                Configuration
+                Files</u></h2>
+            <p class="standardtype">Most system configuration files are
+              located
+              in the <i>/etc</i> directory. Most user-specific
+              configuration
+              files are in the appropriate home directory as a "hidden"
+              "rc"
+              file, e.g. <i>~/.bashrc</i> or within a directory
+              specific to the
+              application, e.g. <i>~/.config/xfce4</i> (where ~ is a
+              shortcut to
+              your home directory). Navigate to the <i>/etc</i>
+              directory in your
+              favourite file manager application and we will analyze the
+              most
+              important system config files:<br>
+            </p>
+            <ul class="standardtype">
+              <li><i>/etc/lilo.conf</i> : the lilo boot loader
+                configuration
+                file</li>
+              <li><i>/etc/fstab</i> : the block device (drives) system
+                mounting
+                file; controls which drives are mounted at bootup.</li>
+              <li><i>/etc/inittab</i> : configuration file for the prime
+                "init"
+                script; determines bootlevel</li>
+              <li><i>/etc/passwd</i> : user and password configuration
+                file</li>
+              <li><i>/etc/X11/xorg.conf</i> : the X config file;
+                controls
+                keyboard, mouse, video card and monitor</li>
+              <li><i>/etc/slapt-get/slapt-getrc</i> : config file for
+                slapt-get -
+                the VL packaging tools</li>
+              <li><i>/etc/modules.conf</i> : config file for loading
+                kernel
+                modules</li>
+              <li><i>/etc/resolv.conf</i> : config file for network
+                nameservers -
+                set automatically if your ISP uses DHCP (most do).</li>
+              <li><i>/etc/samba/smb.conf</i> : Samba config file</li>
+            </ul>
+            <p class="standardtype">The important BSD-style system
+              initialization scripts which the knowledgeable user may at
+              some
+              time wish to edit are:</p>
+            <ul class="standardtype">
+              <li><i>/etc/rc.d</i> : config DIRECTORY containing most of
+                the
+                Slackware-style startup scripts</li>
+              <li><i>/etc/rc.d/README</i> : please do if you want to
+                learn
+                more!</li>
+              <li><i>/etc/rc.d/rc.S</i> : one of the first boot scripts
+                to run to
+                prepare your system at boot time.</li>
+              <li><i>/etc/rc.d/rc.modules</i> : modules to be loaded at
+                boot
+                time</li>
+              <li><i>/etc/rc.d/rc.inet1</i> : config file for eth0, you
+                primary
+                network card.</li>
+              <li><i>/etc/rc.d/rc.local</i> : local bootup customization
+                script.
+                Put your additions here.</li>
+            </ul>
+            <p class="standardtype">Now the most important user config
+              files
+              (where ~ denotes your home directory) are listed below.
+              Note that
+              almost every application you use will probably create a
+              <i>~/.application</i> file or directory where it stores
+              your
+              preference settings.</p>
+            <ul class="standardtype">
+              <li><i>~/.bashrc</i> : config file for nonlogin,
+                interactive bash
+                shells</li>
+              <li><i>~/.Xdefaults</i> : config file for terminal console
+                programs
+                such as xterm, mrxvt</li>
+              <li><i>~/.kde</i> : kde preferences and autostart
+                directories</li>
+              <li><i>~/.config</i> : xfce4 directory of xfce4 config
+                files</li>
+            </ul>
+            <p class="standardtype">And lastly here are some other
+              important
+              log files and other files which you may need to refer to
+              at some
+              stage:</p>
+            <ul class="standardtype">
+              <li><i>/var/log/packages</i> : directory containing
+                description
+                files for every Slackware/VL package installed on your
+                system</li>
+              <li><i>/var/log/removed_packages</i> : directory
+                containing
+                description files for every Slackware/VL package removed
+                from your
+                system</li>
+              <li><i>/home/ftp/pub/veclinux-5.8/packages</i> : directory
+                containing all packages downloaded using gslapt or
+                slapt-get. Also
+                contains mirror package info.</li>
+            </ul>
+            <p class="western" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_filesystem_en.html#index">Top</a></p>
+            <hr>
+            <h2><a name="find"></a><font face="Arial, sans-serif"><u>3.
+                  How To
+                  Find Files</u></font></h2>
+            <h3>slocate or locate</h3>
+            <p class="standardtype"><code class="Code1">slocate</code>
+              or <code class="Code1">locate</code> commands provides a
+              superfast, secure
+              way to search an indexed database of every file on your
+              system.
+              However, you must first of all create the database and
+              keep it
+              up-to-date by running <code class="Code1">updatedb</code>
+              as root.
+              You can place updatedb in your weekly crontab file.
+              slocate is much faster and easier than using <code
+                class="Code1">find</code>.<br>
+              Examples of using slocate:</p>
+            <ul class="standardtype">
+              <li><code class="Code1">slocate *.pdf</code> will search
+                the
+                slocate database for every pdf file on your system.</li>
+              <li><code class="Code1">slocate kde | grep rc</code> will
+                search the slocate database (whose location is
+                <i>/var/lib/slocate/slocate.db</i>) for all files
+                containing kde
+                which also contain the phrase "rc".</li>
+              <li><code class="Code1">slocate .png | less</code>
+                searches for all
+                instances of files ending .png and sends the output to
+                the less
+                pager so that you can browse the list easily.</li>
+            </ul>
+            <p class="standardtype">If you want to know where all the
+              files
+              were placed when you installed a Vector Linux .tgz package
+              then
+              slocate is your best bet. You can also browse this
+              information at /var/log/packages.</p>
+            <h3>mc (Midnight Commander)</h3>
+            <p class="standardtype"><code class="Code1">mc</code>, <i>Midnight
+                Commander</i> is one of the most useful applications in
+              Linux. It
+              is a very fast, text-based file manager, much more
+              powerful than
+              many of the GUI file managers if learned properly - the
+              only thing
+              you can't do is drag and drop. Quite frankly, you will
+              double your
+              computing efficiency if you master this application.
+              Playing with
+              mc is the quickest way to learn your way around the VL
+              filesystem.
+              Press F1 for extensive help and read <code class="Code1">man
+                mc</code>.</p>
+            <h3>find</h3>
+            <p class="standardtype"><code class="Code1">find</code> is a
+              very
+              powerful, but newbie-unfriendly command line program for
+              finding
+              files. Extensive options but a steep learning curve. If
+              you want
+              learn more <a
+href="http://www.linux-tutorial.info/modules.php?name=Tutorial&amp;pageid=31">read
+this
+                HOWTO.</a> Some examples:</p>
+            <ul class="standardtype">
+              <li><code class="Code1">find . -name 'a*'</code> : will
+                find all
+                files beginning with the letter a in the current
+                directory</li>
+              <li><code class="Code1">find /etc -mtime -1</code> : will
+                find all
+                files in the /etc directory modified within the past day</li>
+              <li><code class="Code1">find . \( -name temp -o -name tmp
+                  \)
+                  -print -exec rm {} \;</code> : will display and then
+                delete all
+                files in the current directory named temp or tmp.</li>
+            </ul>
+            <h3>whereis</h3>
+            <p class="standardtype">The <code class="Code1">whereis</code>
+              command locates the binary, source and manual pages for a
+              command,
+              e.g.:<br>
+              <code class="Code1">whereis sort</code> returns the
+              output:<br>
+              <i>sort: /usr/bin/sort /usr/man/man1/sort.1.gz
+                /usr/man/man3/sort.3.gz /usr/share/man/man1/sort.1.gz
+                /usr/share/man/man3/sort.3.gz</i></p>
+            <h3>apropos</h3>
+            <p class="standardtype">The <code class="Code1">apropos</code>
+              command searches a database of all the manual (man) pages
+              and
+              returns those page names for the string you provide, e.g.:
+              <code class="Code1">apropos pdf</code> returns:</p>
+            <pre>docbook2pdf [jw] (1) - (Jade Wrapper) converts SGML files to other formats
+dvipdf (1) - Convert TeX DVI file to PDF using ghostscript and dvips
+gs (1) - Ghostscript (PostScript and PDF language interpreter and previewer)
+gsnd (1) - Run ghostscript (PostScript and PDF engine) without display
+pdf2dsc (1) - generate a PostScript page list of a PDF document
+pdf2ps (1) - Ghostscript PDF to PostScript translator
+pdfopt (1) - Ghostscript PDF Optimizer
+ps2ascii (1) - Ghostscript translator from PostScript or PDF to ASCII
+ps2pdf (1) - Convert PostScript to PDF using ghostscript
+ps2pdf12 [ps2pdf] (1) - Convert PostScript to PDF 1.2 (Acrobat 3-and-later compatible) using ghostscript
+ps2pdf13 [ps2pdf] (1) - Convert PostScript to PDF 1.3 (Acrobat 4-and-later compatible) using ghostscript
+ps2pdfwr (1) - Convert PostScript to PDF without specifying CompatibilityLevel, using ghostscript
+texi2dvi4a2ps (1) - Compile Texinfo and LaTeX files to DVI or PDF
+tiff2pdf (1) - convert a TIFF image to a PDF document
+</pre>
+            <p class="standardtype">The above output shows all the
+              commands and
+              a brief description from the man page title of what they
+              do.</p>
+            <h3>which</h3>
+            <p class="standardtype">The <code class="Code1">which</code>
+              command searches the directories in the PATH variable and
+              displays
+              the absolute pathname of the first file it finds whose
+              simple
+              filename is the same as the command, e.g.: <code
+                class="Code1">which sort</code> returns:<br>
+              <i>/usr/bin/sort</i></p>
+            <hr>
+            <h2><a name="credits"></a><font face="Arial, sans-serif"><u>4.
+                  Credits</u></font></h2>
+            <p class="standardtype" style="margin-bottom: 0cm"><font
+                face="Arial, sans-serif">Copyright 2007 Vector Linux<br>
+                Released under GNU Free Document License (<a
+                  class="western"
+                  href="http://www.gnu.org/licenses/fdl.html"><u>http://www.gnu.org/licenses/fdl.html</u></a>
+                )<br>
+                Contributed by: Lagagnon, LLL</font></p>
+            <p class="western" style="margin-bottom: 0cm" align="center"><a
+href="http://vectorlinux.osuosl.org/docs/vl58/manuals/vl5_filesystem_en.html#index">Top</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
+  </body>
+</html>
